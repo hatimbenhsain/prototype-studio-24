@@ -17,16 +17,54 @@ public class DominoGame : MonoBehaviour
 
     private float fixedDeltaTime;
 
+    private DominoScript[] dominoes;
+    private DominoScript dominoHovered;
+
+    enum State {Looking, Pushing}
+
+    private State currentState;
+
+    private bool dominoFront=true;
+
     void Awake()
     {
         fixedDeltaTime = Time.fixedDeltaTime;
+
+        dominoes=FindObjectsOfType<DominoScript>();
+
+        currentState=State.Looking;
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !dominoPushed){
-            hand.SetActive(true);
-            hand.GetComponent<DominoHand>().Push();
+
+        RaycastHit hit;
+        Ray ray=Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if(currentState==State.Looking){
+            if(Input.GetKeyDown(KeyCode.Tab)){
+                dominoFront=!dominoFront;
+            }
+
+            foreach(DominoScript d in dominoes){
+                d.NotHovered();
+            }
+
+            if(Physics.Raycast(ray, out hit)) {
+                Transform objectHit = hit.transform;
+                if(objectHit.gameObject.tag=="Domino"){
+                    DominoScript domino=objectHit.GetComponentInChildren<DominoScript>();
+                    domino.Hovered(dominoFront);
+                    dominoHovered=domino;
+                }
+            }else{
+                dominoHovered=null;
+            }
+
+            if(Input.GetKeyDown(KeyCode.Mouse0) && dominoHovered!=null && !dominoPushed){
+                dominoHovered.Push(dominoFront);
+                currentState=State.Pushing;
+            }
         }
     }
 
