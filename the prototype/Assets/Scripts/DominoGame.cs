@@ -66,6 +66,8 @@ public class DominoGame : MonoBehaviour
                 currentState=State.Pushing;
             }
         }
+
+        explosionHappened=false;
     }
 
     public void Explosion(Vector3 pos){
