@@ -28,8 +28,13 @@ public class DominoGame : MonoBehaviour
     private bool dominoFront=true;
 
     public GameObject explosionPrefab;
+    public GameObject flamePrefab;
 
     public GameObject spotlight;
+
+    public float maxX=10;
+    public float maxZ=5;
+    
 
     void Awake()
     {
@@ -91,6 +96,13 @@ public class DominoGame : MonoBehaviour
             StartCoroutine(RestoreTimeScale(slowmoDuration*slowTimescale));
             StartCoroutine(PlayExplosion(pos));
             GetComponent<AudioSource>().Play();
+            int n=(int)Mathf.Floor(Random.Range(3f,6f));
+            for(int i=0;i<n;i++){
+                Vector3 fpos=new Vector3(Random.Range(-maxX,maxX),1f,Random.Range(-maxZ,maxZ));
+                GameObject flame=Instantiate(flamePrefab,fpos,Quaternion.identity);
+                float sc=Random.Range(0.1f,.5f);
+                flame.transform.localScale=Vector3.one*sc;
+            }
         }
     }
 
