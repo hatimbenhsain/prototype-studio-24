@@ -29,6 +29,8 @@ public class DominoGame : MonoBehaviour
 
     public GameObject explosionPrefab;
 
+    public GameObject spotlight;
+
     void Awake()
     {
         fixedDeltaTime = Time.fixedDeltaTime;
@@ -74,7 +76,7 @@ public class DominoGame : MonoBehaviour
     }
 
     public void Explosion(Vector3 pos){
-        if(!explosionHappened){
+        if(!explosionHappened && Time.timeSinceLevelLoad>1f){
             explosionHappened=true;
             Rigidbody[] bodies=FindObjectsOfType<Rigidbody>();
             foreach(Rigidbody b in bodies){
@@ -107,5 +109,9 @@ public class DominoGame : MonoBehaviour
         Debug.Log(timeScale);
         Time.timeScale=timeScale;
         Time.fixedDeltaTime = fixedDeltaTime * Time.timeScale;
+    }
+
+    public void toggleSpotlight(bool b){
+        spotlight.SetActive(b);
     }
 }

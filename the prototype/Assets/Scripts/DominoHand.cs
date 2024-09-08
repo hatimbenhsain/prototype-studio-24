@@ -15,6 +15,7 @@ public class DominoHand : MonoBehaviour
 
     public Material transparentMaterial;
     public Material opaqueMaterial;
+    public GameObject spotlight;
 
 
     private Rigidbody body;
@@ -55,7 +56,9 @@ public class DominoHand : MonoBehaviour
 
     private IEnumerator ToggleCamera(bool b, float waitTime){
         yield return new WaitForSeconds(waitTime);
-        camera.gameObject.SetActive(b);  
+        camera.gameObject.SetActive(b);
+        FindObjectOfType<DominoGame>().toggleSpotlight(!b);
+        spotlight.SetActive(b);
     }
 
 
