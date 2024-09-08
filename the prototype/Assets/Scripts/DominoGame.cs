@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DoodleStudio95;
 using UnityEngine;
 
 public class DominoGame : MonoBehaviour
@@ -25,6 +26,8 @@ public class DominoGame : MonoBehaviour
     private State currentState;
 
     private bool dominoFront=true;
+
+    public GameObject explosionPrefab;
 
     void Awake()
     {
@@ -84,7 +87,14 @@ public class DominoGame : MonoBehaviour
             }
             ChangeTimeScale(slowTimescale);
             StartCoroutine(RestoreTimeScale(slowmoDuration*slowTimescale));
+            StartCoroutine(PlayExplosion(pos));
+            GetComponent<AudioSource>().Play();
         }
+    }
+
+    IEnumerator PlayExplosion(Vector3 pos) {
+        GameObject explosion=Instantiate(explosionPrefab,pos,Quaternion.identity);
+        yield return explosion.GetComponent<DoodleAnimator>().PlayAndPauseAt(0,-1);
     }
 
     private IEnumerator RestoreTimeScale(float waitTime){
