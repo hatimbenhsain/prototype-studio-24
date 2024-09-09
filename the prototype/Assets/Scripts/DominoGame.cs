@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using DoodleStudio95;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DominoGame : MonoBehaviour
 {
@@ -34,15 +36,23 @@ public class DominoGame : MonoBehaviour
 
     public float maxX=10;
     public float maxZ=5;
+
+    public List<GameObject> dominoPresets;
+    public GameObject[] quadrants;
     
 
     void Awake()
     {
         fixedDeltaTime = Time.fixedDeltaTime;
+        currentState=State.Looking;
+
+        for(var i=0;i<quadrants.Length;i++){
+            int k=Mathf.FloorToInt(Random.Range(0,dominoPresets.Count));
+            Instantiate(dominoPresets[k],quadrants[i].transform);
+            dominoPresets.RemoveAt(k);
+        }
 
         dominoes=FindObjectsOfType<DominoScript>();
-
-        currentState=State.Looking;
     }
 
     void Update()
@@ -78,6 +88,11 @@ public class DominoGame : MonoBehaviour
         }
 
         explosionHappened=false;
+
+        if(Input.GetKeyDown(KeyCode.R)){
+            ChangeTimeScale(1f);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     public void Explosion(Vector3 pos){
