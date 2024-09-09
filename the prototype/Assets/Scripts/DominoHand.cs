@@ -28,7 +28,9 @@ public class DominoHand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(pushing && camera.gameObject.activeInHierarchy && FindObjectOfType<DominoGame>().explosionHappenedOnce){
+            StartCoroutine(ToggleCamera(false,0f));
+        }
     }
 
     private void FixedUpdate() {

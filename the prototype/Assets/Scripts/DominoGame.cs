@@ -39,7 +39,19 @@ public class DominoGame : MonoBehaviour
 
     public List<GameObject> dominoPresets;
     public GameObject[] quadrants;
-    
+
+    public float cameraShakeTimer;
+    public float cameraMaxtime=4f;
+    private Vector3 cameraRotationInitial;
+    private Vector3 cameraRotationTarget;
+
+    private float timeSincePush=0f;
+    public bool explosionHappenedOnce=false;
+
+    public float timeSinceExplosion=0f;
+    public AnimationClip curtainCloseAnimation;
+
+    private GameObject curtains;
 
     void Awake()
     {
@@ -53,6 +65,11 @@ public class DominoGame : MonoBehaviour
         }
 
         dominoes=FindObjectsOfType<DominoScript>();
+
+        cameraShakeTimer=0f;
+        cameraRotationInitial=Camera.main.transform.rotation.eulerAngles;
+
+        curtains=GameObject.Find("Curtains");
     }
 
     void Update()
@@ -76,6 +93,8 @@ public class DominoGame : MonoBehaviour
                     DominoScript domino=objectHit.GetComponentInChildren<DominoScript>();
                     domino.Hovered(dominoFront);
                     dominoHovered=domino;
+                }else{
+                    dominoHovered=null;
                 }
             }else{
                 dominoHovered=null;
@@ -85,6 +104,16 @@ public class DominoGame : MonoBehaviour
                 dominoHovered.Push(dominoFront);
                 currentState=State.Pushing;
             }
+        }else if(currentState==State.Pushing){
+            timeSincePush+=Time.deltaTime;
+            if(!explosionHappenedOnce && timeSincePush>=4f){
+                currentState=State.Looking;
+                timeSincePush=0f;
+            }
+            timeSinceExplosion+=Time.deltaTime;
+            if(explosionHappenedOnce && timeSinceExplosion>=15f && timeSinceExplosion-Time.deltaTime<10f){
+                curtains.GetComponent<Animator>().SetTrigger("Close");
+            }
         }
 
         explosionHappened=false;
@@ -93,11 +122,17 @@ public class DominoGame : MonoBehaviour
             ChangeTimeScale(1f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        CameraShake();
+
+        
     }
 
     public void Explosion(Vector3 pos){
         if(!explosionHappened && Time.timeSinceLevelLoad>1f){
+            timeSinceExplosion=0f;
             explosionHappened=true;
+            explosionHappenedOnce=true;
             Rigidbody[] bodies=FindObjectsOfType<Rigidbody>();
             foreach(Rigidbody b in bodies){
                 if(!b.isKinematic){
@@ -118,6 +153,7 @@ public class DominoGame : MonoBehaviour
                 float sc=Random.Range(0.1f,.5f);
                 flame.transform.localScale=Vector3.one*sc;
             }
+            cameraShakeTimer=4f;
         }
     }
 
@@ -140,5 +176,17 @@ public class DominoGame : MonoBehaviour
 
     public void toggleSpotlight(bool b){
         spotlight.SetActive(b);
+    }
+
+    public void CameraShake(){
+        if(cameraShakeTimer>1f){
+            cameraShakeTimer-=Time.deltaTime;
+            float r=4f;
+            cameraRotationTarget=cameraRotationInitial+new Vector3(Random.Range(-r,r),Random.Range(-r,r),Random.Range(-r,r));
+            Camera.main.transform.rotation=Quaternion.Lerp(Camera.main.transform.rotation,Quaternion.Euler(cameraRotationTarget),Time.deltaTime*cameraShakeTimer*cameraShakeTimer);
+        }
+        else{
+            Camera.main.transform.rotation=Quaternion.Lerp(Camera.main.transform.rotation,Quaternion.Euler(cameraRotationInitial),Time.deltaTime);
+        }
     }
 }
