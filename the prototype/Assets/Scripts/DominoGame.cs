@@ -111,7 +111,7 @@ public class DominoGame : MonoBehaviour
                 timeSincePush=0f;
             }
             timeSinceExplosion+=Time.deltaTime;
-            if(explosionHappenedOnce && timeSinceExplosion>=15f && timeSinceExplosion-Time.deltaTime<10f){
+            if(explosionHappenedOnce && timeSinceExplosion>=15f && timeSinceExplosion-Time.deltaTime<15f){
                 curtains.GetComponent<Animator>().SetTrigger("Close");
             }
         }
