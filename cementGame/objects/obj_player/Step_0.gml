@@ -162,7 +162,7 @@ switch(currentState){
 	break;
 }
 
-angle=angle%360;
+angle=(angle+360)%360;
 direction=-90-angle;
 
 //camera

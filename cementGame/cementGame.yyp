@@ -35,11 +35,13 @@
   "name":"cementGame",
   "resources":[
     {"id":{"name":"Note1","path":"notes/Note1/Note1.yy",},},
+    {"id":{"name":"obj_block","path":"objects/obj_block/obj_block.yy",},},
     {"id":{"name":"obj_chair","path":"objects/obj_chair/obj_chair.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_scenery","path":"objects/obj_scenery/obj_scenery.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"Script1","path":"scripts/Script1/Script1.yy",},},
+    {"id":{"name":"spr_block","path":"sprites/spr_block/spr_block.yy",},},
     {"id":{"name":"spr_player_idle","path":"sprites/spr_player_idle/spr_player_idle.yy",},},
     {"id":{"name":"spr_player_pulling","path":"sprites/spr_player_pulling/spr_player_pulling.yy",},},
     {"id":{"name":"spr_player_pushing","path":"sprites/spr_player_pushing/spr_player_pushing.yy",},},
