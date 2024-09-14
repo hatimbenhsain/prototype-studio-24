@@ -1,0 +1,25 @@
+to-DOS:
+
++ add rotation intensity (if low joystick strength)
++ terminal vs boos speed
++ coasting
+
++ redraw pc
++ coasting animation
++ turning animation
++ idle animation
+
++ cement: add drag, slow animations
+
++ swimming backwards?
+ + button to go back
+ + or if heading backwards it goes there instead of turning
+ 
+ + rotation gets blocked sometimes
+ + increase drag when turning?
+ 
+ + add object collision
+ 
+ + walking part
+ 
+ + darken everything far away
