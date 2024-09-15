@@ -17,11 +17,11 @@ switch(currentState){
 		pushTimer+=dt;
 		pullTimer+=dt;
 		
-		var vNormal=Normal(v);
+		var vNormalize=Normalize(v);
 		
 		//cap speed
-		v[0]=sign(v[0])*min(abs(v[0]),abs(vNormal[0])*maxSpeed);
-		v[1]=sign(v[1])*min(abs(v[1]),abs(vNormal[1])*maxSpeed);
+		v[0]=sign(v[0])*min(abs(v[0]),abs(vNormalize[0])*maxSpeed);
+		v[1]=sign(v[1])*min(abs(v[1]),abs(vNormalize[1])*maxSpeed);
 		
 		var prevV=[v[0],v[1]];
 		var prevAV=angularV;
@@ -30,7 +30,7 @@ switch(currentState){
 		if(abs(v[0])<0.01){
 			v[0]=0;
 		}else{
-			v[0]=v[0]-vNormal[0]*linearDrag*dt;
+			v[0]=v[0]-vNormalize[0]*linearDrag*dt;
 			if(sign(v[0])!=sign(prevV[0])){
 				v[0]=0;	
 			}
@@ -38,7 +38,7 @@ switch(currentState){
 		if(abs(v[1])<0.01){
 			v[1]=0;
 		}else{
-			v[1]=v[1]-vNormal[1]*linearDrag*dt;
+			v[1]=v[1]-vNormalize[1]*linearDrag*dt;
 			if(sign(v[1])!=sign(prevV[1])){
 				v[1]=0;	
 			}
@@ -61,8 +61,8 @@ switch(currentState){
 		
 		if(pullTrigger){
 			if(pullTimer>=pushDelay && pullTimer-dt<pushDelay){
-				var bx=boostAcceleration*cos(degtorad(180+angle));
-				var by=boostAcceleration*sin(degtorad(180+angle));
+				var bx=boostAcceleration*cos(degtorad(180+angle))*0.5;
+				var by=boostAcceleration*sin(degtorad(180+angle))*0.5;
 				v[0]=v[0]+bx;
 				v[1]=v[1]+by;
 			}
@@ -78,9 +78,9 @@ switch(currentState){
 		if(turning){
 			var difference=targetAngle-angle;
 			
-			show_debug_message(targetAngle);
-			show_debug_message(angle);
-			show_debug_message(difference);
+			//show_debug_message(targetAngle);
+			//show_debug_message(angle);
+			//show_debug_message(difference);
 			
 			if(abs(difference)>5 && 360-abs(difference)>5){
 				var dir=sign(difference);
@@ -92,9 +92,9 @@ switch(currentState){
 					acc=angularAcceleration*10;	
 				}
 				angularV+=acc*dt*dir;
-				show_debug_message("turning");
+				//show_debug_message("turning");
 			}else{
-				show_debug_message("no turning")
+				//show_debug_message("no turning")
 			}
 		}
 		
@@ -163,7 +163,7 @@ switch(currentState){
 }
 
 angle=(angle+360)%360;
-direction=-90-angle;
+image_angle=-90-angle;
 
 //camera
 var cx=camera_get_view_x(view_camera[0]);

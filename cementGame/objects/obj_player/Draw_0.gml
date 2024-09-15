@@ -7,4 +7,4 @@ if((current_time/1000)%(maxImgSpeed*4)<=maxImgSpeed*2){
 }
 
 draw_sprite(spr_screen,0,x,y);
-draw_sprite_ext(sprite_index,image_index,x+offsetX,y+offsetY,image_xscale,image_yscale,direction,c_white,1);
+draw_sprite_ext(sprite_index,image_index,x+offsetX,y+offsetY,image_xscale,image_yscale,image_angle,c_white,1);
