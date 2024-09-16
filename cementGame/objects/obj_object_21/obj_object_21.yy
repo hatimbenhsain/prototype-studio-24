@@ -9,7 +9,10 @@
     "name":"obj_objects",
     "path":"folders/Objects/obj_objects.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_collidable",
+    "path":"objects/obj_collidable/obj_collidable.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -28,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_objects_key1",
-    "path":"sprites/spr_objects_key1/spr_objects_key1.yy",
+    "name":"spr_objects_lamp",
+    "path":"sprites/spr_objects_lamp/spr_objects_lamp.yy",
   },
   "spriteMaskId":null,
   "visible":true,

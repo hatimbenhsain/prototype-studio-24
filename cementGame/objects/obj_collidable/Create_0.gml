@@ -4,7 +4,7 @@
 mass=0.5;
 
 v=[0,0]; //velocity
-angle=0; //in degrees
+angle=-90; //in degrees
 angularV=0;
 
 linearDrag=10;

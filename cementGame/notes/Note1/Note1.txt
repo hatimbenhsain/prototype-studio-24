@@ -13,15 +13,19 @@ to-DOS:
 + level design
 + add sound
 + walking & falling coding
-+ surface background
++ surface background move
++ surface background parallax
 
 + add swimmer
 + add fishes 
++ give objects mass
 
 + cement: add drag, slow animations
 
  
 + increase drag when turning?
+
++ cement hardening/slow down
  
 
  
