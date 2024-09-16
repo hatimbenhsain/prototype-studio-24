@@ -6,9 +6,43 @@
 var dt=delta_time/1000000
 
 var targetAngle=angle;
+var jx=gamepad_axis_value(4, gp_axislh)+gamepad_axis_value(0, gp_axislh); //joystick x
+var jy=gamepad_axis_value(4, gp_axislv)+gamepad_axis_value(0, gp_axislv); //joystick y
 
 
 switch(currentState){
+	case STATES.WALKING:
+		var walking=false;
+		if(abs(jx)>0.2){
+			walking=true;
+			x+=sign(jx)*dt*10;
+			if(jx<0){
+				image_xscale=-1;	
+			}else{
+				image_xscale=1;	
+			}
+		}
+		
+		y=384+13*(x-2336)/(2447-2336)
+		
+		
+		if(x>=2445){
+			currentState=STATES.FALLING;	
+		}
+		
+		x=max(2336,x);
+		
+		if(walking){
+			sprite_index=spr_player_surface_walking;
+		}else{
+			sprite_index=spr_player_surface_idle;	
+		}
+		break;
+	case STATES.FALLING:
+		v[1]+=dt*obj_game.grav;
+		y+=v[1]*dt;
+		sprite_index=spr_player_falling;
+		break;
 	case STATES.SWIMMING:
 		var turning=false;
 		var coasting=false;
@@ -68,8 +102,6 @@ switch(currentState){
 			}
 		}
 		
-		var jx=gamepad_axis_value(4, gp_axislh)+gamepad_axis_value(0, gp_axislh); //joystick x
-		var jy=gamepad_axis_value(4, gp_axislv)+gamepad_axis_value(0, gp_axislv); //joystick y
 		if(abs(jx)>0.2 || abs(jy)>0.2){
 			turning=true;
 			targetAngle=(-darctan2(jx,jy)+90)%360;			
@@ -159,18 +191,19 @@ switch(currentState){
 			image_speed=maxImgSpeed*(0.4+max((Magnitude(v)-maxCoastingSpeed)/(maxSpeed-maxCoastingSpeed),0)*0.25);
 		}
 		
-	break;
+		//camera
+		var cx=camera_get_view_x(view_camera[0]);
+		var cy=camera_get_view_y(view_camera[0]);
+		var tcx=x-camera_get_view_width(view_camera[0])/2;
+		var tcy=y-camera_get_view_height(view_camera[0])/2;
+		cx=lerp(cx,tcx,cameraSpeed*dt);
+		cy=lerp(cy,tcy,cameraSpeed*dt);
+
+		camera_set_view_pos(view_camera[0],cx,cy);
+		
+		break;
 }
 
 angle=(angle+360)%360;
 image_angle=-90-angle;
 
-//camera
-var cx=camera_get_view_x(view_camera[0]);
-var cy=camera_get_view_y(view_camera[0]);
-var tcx=x-camera_get_view_width(view_camera[0])/2;
-var tcy=y-camera_get_view_height(view_camera[0])/2;
-cx=lerp(cx,tcx,cameraSpeed*dt);
-cy=lerp(cy,tcy,cameraSpeed*dt);
-
-camera_set_view_pos(view_camera[0],cx,cy);

@@ -4,10 +4,11 @@
 
 enum STATES{
 	SWIMMING,
-	WALKING
+	WALKING,
+	FALLING
 }
 
-currentState=STATES.SWIMMING;
+currentState=STATES.WALKING;
 
 
 v=[0,0]; //velocity
@@ -56,3 +57,4 @@ maxImgSpeed=1;
 
 offsetX=0;
 offsetY=0;
+
