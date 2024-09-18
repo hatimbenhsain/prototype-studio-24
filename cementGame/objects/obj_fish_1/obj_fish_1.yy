@@ -9,7 +9,10 @@
     "name":"obj_fishes",
     "path":"folders/Objects/obj_fishes.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_fish",
+    "path":"objects/obj_fish/obj_fish.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -27,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_objects_fish1",
+    "path":"sprites/spr_objects_fish1/spr_objects_fish1.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

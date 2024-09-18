@@ -8,6 +8,10 @@ var vNormalize=Normalize(v);
 var prevV=[v[0],v[1]];
 var prevAV=angularV;
 
+if(y<=2912){
+	v[1]+=obj_game.grav*dt;
+}
+
 // deccelerate:
 if(abs(v[0])<0.01){
 	v[0]=0;

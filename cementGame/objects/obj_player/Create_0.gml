@@ -26,6 +26,8 @@ angularAcceleration=180;
 linearDrag=10;
 angularDrag=135;
 
+gravityMaxSpeed=10;
+
 
 pushTrigger=false;
 pushTimer=0;

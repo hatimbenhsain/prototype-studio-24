@@ -30,3 +30,6 @@ to-DOS:
 
  
 + darken everything far away
+
++ add low gravity
++ restitute angle in water?

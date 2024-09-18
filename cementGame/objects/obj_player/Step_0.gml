@@ -9,6 +9,21 @@ var targetAngle=angle;
 var jx=gamepad_axis_value(4, gp_axislh)+gamepad_axis_value(0, gp_axislh); //joystick x
 var jy=gamepad_axis_value(4, gp_axislv)+gamepad_axis_value(0, gp_axislv); //joystick y
 
+if(keyboard_check(vk_left)){
+	jx-=1;	
+}
+if(keyboard_check(vk_right)){
+	jx+=1;	
+}
+if(keyboard_check(vk_up)){
+	jy-=1;	
+}
+if(keyboard_check(vk_down)){
+	jy+=1;	
+}
+
+jx=clamp(jx,-1,1);
+jy=clamp(jy,-1,1);
 
 switch(currentState){
 	case STATES.WALKING:
@@ -25,25 +40,55 @@ switch(currentState){
 		
 		y=384+13*(x-2336)/(2447-2336)
 		
-		
-		if(x>=2445){
-			currentState=STATES.FALLING;	
-		}
-		
-		x=max(2336,x);
-		
 		if(walking){
 			sprite_index=spr_player_surface_walking;
 		}else{
 			sprite_index=spr_player_surface_idle;	
 		}
+		
+		if(x>=2445){
+			currentState=STATES.FALLING;	
+			sprite_index=spr_player_fallStart;
+			image_index=0;
+		}
+		
+		x=max(2336,x);
+		
+		
 		break;
 	case STATES.FALLING:
 		v[1]+=dt*obj_game.grav;
+		v[1]=min(v[1],2000);
+		v[0]=v[0]*0.9;
+		v[0]+=jx*dt*50;
 		y+=v[1]*dt;
-		sprite_index=spr_player_falling;
+		x+=v[0]*dt;
+		if(image_index>=4 && sprite_index=spr_player_fallStart){
+			sprite_index=spr_player_falling;
+		}
+		var cx=camera_get_view_x(view_camera[0]);
+		var cy=camera_get_view_y(view_camera[0]);
+		var tcx=cx;
+		var tcy=max(y-camera_get_view_height(view_camera[0])/2,64);
+		cx=lerp(cx,tcx,cameraSpeed*dt);
+		cy=lerp(cy,tcy,cameraSpeed*5*dt);
+
+		camera_set_view_pos(view_camera[0],cx,cy);
+		
+		
+		if(y>=3012){
+			currentState=STATES.SWIMMING;	
+			sprite_index=spr_player_fallEnd;
+			audio_stop_sound(snd_cementMixer);
+			audio_play_sound(snd_cement,1,false,obj_game.maxVolume);
+		}
+		
 		break;
 	case STATES.SWIMMING:
+		if(image_index>=4 && sprite_index=spr_player_fallEnd){
+			sprite_index=spr_player_idle;
+		}
+	
 		var turning=false;
 		var coasting=false;
 		var boosting=false;
@@ -53,9 +98,17 @@ switch(currentState){
 		
 		var vNormalize=Normalize(v);
 		
+		if(v[1]<gravityMaxSpeed){
+			v[1]+=dt*obj_game.grav/10;	
+		}
+		
 		//cap speed
 		v[0]=sign(v[0])*min(abs(v[0]),abs(vNormalize[0])*maxSpeed);
 		v[1]=sign(v[1])*min(abs(v[1]),abs(vNormalize[1])*maxSpeed);
+		
+		if(y<=2912){
+			v[1]+=obj_game.grav*dt;
+		}
 		
 		var prevV=[v[0],v[1]];
 		var prevAV=angularV;
@@ -102,7 +155,7 @@ switch(currentState){
 			}
 		}
 		
-		if(abs(jx)>0.2 || abs(jy)>0.2){
+		if(y>2912 && (abs(jx)>0.2 || abs(jy)>0.2)){
 			turning=true;
 			targetAngle=(-darctan2(jx,jy)+90)%360;			
 		}
@@ -139,35 +192,37 @@ switch(currentState){
 			v[1]=v[1]+by;
 		}
 	
-		if(pushTimer>0.5 && (keyboard_check_pressed(ord("X")) || gamepad_button_check_pressed(4,gp_face2) ||  gamepad_button_check_pressed(0,gp_face2))){
-			sprite_index=spr_player_pushing;
-			image_index=0;
-			pushTrigger=true;
-			pushTimer=0;
-			image_speed=1*maxImgSpeed;
-		}else if(keyboard_check(ord("X")) || gamepad_button_check(4,gp_face2) || gamepad_button_check(0,gp_face2)){
-			coasting=true;
-			if(Magnitude(v)<maxCoastingSpeed){
-				var bx=acceleration*cos(degtorad(angle))*dt;
-				var by=acceleration*sin(degtorad(angle))*dt;
-				v[0]=v[0]+bx;
-				v[1]=v[1]+by;
+		if(y>2912){
+			if(pushTimer>0.5 && (keyboard_check_pressed(ord("X")) || gamepad_button_check_pressed(4,gp_face2) ||  gamepad_button_check_pressed(0,gp_face2))){
+				sprite_index=spr_player_pushing;
+				image_index=0;
+				pushTrigger=true;
+				pushTimer=0;
+				image_speed=1*maxImgSpeed;
+			}else if(keyboard_check(ord("X")) || gamepad_button_check(4,gp_face2) || gamepad_button_check(0,gp_face2)){
+				coasting=true;
+				if(Magnitude(v)<maxCoastingSpeed){
+					var bx=acceleration*cos(degtorad(angle))*dt;
+					var by=acceleration*sin(degtorad(angle))*dt;
+					v[0]=v[0]+bx;
+					v[1]=v[1]+by;
+				}
 			}
-		}
 		
-		if(pullTimer>0.5 && (keyboard_check_pressed(ord("Z")) || gamepad_button_check_pressed(4,gp_face1) ||  gamepad_button_check_pressed(0,gp_face1))){
-			sprite_index=spr_player_pulling;
-			image_index=0;
-			pullTrigger=true;
-			pullTimer=0;
-			image_speed=1*maxImgSpeed;
-		}else if(keyboard_check(ord("Z")) || gamepad_button_check(4,gp_face1) ||  gamepad_button_check(0,gp_face1)){
-			coasting=true;
-			if(Magnitude(v)<maxCoastingSpeed){
-				var bx=acceleration*cos(degtorad(180+angle))*dt;
-				var by=acceleration*sin(degtorad(180+angle))*dt;
-				v[0]=v[0]+bx;
-				v[1]=v[1]+by;
+			if(pullTimer>0.5 && (keyboard_check_pressed(ord("Z")) || gamepad_button_check_pressed(4,gp_face1) ||  gamepad_button_check_pressed(0,gp_face1))){
+				sprite_index=spr_player_pulling;
+				image_index=0;
+				pullTrigger=true;
+				pullTimer=0;
+				image_speed=1*maxImgSpeed;
+			}else if(keyboard_check(ord("Z")) || gamepad_button_check(4,gp_face1) ||  gamepad_button_check(0,gp_face1)){
+				coasting=true;
+				if(Magnitude(v)<maxCoastingSpeed){
+					var bx=acceleration*cos(degtorad(180+angle))*dt;
+					var by=acceleration*sin(degtorad(180+angle))*dt;
+					v[0]=v[0]+bx;
+					v[1]=v[1]+by;
+				}
 			}
 		}
 
