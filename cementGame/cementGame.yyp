@@ -79,6 +79,7 @@
     {"id":{"name":"obj_object_7","path":"objects/obj_object_7/obj_object_7.yy",},},
     {"id":{"name":"obj_object_8","path":"objects/obj_object_8/obj_object_8.yy",},},
     {"id":{"name":"obj_object_9","path":"objects/obj_object_9/obj_object_9.yy",},},
+    {"id":{"name":"obj_player_clone","path":"objects/obj_player_clone/obj_player_clone.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_scenery","path":"objects/obj_scenery/obj_scenery.yy",},},
     {"id":{"name":"obj_stadium","path":"objects/obj_stadium/obj_stadium.yy",},},
