@@ -9,6 +9,10 @@ var targetAngle=angle;
 var jx=gamepad_axis_value(4, gp_axislh)+gamepad_axis_value(0, gp_axislh); //joystick x
 var jy=gamepad_axis_value(4, gp_axislv)+gamepad_axis_value(0, gp_axislv); //joystick y
 
+speedValue=obj_game.speedValue;
+
+maxImgSpeed=speedValue;
+
 if(keyboard_check(vk_left)){
 	jx-=1;	
 }
@@ -30,7 +34,7 @@ switch(currentState){
 		var walking=false;
 		if(abs(jx)>0.2){
 			walking=true;
-			x+=sign(jx)*dt*10;
+			x+=sign(jx)*dt*100;
 			if(jx<0){
 				image_xscale=-1;	
 			}else{
@@ -80,7 +84,7 @@ switch(currentState){
 			currentState=STATES.SWIMMING;	
 			sprite_index=spr_player_fallEnd;
 			audio_stop_sound(snd_cementMixer);
-			audio_play_sound(snd_cement,1,false,obj_game.maxVolume);
+			obj_game.audioTrack=audio_play_sound(snd_cement_veryShort,1,false,obj_game.maxVolume);
 		}
 		
 		break;
@@ -99,7 +103,7 @@ switch(currentState){
 		var vNormalize=Normalize(v);
 		
 		if(v[1]<gravityMaxSpeed){
-			v[1]+=dt*obj_game.grav/10;	
+			v[1]+=speedValue*dt*obj_game.grav/10;	
 		}
 		
 		//cap speed
@@ -107,7 +111,7 @@ switch(currentState){
 		v[1]=sign(v[1])*min(abs(v[1]),abs(vNormalize[1])*maxSpeed);
 		
 		if(y<=2912){
-			v[1]+=obj_game.grav*dt;
+			v[1]+=speedValue*obj_game.grav*dt;
 		}
 		
 		var prevV=[v[0],v[1]];
@@ -131,6 +135,7 @@ switch(currentState){
 			}
 		}
 		
+		//angular drag
 		if(abs(angularV)<0.01){
 			angularV=0;
 		}else{
@@ -148,8 +153,8 @@ switch(currentState){
 		
 		if(pullTrigger){
 			if(pullTimer>=pushDelay && pullTimer-dt<pushDelay){
-				var bx=boostAcceleration*cos(degtorad(180+angle))*0.5;
-				var by=boostAcceleration*sin(degtorad(180+angle))*0.5;
+				var bx=speedValue*boostAcceleration*cos(degtorad(180+angle))*0.5;
+				var by=speedValue*boostAcceleration*sin(degtorad(180+angle))*0.5;
 				v[0]=v[0]+bx;
 				v[1]=v[1]+by;
 			}
@@ -176,7 +181,7 @@ switch(currentState){
 				if(boosting){
 					acc=angularAcceleration*10;	
 				}
-				angularV+=acc*dt*dir;
+				angularV+=speedValue*acc*dt*dir;
 				//show_debug_message("turning");
 			}else{
 				//show_debug_message("no turning")
@@ -186,14 +191,14 @@ switch(currentState){
 		angle+=angularV*dt;
 		
 		if(boosting){
-			var bx=boostAcceleration*cos(degtorad(angle));
-			var by=boostAcceleration*sin(degtorad(angle));
+			var bx=speedValue*boostAcceleration*cos(degtorad(angle));
+			var by=speedValue*boostAcceleration*sin(degtorad(angle));
 			v[0]=v[0]+bx;
 			v[1]=v[1]+by;
 		}
 	
 		if(y>2912){
-			if(pushTimer>0.5 && (keyboard_check_pressed(ord("X")) || gamepad_button_check_pressed(4,gp_face2) ||  gamepad_button_check_pressed(0,gp_face2))){
+			if(speedValue>=0.01 && pushTimer>0.5 && (keyboard_check_pressed(ord("X")) || gamepad_button_check_pressed(4,gp_face2) ||  gamepad_button_check_pressed(0,gp_face2))){
 				sprite_index=spr_player_pushing;
 				image_index=0;
 				pushTrigger=true;
@@ -202,14 +207,14 @@ switch(currentState){
 			}else if(keyboard_check(ord("X")) || gamepad_button_check(4,gp_face2) || gamepad_button_check(0,gp_face2)){
 				coasting=true;
 				if(Magnitude(v)<maxCoastingSpeed){
-					var bx=acceleration*cos(degtorad(angle))*dt;
-					var by=acceleration*sin(degtorad(angle))*dt;
+					var bx=speedValue*acceleration*cos(degtorad(angle))*dt;
+					var by=speedValue*acceleration*sin(degtorad(angle))*dt;
 					v[0]=v[0]+bx;
 					v[1]=v[1]+by;
 				}
 			}
 		
-			if(pullTimer>0.5 && (keyboard_check_pressed(ord("Z")) || gamepad_button_check_pressed(4,gp_face1) ||  gamepad_button_check_pressed(0,gp_face1))){
+			if(speedValue>=0.01 && pullTimer>0.5 && (keyboard_check_pressed(ord("Z")) || gamepad_button_check_pressed(4,gp_face1) ||  gamepad_button_check_pressed(0,gp_face1))){
 				sprite_index=spr_player_pulling;
 				image_index=0;
 				pullTrigger=true;
@@ -218,8 +223,8 @@ switch(currentState){
 			}else if(keyboard_check(ord("Z")) || gamepad_button_check(4,gp_face1) ||  gamepad_button_check(0,gp_face1)){
 				coasting=true;
 				if(Magnitude(v)<maxCoastingSpeed){
-					var bx=acceleration*cos(degtorad(180+angle))*dt;
-					var by=acceleration*sin(degtorad(180+angle))*dt;
+					var bx=speedValue*acceleration*cos(degtorad(180+angle))*dt;
+					var by=speedValue*acceleration*sin(degtorad(180+angle))*dt;
 					v[0]=v[0]+bx;
 					v[1]=v[1]+by;
 				}
@@ -227,8 +232,8 @@ switch(currentState){
 		}
 
 
-		x+=v[0]*dt;
-		y+=v[1]*dt;
+		x+=v[0]*speedValue*dt;
+		y+=v[1]*speedValue*dt;
 		
 		
 		

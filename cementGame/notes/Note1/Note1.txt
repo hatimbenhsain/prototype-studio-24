@@ -9,15 +9,8 @@ to-DOS:
 + tune values 
 + fix brusque animation change
 
-+ make objects out of sprites
 + level design
-+ add sound
-+ walking & falling coding
-+ surface background move
-+ surface background parallax
 
-+ add swimmer
-+ add fishes 
 + give objects mass
 
 + cement: add drag, slow animations

@@ -36,6 +36,8 @@ pushDelay=0.2;
 pullTrigger=false;
 pullTimer=0;
 
+speedValue=1;
+
 var _maxpads = gamepad_get_device_count();
 
 for (var i = 0; i < _maxpads; i++)

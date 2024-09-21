@@ -13,3 +13,5 @@ angularDrag=135;
 maxAngularV=180;
 
 ignoreCollision=false;
+
+speedValue=1;

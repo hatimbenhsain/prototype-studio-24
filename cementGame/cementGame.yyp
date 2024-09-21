@@ -85,6 +85,8 @@
     {"id":{"name":"obj_stadium","path":"objects/obj_stadium/obj_stadium.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"Script1","path":"scripts/Script1/Script1.yy",},},
+    {"id":{"name":"snd_cement_short","path":"sounds/snd_cement_short/snd_cement_short.yy",},},
+    {"id":{"name":"snd_cement_veryShort","path":"sounds/snd_cement_veryShort/snd_cement_veryShort.yy",},},
     {"id":{"name":"snd_cement","path":"sounds/snd_cement/snd_cement.yy",},},
     {"id":{"name":"snd_cementMixer","path":"sounds/snd_cementMixer/snd_cementMixer.yy",},},
     {"id":{"name":"snd_cementMixerMuffled","path":"sounds/snd_cementMixerMuffled/snd_cementMixerMuffled.yy",},},

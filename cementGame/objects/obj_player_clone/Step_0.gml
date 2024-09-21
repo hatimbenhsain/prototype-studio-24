@@ -13,6 +13,10 @@ var targetAngle=angle;
 jx=clamp(jx,-1,1);
 jy=clamp(jy,-1,1);
 
+speedValue=obj_game.speedValue;
+
+maxImgSpeed=speedValue;
+
 switch(currentState){
 	case STATES.SWIMMING:
 		if(image_index>=4 && sprite_index=spr_player_fallEnd){
@@ -29,7 +33,7 @@ switch(currentState){
 		var vNormalize=Normalize(v);
 		
 		if(v[1]<gravityMaxSpeed){
-			v[1]+=dt*obj_game.grav/10;	
+			v[1]+=speedValue*dt*obj_game.grav/10;	
 		}
 		
 		//cap speed
@@ -78,8 +82,8 @@ switch(currentState){
 		
 		if(pullTrigger){
 			if(pullTimer>=pushDelay && pullTimer-dt<pushDelay){
-				var bx=boostAcceleration*cos(degtorad(180+angle))*0.5;
-				var by=boostAcceleration*sin(degtorad(180+angle))*0.5;
+				var bx=speedValue*boostAcceleration*cos(degtorad(180+angle))*0.5;
+				var by=speedValue*boostAcceleration*sin(degtorad(180+angle))*0.5;
 				v[0]=v[0]+bx;
 				v[1]=v[1]+by;
 			}
@@ -106,7 +110,7 @@ switch(currentState){
 				if(boosting){
 					acc=angularAcceleration*10;	
 				}
-				angularV+=acc*dt*dir;
+				angularV+=speedValue*acc*dt*dir;
 				//show_debug_message("turning");
 			}else{
 				//show_debug_message("no turning")
@@ -116,14 +120,14 @@ switch(currentState){
 		angle+=angularV*dt;
 		
 		if(boosting){
-			var bx=boostAcceleration*cos(degtorad(angle));
-			var by=boostAcceleration*sin(degtorad(angle));
+			var bx=speedValue*boostAcceleration*cos(degtorad(angle));
+			var by=speedValue*boostAcceleration*sin(degtorad(angle));
 			v[0]=v[0]+bx;
 			v[1]=v[1]+by;
 		}
 	
 		if(y>2912){
-			if(swimTimer>=swimFrequency && random(1)<=swimProbability){
+			if(speedValue>=0.01 && swimTimer>=swimFrequency && random(1)<=swimProbability){
 				jx=random(2)-1;
 				jy=random(2)-1;
 				sprite_index=spr_player_pushing;
@@ -135,8 +139,8 @@ switch(currentState){
 			}else if(swimTimer<=1){
 				coasting=true;
 				if(Magnitude(v)<maxCoastingSpeed){
-					var bx=acceleration*cos(degtorad(angle))*dt;
-					var by=acceleration*sin(degtorad(angle))*dt;
+					var bx=speedValue*acceleration*cos(degtorad(angle))*dt;
+					var by=speedValue*acceleration*sin(degtorad(angle))*dt;
 					v[0]=v[0]+bx;
 					v[1]=v[1]+by;
 				}

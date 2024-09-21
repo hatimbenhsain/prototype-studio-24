@@ -3,6 +3,8 @@
 
 var dt=delta_time/1000000
 
+speedValue=obj_game.speedValue;
+
 var vNormalize=Normalize(v);
 
 var prevV=[v[0],v[1]];
@@ -16,7 +18,7 @@ if(y<=2912){
 if(abs(v[0])<0.01){
 	v[0]=0;
 }else{
-	v[0]=v[0]-vNormalize[0]*linearDrag*dt;
+	v[0]=v[0]-vNormalize[0]*linearDrag*dt/speedValue;
 	if(sign(v[0])!=sign(prevV[0])){
 		v[0]=0;	
 	}
@@ -24,7 +26,7 @@ if(abs(v[0])<0.01){
 if(abs(v[1])<0.01){
 	v[1]=0;
 }else{
-	v[1]=v[1]-vNormalize[1]*linearDrag*dt;
+	v[1]=v[1]-vNormalize[1]*linearDrag*dt/speedValue;
 	if(sign(v[1])!=sign(prevV[1])){
 		v[1]=0;	
 	}
@@ -33,7 +35,7 @@ if(abs(v[1])<0.01){
 if(abs(angularV)<0.01){
 	angularV=0;
 }else{
-	angularV-=sign(angularV)*angularDrag*dt*mass;
+	angularV-=sign(angularV)*angularDrag*dt*mass/speedValue;
 	if(sign(prevAV)!=sign(angularV)){
 		angularV=0;	
 	}
