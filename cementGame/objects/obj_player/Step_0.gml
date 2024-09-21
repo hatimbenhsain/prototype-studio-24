@@ -38,7 +38,7 @@ switch(currentState){
 		var walking=false;
 		if(abs(jx)>0.2){
 			walking=true;
-			x+=sign(jx)*dt*100;
+			x+=sign(jx)*dt*10;
 			if(jx<0){
 				image_xscale=-1;	
 			}else{
@@ -54,7 +54,7 @@ switch(currentState){
 			sprite_index=spr_player_surface_idle;	
 		}
 		
-		if(x>=2450){
+		if(x>=2443){
 			currentState=STATES.FALLING;	
 			sprite_index=spr_player_fallStart;
 			image_index=0;
@@ -79,7 +79,9 @@ switch(currentState){
 		var tcx=cx;
 		var tcy=max(y-camera_get_view_height(view_camera[0])/2,64);
 		cx=lerp(cx,tcx,cameraSpeed*dt);
-		cy=lerp(cy,tcy,cameraSpeed*5*dt);
+		var val=max(0.2,min(1,(1-(2712-y)/(2712-382))));
+		cy=lerp(cy,tcy,cameraSpeed*7*val*dt);
+
 
 		camera_set_view_pos(view_camera[0],cx,cy);
 		
@@ -111,8 +113,8 @@ switch(currentState){
 		}
 		
 		//cap speed
-		v[0]=sign(v[0])*min(abs(v[0]),abs(vNormalize[0])*maxSpeed);
-		v[1]=sign(v[1])*min(abs(v[1]),abs(vNormalize[1])*maxSpeed);
+		v[0]=sign(v[0])*min(abs(v[0]),abs(vNormalize[0])*maxSpeed*speedValue);
+		v[1]=sign(v[1])*min(abs(v[1]),abs(vNormalize[1])*maxSpeed*speedValue);
 		
 		if(y<=2912){
 			v[1]+=obj_game.grav*dt;
@@ -143,7 +145,7 @@ switch(currentState){
 		if(abs(angularV)<0.01){
 			angularV=0;
 		}else{
-			angularV-=sign(angularV)*angularDrag*dt;
+			angularV-=sign(angularV)*angularDrag*speedValue*dt;
 			if(sign(prevAV)!=sign(angularV)){
 				angularV=0;	
 			}
@@ -192,6 +194,8 @@ switch(currentState){
 			}
 		}
 		
+		angularV=clamp(angularV,-maxAngularV*speedValue,maxAngularV*speedValue);
+		
 		angle+=angularV*dt;
 		
 		if(boosting){
@@ -236,8 +240,8 @@ switch(currentState){
 		}
 
 
-		x+=v[0]*speedValue*dt;
-		y+=v[1]*speedValue*dt;
+		x+=v[0]*dt;
+		y+=v[1]*dt;
 		
 		
 		

@@ -2,7 +2,7 @@
   "$GMSprite":"",
   "%Name":"spr_stadium",
   "bboxMode":0,
-  "bbox_bottom":385,
+  "bbox_bottom":283,
   "bbox_left":0,
   "bbox_right":727,
   "bbox_top":37,

@@ -3,6 +3,8 @@
 //show_debug_message(gamepad_axis_value(4, gp_axislh));
 //show_debug_message(gamepad_axis_value(4, gp_axislv));
 
+currentState=obj_player.currentState;
+
 var dt=delta_time/1000000
 
 swimTimer+=dt;

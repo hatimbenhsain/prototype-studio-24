@@ -38,6 +38,7 @@
   "name":"cementGame",
   "resources":[
     {"id":{"name":"Note1","path":"notes/Note1/Note1.yy",},},
+    {"id":{"name":"obj_bg","path":"objects/obj_bg/obj_bg.yy",},},
     {"id":{"name":"obj_cementDispenser","path":"objects/obj_cementDispenser/obj_cementDispenser.yy",},},
     {"id":{"name":"obj_cementTrail","path":"objects/obj_cementTrail/obj_cementTrail.yy",},},
     {"id":{"name":"obj_chair","path":"objects/obj_chair/obj_chair.yy",},},

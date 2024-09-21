@@ -18,13 +18,14 @@ angularV=0;
 
 
 
-maxSpeed=50;
+maxSpeed=60;
 maxCoastingSpeed=20;
 acceleration=15;
 boostAcceleration=30;
 angularAcceleration=180;
 linearDrag=10;
 angularDrag=135;
+maxAngularV=140;
 
 gravityMaxSpeed=10;
 
@@ -61,4 +62,6 @@ maxImgSpeed=1;
 
 offsetX=0;
 offsetY=0;
+
+
 
