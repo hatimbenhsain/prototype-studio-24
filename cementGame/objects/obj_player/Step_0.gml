@@ -13,6 +13,10 @@ speedValue=obj_game.speedValue;
 
 maxImgSpeed=speedValue;
 
+if(maxImgSpeed==0){
+	image_speed=0;	
+}
+
 if(keyboard_check(vk_left)){
 	jx-=1;	
 }
@@ -50,7 +54,7 @@ switch(currentState){
 			sprite_index=spr_player_surface_idle;	
 		}
 		
-		if(x>=2445){
+		if(x>=2450){
 			currentState=STATES.FALLING;	
 			sprite_index=spr_player_fallStart;
 			image_index=0;
@@ -84,7 +88,7 @@ switch(currentState){
 			currentState=STATES.SWIMMING;	
 			sprite_index=spr_player_fallEnd;
 			audio_stop_sound(snd_cementMixer);
-			obj_game.audioTrack=audio_play_sound(snd_cement_veryShort,1,false,obj_game.maxVolume);
+			obj_game.audioTrack=audio_play_sound(snd_cement,1,false,obj_game.maxVolume);
 		}
 		
 		break;
@@ -111,7 +115,7 @@ switch(currentState){
 		v[1]=sign(v[1])*min(abs(v[1]),abs(vNormalize[1])*maxSpeed);
 		
 		if(y<=2912){
-			v[1]+=speedValue*obj_game.grav*dt;
+			v[1]+=obj_game.grav*dt;
 		}
 		
 		var prevV=[v[0],v[1]];
@@ -238,17 +242,23 @@ switch(currentState){
 		
 		
 		//animation corner
-		if(pushTimer>=0.5 && image_index<1 && !coasting && sprite_index==spr_player_pushing){
+		if(pushTimer>=0.5/image_speed && image_index<1 && !coasting && sprite_index==spr_player_pushing){
 			sprite_index=spr_player_idle;
 			image_index=0;
 			image_speed=maxImgSpeed;
-		}else if(pullTimer>=0.5 && image_index<1 && !coasting && sprite_index==spr_player_pulling){
+		}else if(pullTimer>=0.5/image_speed && image_index<1 && !coasting && sprite_index==spr_player_pulling){
 			sprite_index=spr_player_idle;
 			image_index=0;
 			image_speed=maxImgSpeed;
 		}
 		else if(coasting && pushTimer>=0.5 && pullTimer>=0.5 && image_index<1){
 			image_speed=maxImgSpeed*(0.4+max((Magnitude(v)-maxCoastingSpeed)/(maxSpeed-maxCoastingSpeed),0)*0.25);
+		}
+		
+		if(sprite_index==spr_player_idle && turning){
+			sprite_index=spr_player_turning;
+		}else if(sprite_index==spr_player_turning && !turning){
+			sprite_index=spr_player_idle;
 		}
 		
 		//camera

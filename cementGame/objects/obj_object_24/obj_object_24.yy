@@ -10,8 +10,8 @@
     "path":"folders/Objects/obj_objects.yy",
   },
   "parentObjectId":{
-    "name":"obj_collidable",
-    "path":"objects/obj_collidable/obj_collidable.yy",
+    "name":"obj_object_mediumLight",
+    "path":"objects/obj_object_mediumLight/obj_object_mediumLight.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

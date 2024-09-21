@@ -4,10 +4,10 @@
 mass=0.5;
 
 v=[0,0]; //velocity
-angle=-90; //in degrees
+angle=-90+image_angle; //in degrees
 angularV=0;
 
-linearDrag=10;
+linearDrag=15;
 angularDrag=135;
 
 maxAngularV=180;
@@ -15,3 +15,5 @@ maxAngularV=180;
 ignoreCollision=false;
 
 speedValue=1;
+
+gravityMaxSpeed=10;
