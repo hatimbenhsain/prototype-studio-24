@@ -11,3 +11,5 @@ speedValue=1;
 audioTrack=noone;
 
 timeSinceMusicEnd=0;
+
+fallTimer=0;

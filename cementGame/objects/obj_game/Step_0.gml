@@ -13,3 +13,7 @@ if(timeSinceMusicEnd>=15){
 }
 
 //speedValue=1;
+
+if(obj_player.currentState=STATES.FALLING){
+	fallTimer+=delta_time/1000000	
+}

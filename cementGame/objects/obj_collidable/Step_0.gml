@@ -74,8 +74,8 @@ if (place_meeting(x,y,obj_player)){
 	
 		angularV+=-Magnitude(dir)*sign(dir[0])*Magnitude(obj_player.v)*1/power(mass,0.5);
 		
-		obj_player.v[0]-=obj_player.v[0]*mass/50;
-		obj_player.v[1]-=obj_player.v[1]*mass/50;
+		obj_player.v[0]-=obj_player.v[0]*mass/100;
+		obj_player.v[1]-=obj_player.v[1]*mass/100;
 	
 		//while(place_meeting(x,y,obj_player)){
 		//	x+=v[0]*dt;

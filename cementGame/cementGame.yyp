@@ -96,6 +96,7 @@
     {"id":{"name":"snd_cementMixer","path":"sounds/snd_cementMixer/snd_cementMixer.yy",},},
     {"id":{"name":"snd_cementMixerMuffled","path":"sounds/snd_cementMixerMuffled/snd_cementMixerMuffled.yy",},},
     {"id":{"name":"spr_block","path":"sprites/spr_block/spr_block.yy",},},
+    {"id":{"name":"spr_cement","path":"sprites/spr_cement/spr_cement.yy",},},
     {"id":{"name":"spr_cementDispenser","path":"sprites/spr_cementDispenser/spr_cementDispenser.yy",},},
     {"id":{"name":"spr_cementTrail","path":"sprites/spr_cementTrail/spr_cementTrail.yy",},},
     {"id":{"name":"spr_clouds","path":"sprites/spr_clouds/spr_clouds.yy",},},
