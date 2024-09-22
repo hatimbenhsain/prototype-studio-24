@@ -8,9 +8,9 @@ if(audioTrack!=noone && audio_is_playing(audioTrack)){
 	speedValue=0;
 }
 
-if(timeSinceMusicEnd>=15){
-	game_end();	
-}
+//if(timeSinceMusicEnd>=15){
+//	game_end();	
+//}
 
 //speedValue=1;
 
