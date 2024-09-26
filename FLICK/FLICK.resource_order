@@ -17,6 +17,9 @@
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"obj_inTheWorld","order":2,"path":"objects/obj_inTheWorld/obj_inTheWorld.yy",},
+    {"name":"obj_npc","order":1,"path":"objects/obj_npc/obj_npc.yy",},
+    {"name":"spr_player_flick","order":2,"path":"sprites/spr_player_flick/spr_player_flick.yy",},
     {"name":"spr_player_walk","order":1,"path":"sprites/spr_player_walk/spr_player_walk.yy",},
   ],
 }

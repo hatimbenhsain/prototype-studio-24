@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+event_inherited();
 
 var moving=false;
 
@@ -41,4 +42,13 @@ if(abs(vx)>0.1){
 }
 if(abs(vy)>0.1){
 	y+=vy;
+}
+
+if(keyboard_check_pressed(ord("X"))){
+	with(obj_npc){
+		if(distance_to_object(obj_player)<64){
+			flicked=true;
+			flickedTimer=3;
+		}
+	}
 }
