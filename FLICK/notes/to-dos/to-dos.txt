@@ -9,3 +9,5 @@
 	+ fire
 	+ gemissements
 + add end?
+
++ playful sounds? different notes (depending on object? or jus trandom?)
