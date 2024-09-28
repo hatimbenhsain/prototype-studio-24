@@ -14,8 +14,8 @@
     "path":"folders/Objects.yy",
   },
   "parentObjectId":{
-    "name":"obj_inTheWorld",
-    "path":"objects/obj_inTheWorld/obj_inTheWorld.yy",
+    "name":"obj_flickable",
+    "path":"objects/obj_flickable/obj_flickable.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

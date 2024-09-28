@@ -15,7 +15,7 @@ if(flicked && flickedTimer>0){
 		offsetx=random(flickIntensity*2)-flickIntensity;
 		offsety=random(flickIntensity*2)-flickIntensity;
 	}
-	flickedTimer-=dt;
 }
+
 
 
