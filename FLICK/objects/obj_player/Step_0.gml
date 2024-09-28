@@ -33,7 +33,7 @@ if(sprite_index!=spr_player_flick){
 if(sprite_index==spr_player_flick && image_index<=sprite_get_number(spr_player_flick)-1){
 	if(image_index>=2){
 		with(obj_flickable){
-			if(distance_to_object(obj_player)<64 && flickedTimer<=0){
+			if(distance_to_object(obj_player)<32 && flickedTimer<=0){
 				flicked=true;
 				if(object_index==obj_npc){
 					flickedTimer=3;
@@ -56,10 +56,19 @@ if(sprite_index==spr_player_flick && image_index<=sprite_get_number(spr_player_f
 vx=clamp(vx,-maxSpeed,maxSpeed);
 vy=clamp(vy,-maxSpeed,maxSpeed);
 
-if(abs(vx)>0.1){
+if(abs(vx)+abs(vy)>=maxSpeed*1.5){
+	var msx=max(maxSpeed*1.5-abs(vy),maxSpeed*1.5/2)
+	var msy=max(maxSpeed*1.5-abs(vx),maxSpeed*1.5/2)
+	vx=clamp(vx,-msx,msx);
+	vy=clamp(vy,-msy,msy);
+}
+
+show_debug_message(vx);
+
+if(abs(vx)>0.5){
 	x+=vx;
 }
-if(abs(vy)>0.1){
+if(abs(vy)>0.5){
 	y+=vy;
 }
 
@@ -67,3 +76,13 @@ if(keyboard_check_pressed(ord("X"))){
 	sprite_index=spr_player_flick;
 	image_index=0;
 }
+
+//camera
+var cx=camera_get_view_x(view_camera[0]);
+var cy=camera_get_view_y(view_camera[0]);
+var tcx=x-camera_get_view_width(view_camera[0])/2;
+var tcy=y-camera_get_view_height(view_camera[0])/2;
+cx=lerp(cx,tcx,cameraSpeed*dt);
+cy=lerp(cy,tcy,cameraSpeed*dt);
+
+camera_set_view_pos(view_camera[0],cx,cy);

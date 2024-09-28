@@ -1,0 +1,11 @@
++ add dialogue
++ add choosing dialogue options
++ add npc getting angry
++ add lighter
++ add music
+	+ intro orchestral? with lots of reverb?
++ add sound effects 
+	+ flick
+	+ fire
+	+ gemissements
++ add end?
