@@ -2,14 +2,14 @@
 // add choosing dialogue options
 // add npc getting angry
 // add lighter
-+ add music
+// add music
 	+ intro orchestral? with lots of reverb?
-+ add sound effects 
+// add sound effects 
 	+ flick
 	+ fire
 	+ gemissements
-+ add end?
-+ level design
-+ encounters
+// add end?
+// level design
+// encounters
 
 + playful sounds? different notes (depending on object? or jus trandom?)
