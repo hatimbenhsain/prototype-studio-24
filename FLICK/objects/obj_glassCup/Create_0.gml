@@ -5,3 +5,7 @@
 event_inherited();
 
 flickedSprite=spr_glassCup_flicked;
+
+
+sounds=[snd_glass];
+gain=0.5

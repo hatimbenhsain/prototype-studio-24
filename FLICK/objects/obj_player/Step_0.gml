@@ -34,6 +34,12 @@ if(sprite_index==spr_player_flick && image_index<=sprite_get_number(spr_player_f
 	if(image_index>=2 && image_index-dt<2){
 		with(obj_flickable){
 			if(distance_to_object(obj_player)<8 && flickedTimer<=0){
+				if((!flicked && (object_index!=obj_npc || !triggered)) || (object_index==obj_npc && !triggered)){
+					if(array_length(sounds)>=1){
+						var n=floor(random(array_length(sounds)));
+						audio_play_sound(sounds[n],gain,false);
+					}	
+				}
 				if(!flicked && object_index!=obj_npc) image_xscale=obj_player.image_xscale;
 				if(object_index==obj_button) flicked=!flicked
 				else flicked=true;
@@ -44,6 +50,7 @@ if(sprite_index==spr_player_flick && image_index<=sprite_get_number(spr_player_f
 				if(object_index!=obj_npc || !triggered){
 					image_index=0;
 				}
+				
 			}
 		}	
 	}

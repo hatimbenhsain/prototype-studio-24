@@ -5,3 +5,6 @@ flickedTimer=0;
 shakeTime=0.01;
 
 flickedSprite=-1;
+
+sounds=[];
+gain=1;

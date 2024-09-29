@@ -28,6 +28,8 @@ function generateEncounters(){
 	encounterIndex=0;
 }
 
+generateEncounters();
+
 minDistance=600;
 distanceVar=800;
 setDistance=minDistance+random(distanceVar);

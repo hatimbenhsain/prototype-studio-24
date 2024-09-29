@@ -14,3 +14,7 @@ flickedSprite=spr_npc_flicked;
 triggered=false;
 
 yJump=0;
+
+sounds=[snd_flick3];
+gain=1;
+basePitch=1;

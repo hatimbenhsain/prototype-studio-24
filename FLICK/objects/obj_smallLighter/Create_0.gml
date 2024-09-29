@@ -5,3 +5,5 @@
 event_inherited();
 
 flickedSprite=spr_smallLighter_flicked;
+
+sounds=[snd_flick4]

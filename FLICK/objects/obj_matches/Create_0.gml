@@ -5,3 +5,5 @@
 event_inherited();
 
 flickedSprite=spr_matches_flicked;
+
+sounds=[snd_flick2]

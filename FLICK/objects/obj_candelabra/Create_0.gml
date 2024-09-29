@@ -5,3 +5,5 @@
 event_inherited();
 
 flickedSprite=spr_candelabra_flicked;
+
+sounds=[snd_flick3]

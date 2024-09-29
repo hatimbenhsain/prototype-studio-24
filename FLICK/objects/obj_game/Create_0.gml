@@ -71,3 +71,10 @@ burning=false;
 lighterCreated=false;
 
 tempText="";
+
+smgSlow=audio_play_sound(snd_smgSlow,1,true);
+gemissements=-1;
+
+timeSinceBlip=0;
+blipTime=0.1;
+basePitch=1;

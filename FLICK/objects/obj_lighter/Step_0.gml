@@ -32,6 +32,7 @@ if(!obj_game.showingDialogue){
 }
 
 if(keyboard_check_pressed(ord("X"))){
+	audio_play_sound(snd_lighter,1,false);
 	attempts+=1;
 	if(attempts<=10){
 		sprite_index=spr_lighter_tryingToLight;	
@@ -53,6 +54,7 @@ if(!obj_game.burning && lit && place_meeting(xx,yy,obj_game)){
 	burningTime+=dt;
 	if(burningTime>=2){
 		obj_game.burning=true;	
+		audio_play_sound(snd_flame,1,false);
 		if(obj_game.tempText!="WAUUUUUGHHHHHHHHHHHH"){
 			obj_game.charIndex=0;
 		}

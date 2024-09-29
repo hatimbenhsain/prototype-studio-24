@@ -2,11 +2,18 @@
 // You can write your code in this editor
 if(keyboard_check_pressed(ord("X")) && room=room_titleScreen){
 	room_goto(room_game);
+	audio_sound_gain(snd_smgSlow,0,5000);
+	gemissements=audio_play_sound(snd_gemissements,1,true,0.1);
 }
 
 var dt=delta_time/1000000
 
 if(showingDialogue){
+	if(tempText!="" || (instance_exists(obj_lighter) && obj_lighter.lit)){
+		basePitch=2;	
+	}else{
+		basePitch=1;	
+	}
 	if(burning){
 		if(sprite_index!=spr_txtBox_burning){
 			image_index=0;
@@ -35,6 +42,13 @@ if(showingDialogue){
 				textIndex+=1;
 			}
 		}
+		if(charIndex<string_length(txt)){
+			timeSinceBlip+=dt;
+			if(timeSinceBlip>=blipTime){
+				audio_play_sound(snd_blip,1,false,1,0,basePitch-0.05+random(0.1));	
+				timeSinceBlip=0;
+			}
+		}
 	}else{
 		sprite_index=spr_txtBox;
 		
@@ -58,10 +72,12 @@ if(showingDialogue){
 				handImageIndex=1;	
 			}else{
 				handImageIndex=2;	
+				if(flickTime-dt<0.2) audio_play_sound(snd_flick3,1,false);
 			}
 			if(flickTime>=1){
 				charIndex=0;
 				textIndex+=1;	
+				
 			}
 		}
 	}

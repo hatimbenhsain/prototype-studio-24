@@ -5,3 +5,5 @@
 event_inherited();
 
 flickedSprite=spr_grail_flicked;
+
+sounds=[snd_graal];
