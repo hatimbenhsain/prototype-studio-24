@@ -5,3 +5,5 @@
 event_inherited();
 
 flickedSprite=spr_button_flicked;
+
+prevFlicked=flicked;

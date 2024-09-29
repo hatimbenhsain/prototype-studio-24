@@ -4,5 +4,4 @@
 // Inherit the parent event
 event_inherited();
 
-flickedSprite=spr_tower_flicked;
-
+flickedSprite=spr_candelabra_flicked;

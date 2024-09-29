@@ -1,7 +1,7 @@
-+ add dialogue
+// add dialogue
 // add choosing dialogue options
 // add npc getting angry
-+ add lighter
+// add lighter
 + add music
 	+ intro orchestral? with lots of reverb?
 + add sound effects 
@@ -9,5 +9,7 @@
 	+ fire
 	+ gemissements
 + add end?
++ level design
++ encounters
 
 + playful sounds? different notes (depending on object? or jus trandom?)

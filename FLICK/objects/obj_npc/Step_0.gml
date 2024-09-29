@@ -6,6 +6,10 @@ event_inherited();
 
 var dt=delta_time/1000000
 
+if(!prevFlicked && flicked){
+	obj_game.npcsFlicked+=1;	
+}
+
 if(!triggered){
 	if(flicked && flickedTimer>0){
 		if(obj_game.npcsFlicked==3){
@@ -32,7 +36,7 @@ if(!triggered){
 }else{
 	flicked=false;
 	sprite_index=spr_npc_flickedAngry_1;	
-	depth=-10000;
+	depth=-100000;
 	var cx=camera_get_view_x(view_camera[0])
 	var cy=camera_get_view_y(view_camera[0]);
 	x=cx+186;
@@ -51,8 +55,6 @@ if(!triggered){
 	}
 }
 
-if(!prevFlicked && flicked){
-	obj_game.npcsFlicked+=1;	
-}
+
 
 prevFlicked=flicked;

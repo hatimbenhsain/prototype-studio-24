@@ -12,7 +12,7 @@ depth=-10000000
 
 lit=false;
 
-attempts=10;
+attempts=0;
 
 x=406;
 y=226;

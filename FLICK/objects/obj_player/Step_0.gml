@@ -31,10 +31,12 @@ if(sprite_index!=spr_player_flick){
 }
 
 if(sprite_index==spr_player_flick && image_index<=sprite_get_number(spr_player_flick)-1){
-	if(image_index>=2){
+	if(image_index>=2 && image_index-dt<2){
 		with(obj_flickable){
-			if(distance_to_object(obj_player)<32 && flickedTimer<=0){
-				flicked=true;
+			if(distance_to_object(obj_player)<8 && flickedTimer<=0){
+				if(!flicked && object_index!=obj_npc) image_xscale=obj_player.image_xscale;
+				if(object_index==obj_button) flicked=!flicked
+				else flicked=true;
 				if(object_index==obj_npc && !triggered){
 					flickedTimer=3;
 					sprite_index=spr_npc_beingFlicked;
@@ -42,7 +44,6 @@ if(sprite_index==spr_player_flick && image_index<=sprite_get_number(spr_player_f
 				if(object_index!=obj_npc || !triggered){
 					image_index=0;
 				}
-				image_xscale=obj_player.image_xscale;
 			}
 		}	
 	}
@@ -88,3 +89,29 @@ cx=lerp(cx,tcx,cameraSpeed*dt);
 cy=lerp(cy,tcy,cameraSpeed*dt);
 
 camera_set_view_pos(view_camera[0],cx,cy);
+
+if(point_distance(x,y,prevLocationX,prevLocationY)>=setDistance && encounterIndex<array_length(encounters)){
+	var dir=degtorad(point_direction(0,0,-vx,-vy)+random(45)-22.5);
+	show_debug_message(dir);
+	var xx=x-cos(dir)*createDistance;
+	var yy=y+sin(dir)*createDistance;
+	var canCreate=true;
+	var md=minDistance
+	with(obj_flickable){
+		if(point_distance(xx,yy,x,y)<md){
+			canCreate=false
+			break;
+		}
+	}
+	if(canCreate){
+		array_push(creations,instance_create_depth(xx,yy,depth,encounters[encounterIndex]));
+		prevLocationX=xx;
+		prevLocationY=yy;
+		setDistance=minDistance+random(distanceVar);
+		encounterIndex++;
+	}
+}
+if(encounterIndex>=array_length(encounters)){
+	generateEncounters();	
+	
+}

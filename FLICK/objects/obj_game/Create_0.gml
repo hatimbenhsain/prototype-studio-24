@@ -42,14 +42,14 @@ dialogue=["Man what the fuck is your problem?",
 "See? That was one of them. I shouldn't put out anymore than that. Going back..."
 ]
 
-npcsFlicked=2;
+npcsFlicked=0;
 
 showingDialogue=false;
 
 depth=-1000000;
 
 charIndex=0;
-textIndex=16;
+textIndex=0;
 
 
 
