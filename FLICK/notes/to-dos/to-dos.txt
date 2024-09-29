@@ -1,6 +1,6 @@
 + add dialogue
-+ add choosing dialogue options
-+ add npc getting angry
+// add choosing dialogue options
+// add npc getting angry
 + add lighter
 + add music
 	+ intro orchestral? with lots of reverb?
