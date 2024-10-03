@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blendMode: 1
   scaleMode: 0
-  color: {r: 0.43867922, g: 0.69411767, b: 1, a: 0.2901961}
+  color: {r: 0.5529412, g: 0.7820676, b: 1, a: 0.2901961}
   detailLevel: 2
   renderQueue: -1
   zTest: 4
@@ -60,7 +60,7 @@ MonoBehaviour:
   stencilRefID: 0
   stencilReadMask: 255
   stencilWriteMask: 255
-  geometry: 2
+  geometry: 1
   colorMode: 0
   colorEnd: {r: 1, g: 1, b: 1, a: 1}
   start: {x: 0, y: 0, z: 0}
@@ -85,7 +85,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4778475079748289577}
-  m_Mesh: {fileID: 43735305831431896, guid: a3d1f56cebf202c448b6fb479f61a9dc, type: 2}
+  m_Mesh: {fileID: 43100795730674332, guid: a3d1f56cebf202c448b6fb479f61a9dc, type: 2}
 --- !u!23 &125936101306869198
 MeshRenderer:
   m_ObjectHideFlags: 0
