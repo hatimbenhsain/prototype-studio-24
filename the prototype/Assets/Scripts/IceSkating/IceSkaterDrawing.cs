@@ -43,7 +43,7 @@ public class IceSkaterDrawing : MonoBehaviour
         currentPosition.y=yValue;
         timer+=Time.deltaTime;
         float vel=Vector3.Distance(currentPosition,prevPosition)/timer;
-        if(!iceSkater.grounded || vel==0){
+        if(!iceSkater.grounded || !iceSkater.onIce || vel==0){
             prevPosition=currentPosition;
             timer=0f;
         }else if(iceSkater.grounded && Vector3.Distance(currentPosition,prevPosition)>=minDistance ){          

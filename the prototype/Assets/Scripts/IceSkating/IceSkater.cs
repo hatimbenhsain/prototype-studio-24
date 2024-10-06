@@ -63,6 +63,13 @@ public class IceSkater : MonoBehaviour
 
 
     public bool grounded=false;
+    public bool onIce=false;
+
+    private AudioSource audioSource;
+    private float soundTimer;
+    public float soundTime=1f;
+    public float soundDelay=0.5f;
+    public AudioClip[] skateSounds;
 
     void Start()
     {
@@ -70,6 +77,7 @@ public class IceSkater : MonoBehaviour
         playerInput=GetComponent<PlayerInput>();
         animator=GetComponent<Animator>();
         //body=GetComponent<Rigidbody>();
+        audioSource=GetComponent<AudioSource>();
     }
 
     void Update(){
@@ -78,9 +86,16 @@ public class IceSkater : MonoBehaviour
             //animator.SetTrigger("boostForward");
         }
         Move();
+        Sound();
     }
 
     void Move(){
+        float v=1f;
+
+        if(!onIce){
+            v=0.5f;
+        }
+
         Vector3 currentVelocity=new Vector3(controller.velocity.x,0f,controller.velocity.z);
         Vector3 playerVelocity=currentVelocity;
 
@@ -105,13 +120,13 @@ public class IceSkater : MonoBehaviour
         }
 
         if(playerInput.look!=Vector2.zero){//Setting rotation speed
-            rotationVelocity+=new Vector3(playerInput.look.y,playerInput.look.x,0f)*rotationAcceleration*Time.deltaTime;
+            rotationVelocity+=new Vector3(playerInput.look.y,playerInput.look.x,0f)*rotationAcceleration*Time.deltaTime*v;
             rotationVelocity=Vector3.ClampMagnitude(rotationVelocity,rotationMaxVelocity);
         }else{//Deceleration of rotation speed
 
         }
 
-        Vector3 skew=new Vector3(0f,skewingForce*Mathf.Clamp(currentVelocity.magnitude/maxSkewingVelocity,0f,1f)*Time.deltaTime,0f);
+        Vector3 skew=new Vector3(0f,v*skewingForce*Mathf.Clamp(currentVelocity.magnitude/maxSkewingVelocity,0f,1f)*Time.deltaTime,0f);
         float dir=1;
         if(Vector3.Angle(currentVelocity,transform.forward)>90f){
             dir=-1;
@@ -178,14 +193,14 @@ public class IceSkater : MonoBehaviour
         if(grounded){
             if(playerInput.movingForward && !playerInput.movingBackward){
                 if(playerVelocity.magnitude<coastingSpeed || Vector3.Angle(playerVelocity,transform.forward)>=90f){
-                    velocityToAdd+=transform.forward*acceleration*Time.deltaTime;
+                    velocityToAdd+=transform.forward*acceleration*Time.deltaTime*v;
                 }
                 if(!playerInput.prevMovingForward){
                     boostTimer=0f;
                 }
             }else if(playerInput.movingBackward && !playerInput.movingForward){
                 if(playerVelocity.magnitude<coastingSpeed || Vector3.Angle(playerVelocity,-transform.forward)>=90f){
-                    velocityToAdd+=-transform.forward*backwardAcceleration*Time.deltaTime;
+                    velocityToAdd+=-transform.forward*backwardAcceleration*Time.deltaTime*v;
                 }
                 boostTimer=boostTime+1f;
             }else{
@@ -194,11 +209,11 @@ public class IceSkater : MonoBehaviour
 
             if(playerInput.movingLeft && !playerInput.movingRight){
                 if(playerVelocity.magnitude<coastingSpeed || Vector3.Angle(playerVelocity,-transform.right)>=90f){
-                    velocityToAdd+=-transform.right*acceleration*Time.deltaTime;
+                    velocityToAdd+=-transform.right*acceleration*Time.deltaTime*v;
                 }
             }else if(playerInput.movingRight && !playerInput.movingLeft){
                 if(playerVelocity.magnitude<coastingSpeed || Vector3.Angle(playerVelocity,transform.right)>=90f){
-                    velocityToAdd+=transform.right*acceleration*Time.deltaTime;
+                    velocityToAdd+=transform.right*acceleration*Time.deltaTime*v;
                 }
                 boostTimer=boostTime+1f;
             }else{
@@ -234,6 +249,27 @@ public class IceSkater : MonoBehaviour
         prevVelocity=controller.velocity;
 
     }
+
+    void Sound(){
+
+        if(grounded && (playerInput.movingForward || playerInput.movingBackward || playerInput.movingRight || playerInput.movingLeft)){
+            soundTimer+=Time.deltaTime;
+            if(soundTimer>=soundDelay && soundTimer-Time.deltaTime<soundDelay){
+                if(onIce){
+                    audioSource.pitch=1;
+                }else{
+                    audioSource.pitch=0.5f;
+                }
+                audioSource.Stop();
+                audioSource.clip=skateSounds[Random.Range(0,skateSounds.Length)];
+                audioSource.Play();
+            }
+            soundTimer=soundTimer%soundTime;
+        }else{
+            soundTimer=0f;
+        }
+    }
+
     private void OnControllerColliderHit(ControllerColliderHit hit) {
         justCollided=true;
         collisionVelocity=controller.velocity;
@@ -241,16 +277,26 @@ public class IceSkater : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log(other.gameObject);
+        if(other.gameObject.tag=="Ground"){
+            grounded=true;
+            if(other.gameObject.name=="Ice"){
+                onIce=true;
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other) {
         if(other.gameObject.tag=="Ground"){
             grounded=true;
         }
     }
-
+        
     private void OnTriggerExit(Collider other) {
-        Debug.Log(other.gameObject);
         if(other.gameObject.tag=="Ground"){
             grounded=false;
+            if(other.gameObject.name=="Ice"){
+                onIce=false;
+            }
         }
     }
 
