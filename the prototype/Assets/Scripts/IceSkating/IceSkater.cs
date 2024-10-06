@@ -58,6 +58,7 @@ public class IceSkater : MonoBehaviour
     private bool justCollided=false;
     private Vector3 collisionVelocity;
     private Vector3 prevVelocity;
+    private Vector3 prevPosition;
 
     private int collisionNumber=0;
 
@@ -71,6 +72,8 @@ public class IceSkater : MonoBehaviour
     public float soundDelay=0.5f;
     public AudioClip[] skateSounds;
 
+    private ImageChanger imageChanger;
+
     void Start()
     {
         controller=GetComponent<CharacterController>();
@@ -78,6 +81,7 @@ public class IceSkater : MonoBehaviour
         animator=GetComponent<Animator>();
         //body=GetComponent<Rigidbody>();
         audioSource=GetComponent<AudioSource>();
+        imageChanger=FindObjectOfType<ImageChanger>();
     }
 
     void Update(){
@@ -248,26 +252,32 @@ public class IceSkater : MonoBehaviour
 
         prevVelocity=controller.velocity;
 
+        imageChanger.AddDistance(Vector3.Distance(new Vector3(prevPosition.x,0f,prevPosition.z),new Vector3(transform.position.x,0f,transform.position.z)));
+        prevPosition=transform.position;
+
     }
 
     void Sound(){
-
         if(grounded && (playerInput.movingForward || playerInput.movingBackward || playerInput.movingRight || playerInput.movingLeft)){
             soundTimer+=Time.deltaTime;
             if(soundTimer>=soundDelay && soundTimer-Time.deltaTime<soundDelay){
-                if(onIce){
-                    audioSource.pitch=1;
-                }else{
-                    audioSource.pitch=0.5f;
-                }
-                audioSource.Stop();
-                audioSource.clip=skateSounds[Random.Range(0,skateSounds.Length)];
-                audioSource.Play();
+                PlaySound();
             }
             soundTimer=soundTimer%soundTime;
         }else{
             soundTimer=0f;
         }
+    }
+
+    void PlaySound(){
+        if(onIce){
+            audioSource.pitch=1;
+        }else{
+            audioSource.pitch=0.5f;
+        }
+        audioSource.Stop();
+        audioSource.clip=skateSounds[Random.Range(0,skateSounds.Length)];
+        audioSource.Play();
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
@@ -281,6 +291,8 @@ public class IceSkater : MonoBehaviour
             grounded=true;
             if(other.gameObject.name=="Ice"){
                 onIce=true;
+                imageChanger.Landed();
+                PlaySound();
             }
         }
     }
