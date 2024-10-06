@@ -40,6 +40,9 @@ public class IceSkater : MonoBehaviour
 
     private Animator animator;
 
+    public float skewingForce=1f;
+    public float maxSkewingVelocity=5f;
+
     [Header("Vertical Movement")]
     public float jumpForce=5f;
     public float gravity=1f;
@@ -81,45 +84,6 @@ public class IceSkater : MonoBehaviour
         Vector3 currentVelocity=new Vector3(controller.velocity.x,0f,controller.velocity.z);
         Vector3 playerVelocity=currentVelocity;
 
-        //Deal with collisions
-        // foreach (CollisionData hit in allHits)
-        // {
-            
-        //     Vector3 collisionPoint=hit.contact.point;
-        //     Vector3 normal=hit.contact.normal;
-        //     Vector3 relativeVelocity;
-        //     if(hit.contact.otherCollider.TryGetComponent<Rigidbody>(out Rigidbody otherBody)){
-        //         relativeVelocity=otherBody.velocity;
-        //     }
-        //     else{
-        //         relativeVelocity=Vector3.zero;
-        //     }
-        //     relativeVelocity=relativeVelocity-playerVelocity;
-        //     Vector3 force=normal*relativeVelocity.magnitude*collisionSpeedFactor;
-        //     //Projection of relative vel on normal
-        //     //force=collisionSpeedFactor*Vector3.Dot(relativeVelocity,normal)*normal/Vector3.Dot(normal,normal);
-        //     force=Vector3.Project(relativeVelocity,normal)*collisionSpeedFactor;
-        //     if(Vector3.Angle(force,normal)>=90){
-        //         force=Vector3.zero;
-        //     }
-        //     if(force==Vector3.zero){
-        //         force+=normal*minCollisionSpeed;
-        //     }
-        //     Debug.Log("relative velocity:");
-        //     Debug.Log(hit.relativeVelocity);
-        //     Debug.Log("player velocity:");
-        //     Debug.Log(playerVelocity);
-        //     Debug.Log("force:");
-        //     Debug.Log(force);
-
-        //     playerVelocity+=force;
-
-        //     Debug.DrawRay(hit.contact.point, hit.contact.normal , Color.magenta, 1f);
-        //     Debug.DrawRay(transform.position, relativeVelocity , Color.green, 1f);
-        //     Debug.DrawRay(transform.position+Vector3.one*0.1f, force , Color.blue, 1f);
-        // }
-        // allHits.Clear();
-
         //Deceleration of rotation speed
         Vector3 antiRotationVector=rotationVelocity;
         Vector3 prevRotationVelocity=rotationVelocity;
@@ -146,6 +110,13 @@ public class IceSkater : MonoBehaviour
         }else{//Deceleration of rotation speed
 
         }
+
+        Vector3 skew=new Vector3(0f,skewingForce*Mathf.Clamp(currentVelocity.magnitude/maxSkewingVelocity,0f,1f)*Time.deltaTime,0f);
+        float dir=1;
+        if(Vector3.Angle(currentVelocity,transform.forward)>90f){
+            dir=-1;
+        }
+        rotationVelocity+=skew*dir;
 
         rotationVelocity=new Vector3(0f,rotationVelocity.y,0f);
 
