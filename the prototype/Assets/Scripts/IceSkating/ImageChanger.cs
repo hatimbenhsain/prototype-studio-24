@@ -26,9 +26,11 @@ public class ImageChanger : MonoBehaviour
     public int currentGroup=0;
     public int[] groupOrder;
     private int groupIndex;
+    private int cycle;
 
     void Start()
     {
+        cycle=0;
         imageGroups=new GameObject[bigGroups.Length][];
         for(int i=0;i<bigGroups.Length;i++){
             GameObject bigGroup=bigGroups[i];
@@ -72,11 +74,30 @@ public class ImageChanger : MonoBehaviour
     }
 
     public void ChangeImage(){
-        imageGroups[currentGroup][currentState%imageGroups[currentGroup].Length].SetActive(!imageGroups[currentGroup][currentState%imageGroups[currentGroup].Length].activeInHierarchy);
-        currentState+=1;
+        int k=1;
+        if(cycle>=1){
+            k+=1;
+            if(cycle>=2){
+                k+=1;
+            }
+        }
+        k=Random.Range(1,k+1);
+        if(currentState<imageGroups[currentGroup].Length){
+            k=Mathf.Clamp(k,1,(imageGroups[currentGroup].Length-currentState));
+        }else{
+            k=Mathf.Clamp(k,1,(imageGroups[currentGroup].Length*2-currentState));
+        }
+        for(int i=0;i<k;i++){
+            imageGroups[currentGroup][currentState%imageGroups[currentGroup].Length].SetActive(!imageGroups[currentGroup][currentState%imageGroups[currentGroup].Length].activeInHierarchy);
+            currentState+=1;
+            if(currentState>=imageGroups[currentGroup].Length*2){
+                break;
+            }
+        }
         if(currentState>=imageGroups[currentGroup].Length*2){
             currentState=0;
             groupIndex+=1;
+            cycle+=1;
             if(groupIndex>=imageGroups.Length){
                 groupIndex=0;
                 Shuffle(groupOrder);
