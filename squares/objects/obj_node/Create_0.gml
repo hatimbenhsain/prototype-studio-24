@@ -5,7 +5,7 @@ selected=false;
 links=[];
 
 minD=4;
-maxD=28;
+maxD=24;
 
 maker=noone;
 

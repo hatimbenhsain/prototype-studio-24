@@ -12,3 +12,6 @@ currentTargetX=path[currentTarget][0];
 currentTargetY=path[currentTarget][1];
 
 spd=10;
+
+directions=[[1,0],[0,1],[-1,0],[0,-1]]
+dir=0;
