@@ -28,22 +28,21 @@ var canMove=true;
 x+=spd*directions[dir][0]*dt;
 y+=spd*directions[dir][1]*dt;
 
-for(var i=0;i<array_length(obj_game.walls);i++){
-	var wall=obj_game.walls[i];
-	var x1=wall.x1;
-	var y1=wall.y1;
-	var x2=wall.x2;
-	var y2=wall.y2;
-	if(id==collision_line(wall.x1,wall.y1,wall.x2,wall.y2,id,false,false)){
-		show_debug_message("collision");
-		var currentDir=dir;
-		var k=0;
-		while(k<100 && currentDir==dir){
-			dir=floor(random(4));	
+var person=id;
+
+with(obj_wall){
+	if(person==collision_line(node1.x,node1.y,node2.x,node2.y,person,false,false)){
+		with(person){
+			var currentDir=dir;
+			var k=0;
+			while(k<100 && currentDir==dir){
+				dir=floor(random(4));	
+			}
+			canMove=false;
+			x-=directions[currentDir][0];
+			y-=directions[currentDir][1];
 		}
-		canMove=false;
-		x-=directions[currentDir][0];
-		y-=directions[currentDir][1];
+		collided=true;
 		break;
 	}
 }
