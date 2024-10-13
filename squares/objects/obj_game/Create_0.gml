@@ -11,6 +11,12 @@ for(var xx=x-width/2+1;xx<=x+width/2;xx+=spaceBetweenNodes){
 	}
 }
 
+var xx=width/2+spaceBetweenNodes*4;
+for(var yy=y-height/2+1;yy<=y+height/2-spaceBetweenNodes;yy+=spaceBetweenNodes){
+	instance_create_depth(x-xx,yy+spaceBetweenNodes/2,depth,obj_generator);
+	instance_create_depth(x+xx,yy+spaceBetweenNodes/2,depth,obj_generator);
+}
+
 
 selectedNode=noone;
 

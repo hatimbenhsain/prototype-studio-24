@@ -2,7 +2,9 @@
 // You can write your code in this editor
 if(collided){
 	if(collidedTimer==0){
-		audio_play_sound(obj_game.wallNotes[progress],1,false);
+		if(collisionObject==obj_person) audio_play_sound(obj_game.wallNotes[progress],1,false);
+		else if(collisionObject==obj_bug) audio_play_sound(snd_glass,1,false,1,0,1+progress*0.1);
+		else if(collisionObject==obj_love) audio_play_sound(obj_game.wallNotes[progress],1,false,1,0,0.2);
 		col=obj_game.wallColors[progress];
 		progress++;
 		if(progress>=array_length(obj_game.wallColors)){

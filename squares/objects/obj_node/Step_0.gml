@@ -69,4 +69,10 @@ if(!selected && inst!=noone){
 		selected=true;
 		maker.nodeSelected=self;
 	}
+}else if(selected){
+	if(point_distance(obj_game.x,obj_game.y,mouse_x,mouse_y)>200){
+		selected=false;
+		maker.nodeSelected=noone;
+		maker=noone;
+	}
 }
