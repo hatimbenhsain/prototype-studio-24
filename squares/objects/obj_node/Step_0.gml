@@ -21,6 +21,31 @@ if(inst!=noone){
 			if(!array_contains(maker.nodeSelected.links,self) &&
 			!array_contains(links,maker.nodeSelected)){
 				array_push(maker.nodeSelected.links,self);
+				array_push(obj_game.walls,
+				{x1:x,y1:y,x2:maker.nodeSelected.x,y2:maker.nodeSelected.y});
+			}else{
+				for(var i=0;i<array_length(maker.nodeSelected.links);i++){
+					if(maker.nodeSelected.links[i]==id){
+						array_delete(maker.nodeSelected.links,i,1);
+						break;
+					}
+				}
+				for(var i=0;i<array_length(links);i++){
+					if(links[i]==maker.nodeSelected){
+						array_delete(links,i,1);
+						break;
+					}
+				}
+				for(var i=0;i<array_length(obj_game.walls);i++){
+					var wall=obj_game.walls[i];
+					if((wall.x1==x && wall.y1==y 
+					&& wall.x2==maker.nodeSelected.x && wall.y2==maker.nodeSelected.y) ||
+					(wall.x2==x && wall.y2==y && wall.x1==maker.nodeSelected.x 
+					&& wall.y1==maker.nodeSelected.y)){
+						array_delete(obj_game.walls,i,1);
+						break;
+					}
+				}
 			}
 		}
 		selected=true;

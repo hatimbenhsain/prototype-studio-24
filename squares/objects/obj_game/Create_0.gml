@@ -13,3 +13,5 @@ for(var xx=x-width/2;xx<=x+width/2;xx+=spaceBetweenNodes){
 
 
 selectedNode=noone;
+
+walls=[];
