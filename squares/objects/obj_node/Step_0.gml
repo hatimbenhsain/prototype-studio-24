@@ -70,7 +70,8 @@ if(!selected && inst!=noone){
 		maker.nodeSelected=self;
 	}
 }else if(selected){
-	if(point_distance(obj_game.x,obj_game.y,mouse_x,mouse_y)>200){
+	if(point_distance(obj_game.x,obj_game.y,mouse_x,mouse_y)>200 || mouse_y=0 ||
+	mouse_y=camera_get_view_height(view_camera[0])){
 		selected=false;
 		maker.nodeSelected=noone;
 		maker=noone;

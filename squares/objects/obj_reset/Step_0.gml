@@ -10,13 +10,9 @@ if(x>obj_game.x){
 if(position_meeting(mouse_x,mouse_y,id)){
 	image_blend=c_white;
 	active=true;
-	if((cooldownTimer)>=1){
-		var o=obj_person;
-		if(random(1)<=0.5){
-			o=obj_bug;	
-		}
-		var inst=instance_create_depth(x,y,depth,o);
-		inst.dir=dir;
+	if((cooldownTimer)>=cooldownTime){
+		instance_destroy(obj_being);
+		instance_destroy(obj_wall);
 	}
 	cooldownTimer=0;
 }else{

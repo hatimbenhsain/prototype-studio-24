@@ -3,7 +3,8 @@
 image_blend=c_gray;
 
 cooldownTimer=0;
-cooldownTime=1;
+prevCooldowntimer=0;
+cooldownTime=0.3;
 
 dir=1;
 

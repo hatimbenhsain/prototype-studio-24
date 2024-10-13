@@ -32,6 +32,7 @@ var person=id;
 
 with(obj_wall){
 	if(person==collision_line(node1.x,node1.y,node2.x,node2.y,person,false,false)){
+		var ghost;
 		with(person){
 			var currentDir=dir;
 			var k=0;
@@ -41,10 +42,11 @@ with(obj_wall){
 			canMove=false;
 			x-=directions[currentDir][0];
 			y-=directions[currentDir][1];
-			var ghost=instance_create_depth(x,y,depth+1,obj_ghost);
+			ghost=instance_create_depth(x,y,depth+1,obj_ghost);
 			ghost.sprite_index=sprite_index;
 		}
 		collided=true;
+		ghost.image_blend=obj_game.wallColors[progress];
 		collisionObject=person.object_index;
 		break;
 	}

@@ -1,0 +1,2 @@
+prevActive=active
+prevCooldowntimer=cooldownTimer;
