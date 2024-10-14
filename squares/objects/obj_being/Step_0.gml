@@ -44,10 +44,14 @@ with(obj_wall){
 			y-=directions[currentDir][1];
 			ghost=instance_create_depth(x,y,depth+1,obj_ghost);
 			ghost.sprite_index=sprite_index;
+			if(object_index==obj_spirit){
+				spd+=0.2;	
+			}
 		}
 		collided=true;
 		ghost.image_blend=obj_game.wallColors[progress];
 		collisionObject=person.object_index;
+		tone=person.tone;
 		break;
 	}
 }
