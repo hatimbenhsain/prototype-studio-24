@@ -15,3 +15,5 @@ spd=10;
 
 directions=[[1,0],[0,1],[-1,0],[0,-1]]
 dir=0;
+
+tone=random_range(-0.05,0.05);

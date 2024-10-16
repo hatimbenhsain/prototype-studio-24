@@ -14,3 +14,5 @@ collidedTime=0.3;
 progress=0;
 
 collisionObject=noone;
+
+tone=0;
