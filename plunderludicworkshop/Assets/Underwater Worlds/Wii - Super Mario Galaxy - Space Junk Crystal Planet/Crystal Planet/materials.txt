@@ -1,0 +1,104 @@
+Juhi_v
+======
+  Textures:
+    - IP2_glow1_i
+    - IndYugami
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = ((tex #1 A) * (vertex A))
+
+
+
+Madara_v
+========
+  Textures:
+    - IP2_glow1_i
+    - RailBlockBig_Stone
+        Scale: 0.05000000074505806, 0.05000000074505806
+    - IP2V_sanenv1
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 222, 178, 56, 190
+    - 226, 218, 109, 262
+
+  Steps:
+    1: RGB = (lerp from (222, 178, 56) to (226, 218, 109) using (tex #1 RGB)), then add (vertex RGB), subtract 127
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB), subtract 127
+         A = (vertex A)
+
+
+
+lambert12_v
+===========
+  Textures:
+    - HighLight00
+    - ex
+        Scale: 7.2314453125, 7.2314453125
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 255, 133, 65
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 206, 93, 238, 255
+
+  Steps:
+    1: RGB = (lerp from (206, 93, 238) to (tex #1 RGB) using (vertex RGB)), then add (0, 255, 133)
+         A = ((tex #1 A) * (vertex A)), then add 65
+    2: RGB = (tex #2 RGB), then add (prev. RGB)
+         A = 0, then add (prev. A)
+
+
+
+lambert13_v
+===========
+  Textures:
+    - IP2_glow1_i
+    - RailBlockBig_Stone
+        Scale: 0.05000000074505806, 0.05000000074505806
+    - IP2V_sanenv1
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 255
+
+  Material Colors:
+    - 240, 240, 240, 255
+    - 240, 240, 240, 255
+
+  Color Registers:
+    - 81, 188, 188, 190
+    - 165, 178, 206, 262
+
+  Steps:
+    1: RGB = (lerp from (81, 188, 188) to (165, 178, 206) using (tex #1 RGB)), then add (vertex RGB), subtract 127
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((vertex RGB) * (tex #3 RGB)), then add (prev. RGB), subtract 127
+         A = (vertex A)

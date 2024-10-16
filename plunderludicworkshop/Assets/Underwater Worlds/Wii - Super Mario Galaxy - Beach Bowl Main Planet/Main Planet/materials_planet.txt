@@ -1,0 +1,471 @@
+Black01_v_x
+===========
+  Textures:
+    - Black01
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (vertex RGB))
+         A = (vertex A)
+
+
+
+Grass02_v
+=========
+  Textures:
+    - gras02
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 84, 84, 84, -105
+    - 15, 10, 10, 255
+
+  Steps:
+    1: RGB = (lerp from (15, 10, 10) to (84, 84, 84) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -105
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -105, multiply by 2
+
+
+
+Rock01_v
+========
+  Textures:
+    - Rock01
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 110, 105, 105, -110
+    - 16, 22, 8, 255
+
+  Steps:
+    1: RGB = (lerp from (16, 22, 8) to (110, 105, 105) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -110
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -110, multiply by 2
+
+
+
+Rock07_v
+========
+  Textures:
+    - Rock08
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 101, 101, 109, -110
+    - 32, 32, 48, 242
+
+  Steps:
+    1: RGB = (lerp from (32, 32, 48) to (101, 101, 109) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -110
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -110, multiply by 2
+
+
+
+RockWhite_v
+===========
+  Textures:
+    - Rock06
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 110, 105, 105, -110
+    - 16, 22, 8, 255
+
+  Steps:
+    1: RGB = (lerp from (16, 22, 8) to (110, 105, 105) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -110
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -110, multiply by 2
+
+
+
+Saku1_v
+=======
+  Textures:
+    - Saku01
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 101, 89, 80, 255
+    - 0, 0, 0, 255
+
+  Steps:
+    1: RGB = ((101, 89, 80) * (vertex RGB)), multiply by 2
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), multiply by 2
+         A = (vertex A)
+
+
+
+Shiba_v
+=======
+  Textures:
+    - gras
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 100, 110, 100, -105
+    - 10, 10, 40, 255
+
+  Steps:
+    1: RGB = (lerp from (10, 10, 40) to (100, 110, 100) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -105
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -105, multiply by 2
+
+
+
+Soil02_v
+========
+  Textures:
+    - Soil02
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 145, 145, 145, -102
+    - 12, 12, 80, 255
+
+  Steps:
+    1: RGB = (lerp from (12, 12, 80) to (145, 145, 145) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -102
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -102, multiply by 2
+
+
+
+Stone01_v
+=========
+  Textures:
+    - Stone01
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 80, 80, 80, -110
+    - 39, 28, 28, 255
+
+  Steps:
+    1: RGB = (lerp from (39, 28, 28) to (80, 80, 80) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -110
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -110, multiply by 2
+
+
+
+Stone06_v
+=========
+  Textures:
+    - Wall02
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 161, 161, 161, -110
+    - 16, 22, 8, 255
+
+  Steps:
+    1: RGB = (lerp from (16, 22, 8) to (161, 161, 161) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -110
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -110, multiply by 2
+
+
+
+StoneWall01_v
+=============
+  Textures:
+    - StoneWall_01
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 110, 105, 105, -110
+    - 16, 22, 8, 255
+
+  Steps:
+    1: RGB = (lerp from (16, 22, 8) to (110, 105, 105) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -110
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -110, multiply by 2
+
+
+
+StoneWall_02_v
+==============
+  Textures:
+    - Wall04
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 68, 68, 68, -89
+    - 12, 40, 28, 89
+
+  Steps:
+    1: RGB = (lerp from (12, 40, 28) to (68, 68, 68) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -89
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -89, multiply by 2
+
+
+
+StoneWall_03_v
+==============
+  Textures:
+    - StoneWall_01
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 72, 125, 89, -94
+    - 12, 12, 10, 255
+
+  Steps:
+    1: RGB = (lerp from (12, 12, 10) to (72, 125, 89) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -94
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -94, multiply by 2
+
+
+
+Suna03_v
+========
+  Textures:
+    - suna02
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 99, 99, 99, -132
+    - 10, 10, 20, 255
+
+  Steps:
+    1: RGB = (lerp from (10, 10, 20) to (99, 99, 99) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -132
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -132, multiply by 2
+
+
+
+Tuchi02_v
+=========
+  Textures:
+    - Wall01
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 169, 165, 141, -102
+    - 0, 0, 6, 255
+
+  Steps:
+    1: RGB = (lerp from (0, 0, 6) to (169, 165, 141) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -102
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -102, multiply by 2
+
+
+
+Wall03_v
+========
+  Textures:
+    - Wall05
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 120, 120, 109, -393
+    - 0, 4, 4, 255
+
+  Steps:
+    1: RGB = (lerp from (0, 4, 4) to (120, 120, 109) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -393
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -393
+
+
+
+Wood02_v
+========
+  Textures:
+    - wood05
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 117, 117, 117, -61
+    - 14, 16, 16, 255
+
+  Steps:
+    1: RGB = (lerp from (14, 16, 16) to (117, 117, 117) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -61
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -61, multiply by 2
+
+
+
+Wood05_v
+========
+  Textures:
+    - wood02
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 173, 173, 145, -94
+    - 32, 32, 20, 255
+
+  Steps:
+    1: RGB = (lerp from (32, 32, 20) to (173, 173, 145) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -94
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -94, multiply by 2
+
+
+
+WoodYellow01_v
+==============
+  Textures:
+    - WoodYellow01
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 113, 105, 113, -102
+    - 8, 25, 68, 255
+
+  Steps:
+    1: RGB = (lerp from (8, 25, 68) to (113, 105, 113) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -102
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -102, multiply by 2
+
+
+
+YashiBody_v
+===========
+  Textures:
+    - Coco
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 141, 129, 121, -77
+    - 16, 16, 24, 255
+
+  Steps:
+    1: RGB = (lerp from (16, 16, 24) to (141, 129, 121) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -77
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -77, multiply by 2

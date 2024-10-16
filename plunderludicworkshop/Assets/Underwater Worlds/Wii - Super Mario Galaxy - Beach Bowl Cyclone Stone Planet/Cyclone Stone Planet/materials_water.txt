@@ -1,0 +1,31 @@
+OnimasuWaterMat_v
+=================
+  Textures:
+    - Fall
+        Offset: -7.12000036239624, -3.5999996662139893
+        Scale: 0.5, 0.4000000059604645
+    - IndBendWaterPipe
+        Offset: 1.7999989986419678, 1.7699998617172241
+        Scale: 2, 0.2099609375
+    - OnimasuMask
+        Offset: 0, -0.458984375
+        Scale: 1, -0.07000000029802322
+
+  Ambient Colors:
+    - 100, 100, 100, 190
+
+  Constant Colors:
+    - 0, 99, 166, 205
+    - 190, 216, 255, 255
+
+  Color Registers:
+    - 183, 191, 252, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (lerp from (0, 99, 166) to (183, 191, 252) using (tex #1 RGB))
+         A = (lerp from 205 to 0 using (vertex A)), multiply by 4
+    2: RGB = ((vertex RGB) * (prev. RGB)), then add (prev. A)
+         A = (vertex A)
+    3: RGB = (lerp from (prev. RGB) to (0, 0, 0) using (tex #3 RGB))
+         A = (vertex A)

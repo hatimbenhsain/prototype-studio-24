@@ -1,0 +1,29 @@
+wood011_v
+=========
+  Textures:
+    - GlaSphereRefLight2
+        Offset: -0.0048828125, 0
+        Scale: 0.30000001192092896, 0.30000001192092896
+    - Rock_006_C
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 206, 239, 255, 255
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 52, 52, 52, 255
+    - 8, 8, 8, 255
+
+  Steps:
+    1: RGB = (lerp from (8, 8, 8) to (52, 52, 52) using (vertex RGB)), multiply by 2
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), divide by 2
+         A = (vertex A)
+    3: RGB = (lerp from (prev. RGB) to (vertex RGB) using (tex #1 RGB)), then add (206, 239, 255), subtract 127
+         A = (vertex A)

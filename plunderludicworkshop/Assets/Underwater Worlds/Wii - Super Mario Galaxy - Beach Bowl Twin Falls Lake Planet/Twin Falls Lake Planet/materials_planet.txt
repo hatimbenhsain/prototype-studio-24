@@ -1,0 +1,453 @@
+flowerleaf_v
+============
+  Textures:
+    - puffleaf
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 180
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 180 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+hashi_v
+=======
+  Textures:
+    - WoodYellow01
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 60
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 60 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+kori_v
+======
+  Textures:
+    - GlaSphereRefLight2
+        Offset: -0.0048828125, 0
+        Scale: 0.30000001192092896, 0.30000001192092896
+    - Rock_006_C
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 206, 239, 255, 255
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 52, 52, 52, 255
+    - 8, 8, 8, 255
+
+  Steps:
+    1: RGB = (lerp from (8, 8, 8) to (52, 52, 52) using (vertex RGB)), multiply by 2
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), divide by 2
+         A = (vertex A)
+    3: RGB = (lerp from (prev. RGB) to (vertex RGB) using (tex #1 RGB)), then add (206, 239, 255), subtract 127
+         A = (vertex A)
+
+
+
+lambert2_v
+==========
+  Textures:
+    - THStone2
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 180
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 180 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+lambert3_v_x
+============
+  Textures:
+    - WaterWave
+        Offset: 0.9160000085830688, 0.9160000085830688
+        Rotation: 0.499984740745262
+    - WaterWave
+        Scale: 1.100000023841858, 1.100000023841858
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 255
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - -6, -6, -6, 260
+    - 4, -308, -862, 255
+
+  Steps:
+    1: RGB = (tex #1 RGB)
+         A = ((vertex A) * (tex #1 A))
+    2: RGB = (255, 255, 255)
+         A = ((prev. A) * (tex #2 A)), multiply by 4
+
+
+
+mizu_shita_v_x
+==============
+  Textures:
+    - FarOpacitySea
+        Offset: 1.7000001668930054, -1.7000001668930054
+    - FarOpacitySea
+        Offset: 0.8500000834465027, 2.5500001907348633
+        Scale: 0.699999988079071, 0.75
+    - TransparencyMM
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 121, 255, 255, 255
+    - 0, 0, 0, 255
+
+  Material Colors:
+    - 204, 204, 204, 120
+    - 204, 204, 204, 120
+
+  Color Registers:
+    - 100, 165, 200, 40
+    - 4, -308, -862, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (tex #1 RGB)), multiply by 4
+         A = (vertex A), add 127
+    2: RGB = (lerp from (100, 165, 200) to (121, 255, 255) using (prev. RGB)), subtract 127, multiply by 2
+         A = (tex #3 A)
+
+
+
+mizunaka_renga_v
+================
+  Textures:
+    - TF_mizu_naka_renga
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 15
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 15 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+mizunaka_tuchi_v
+================
+  Textures:
+    - TF_mizu_naka_tuchi
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 25
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 25 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+nennrin_v
+=========
+  Textures:
+    - kirikabu
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 66
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 66 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+shiba1_v
+========
+  Textures:
+    - THEdenGrass
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 129
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 129 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+taki_v
+======
+  Textures:
+    - IndBendMud
+        Offset: 1.788000226020813, -1.788000226020813
+        Scale: 3, 0.6499999761581421
+    - Fall
+        Offset: 0, -9.414999961853027
+        Scale: 1, 0.4000000059604645
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 94, 155, 255, 255
+
+  Material Colors:
+    - 196, 196, 196, 255
+    - 196, 196, 196, 255
+
+  Color Registers:
+    - 165, 214, 242, 255
+
+  Steps:
+    1: RGB = (lerp from (94, 155, 255) to (165, 214, 242) using (tex #2 RGB)), then add (vertex RGB)
+         A = (tex #2 A)
+
+
+
+taki_v_x
+========
+  Textures:
+    - WaterRipple
+        Offset: 0, -8.5
+        Scale: 0.5, 2
+    - IndWarpTopWater
+        Offset: 0, -5.950000286102295
+        Scale: 0.166015625, 0.4931640625
+    - Fall
+        Offset: 0, -8.5
+        Scale: 1, 0.8203125
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 32, 124, 186, 255
+
+  Material Colors:
+    - 196, 196, 196, 255
+    - 196, 196, 196, 255
+
+  Color Registers:
+    - 244, 212, 232, 255
+
+  Steps:
+    1: RGB = (lerp from (32, 124, 186) to (244, 212, 232) using (tex #1 RGB))
+         A = (tex #1 A)
+    2: RGB = (lerp from (prev. RGB) to (244, 212, 232) using (tex #3 RGB)), then add (vertex RGB)
+         A = (vertex A), then add (prev. A)
+
+
+
+tutchi_v
+========
+  Textures:
+    - THEdenGrassBorder1
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 84
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 84 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+wood09_v
+========
+  Textures:
+    - wood15
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 84
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 84 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+woodA_v
+=======
+  Textures:
+    - Wood_A_128
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 95
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 95 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+yuki_v
+======
+  Textures:
+    - TH_snow
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 180
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 180 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))

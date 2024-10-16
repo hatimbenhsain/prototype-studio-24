@@ -1,0 +1,291 @@
+hashi_v
+=======
+  Textures:
+    - WoodYellow01_Low
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 60
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 60 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+kori_v
+======
+  Textures:
+    - kori_Low
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 180
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 180 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+kusa_shiba1_v
+=============
+  Textures:
+    - THEdenGrass_Low
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 180
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 180 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+lambert2_v
+==========
+  Textures:
+    - THStone2_Low
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 180
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 180 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+lambert3_v_x
+============
+  Textures:
+    - mizu_Low
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 69
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - -996, -712, 84, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = ((-996, -712, 84) * (vertex RGB))
+         A = (lerp from 69 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+mizu_shita_v_x
+==============
+  Textures:
+    - mizu_Low
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 131
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - -1024, -923, 238, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = ((-1024, -923, 238) * (vertex RGB))
+         A = (lerp from 131 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+siba_Low_v
+==========
+  Textures:
+    - THEdenGrass_Low
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 180
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 180 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+taki_v
+======
+  Textures:
+    - taki_Low
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 180
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 180 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+tsuchi_Low_01_v
+===============
+  Textures:
+    - TF_mizu_naka_tuchi_Low
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (vertex A), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+tutchi_v
+========
+  Textures:
+    - THEdenGrassBorder1_Low
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 84
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 84 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))
+
+
+
+yuki_v
+======
+  Textures:
+    - TH_snow_Low
+
+  Ambient Colors:
+    - 100, 100, 100, 195
+
+  Constant Colors:
+    - 0, 0, 0, 180
+
+  Material Colors:
+    - 203, 203, 203, 255
+    - 203, 203, 203, 255
+
+  Color Registers:
+    - 255, 255, 255, 0
+    - 0, 0, 0, 368
+
+  Steps:
+    1: RGB = (vertex RGB)
+         A = (lerp from 180 to 0 using (vertex A)), multiply by 2
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A)
+         A = ((vertex A) * (tex #1 A))

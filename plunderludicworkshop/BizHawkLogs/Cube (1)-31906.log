@@ -1,0 +1,12 @@
+MsgBox: This EmuHawk is privileged: EmuHawk detected it has Administrator privileges.
+This is a bad idea.
+MainForm()
+Using DirectInput+XInput for host input (keyboard + gamepads)
+Init method call rpc buffer unityhawk-callmethod-2128193212
+Init api call buffer unityhawk-apicall-2128193212
+Init input buffer unityhawk-key-input-2128193212
+Init texture buffer unityhawk-texture-2128193212-0
+Read a zipstate of version 1.0.2
+Elapsed time for Load Core: 80 ms
+Elapsed time for Blit: 2 ms
+Elapsed time for Load Framebuffer: 12 ms

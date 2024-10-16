@@ -1,0 +1,296 @@
+AxCupFallMatBackFace_v_x
+========================
+  Textures:
+    - FallMask
+        Offset: 0, -0.6679999828338623
+        Scale: 1, 0.10000000149011612
+    - FallMask
+        Offset: 0.5, -1.3359999656677246
+        Scale: 0.75, 0.30000001192092896
+
+  Ambient Colors:
+    - 100, 100, 100, 120
+
+  Constant Colors:
+    - 20, 85, 109, 255
+    - 0, 0, 0, 255
+
+  Material Colors:
+    - 252, 252, 252, 206
+    - 252, 252, 252, 206
+
+  Color Registers:
+    - 146, 154, 191, 260
+    - 4, -308, -862, 255
+
+  Steps:
+    1: RGB = (lerp from (20, 85, 109) to (146, 154, 191) using (tex #1 RGB)), then add (vertex RGB)
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = (lerp from (20, 85, 109) to (146, 154, 191) using (tex #2 RGB)), then add (prev. RGB)
+         A = ((tex #2 A) * (vertex A)), then add (prev. A)
+
+
+
+BxCupMatBackFace
+================
+  Textures:
+    - FarOpacitySea
+        Offset: 0, -1.6699999570846558
+        Scale: 1, 0.25
+    - FarOpacitySea
+        Offset: 0, -1.3359999656677246
+        Scale: 1.8017578125, 0.10000000149011612
+
+  Ambient Colors:
+    - 100, 100, 100, 120
+
+  Constant Colors:
+    - 0, 23, 37, 120
+    - 0, 0, 0, 255
+
+  Material Colors:
+    - 252, 252, 252, 255
+    - 252, 252, 252, 255
+
+  Color Registers:
+    - 130, 130, 130, 260
+    - 4, -308, -862, 255
+
+  Steps:
+    1: RGB = ((vertex RGB) * (tex #1 RGB)), then add (0, 23, 37)
+         A = 120
+
+
+
+CxSeaMat
+========
+  Textures:
+    - FarOpacitySea
+        Offset: 0.6679999828338623, -0.6679999828338623
+    - FarOpacitySea
+        Offset: 0.33399999141693115, 1.0019999742507935
+        Scale: 0.699999988079071, 0.75
+    - TransparencyMM
+
+  Ambient Colors:
+    - 100, 100, 100, 120
+
+  Constant Colors:
+    - 121, 255, 255, 255
+    - 0, 0, 0, 255
+
+  Material Colors:
+    - 204, 204, 204, 120
+    - 204, 204, 204, 120
+
+  Color Registers:
+    - 100, 165, 200, 40
+    - 4, -308, -862, 255
+
+  Steps:
+    1: RGB = ((tex #1 RGB) * (tex #1 RGB)), multiply by 4
+         A = (vertex A), add 127
+    2: RGB = (lerp from (100, 165, 200) to (121, 255, 255) using (prev. RGB)), subtract 127, multiply by 2
+         A = (tex #3 A)
+
+
+
+DxFallMat_v_x
+=============
+  Textures:
+    - WaterRipple
+        Offset: 0, -3.3399999141693115
+        Scale: 0.5, 2
+    - IndWarpTopWater
+        Offset: 0, -2.3380000591278076
+        Scale: 0.166015625, 0.4931640625
+    - Fall
+        Offset: 0, -3.3399999141693115
+        Scale: 1, 0.8203125
+
+  Ambient Colors:
+    - 100, 100, 100, 120
+
+  Constant Colors:
+    - 32, 124, 186, 255
+
+  Material Colors:
+    - 196, 196, 196, 255
+    - 196, 196, 196, 255
+
+  Color Registers:
+    - 244, 212, 232, 255
+
+  Steps:
+    1: RGB = (lerp from (32, 124, 186) to (244, 212, 232) using (tex #1 RGB))
+         A = (tex #1 A)
+    2: RGB = (lerp from (prev. RGB) to (244, 212, 232) using (tex #3 RGB)), then add (vertex RGB)
+         A = (vertex A), then add (prev. A)
+
+
+
+ExFallMatSplash_v
+=================
+  Textures:
+    - FarOpacitySea
+        Offset: 0, -2.671999931335449
+        Scale: 1.399999976158142, 0.20000000298023224
+    - Fall
+        Offset: 0, -2.003999948501587
+        Scale: 2, 0.2099609375
+    - FarOpacitySea
+        Offset: 0, -1.0019999742507935
+        Scale: 1.7578125, -0.1171875
+
+  Ambient Colors:
+    - 100, 100, 100, 120
+
+  Constant Colors:
+    - 0, 154, 203, 255
+    - 0, 55, 255, 255
+
+  Material Colors:
+    - 204, 204, 204, 120
+    - 204, 204, 204, 120
+
+  Color Registers:
+    - 255, 255, 255, 40
+    - 4, -308, -862, 255
+
+  Steps:
+    1: RGB = ((0, 154, 203) * (tex #1 RGB)), multiply by 2
+         A = ((tex #1 A) * (vertex A)), add 127
+    2: RGB = (lerp from (prev. RGB) to (255, 255, 255) using (tex #2 RGB)), then add (vertex RGB)
+         A = (vertex A)
+
+
+
+ExFallMatSplash_v_x
+===================
+  Textures:
+    - FarOpacitySea
+        Offset: 0, -2.671999931335449
+        Scale: 1.399999976158142, 0.20000000298023224
+    - Fall
+        Offset: 0, -2.003999948501587
+        Scale: 2, 0.2099609375
+    - FarOpacitySea
+        Offset: 0, -1.0019999742507935
+        Scale: 1.7578125, -0.1171875
+
+  Ambient Colors:
+    - 100, 100, 100, 120
+
+  Constant Colors:
+    - 0, 154, 203, 255
+    - 0, 55, 255, 255
+
+  Material Colors:
+    - 204, 204, 204, 120
+    - 204, 204, 204, 120
+
+  Color Registers:
+    - 255, 255, 255, 40
+    - 4, -308, -862, 255
+
+  Steps:
+    1: RGB = ((0, 154, 203) * (tex #1 RGB)), multiply by 2
+         A = ((tex #1 A) * (vertex A)), add 127
+    2: RGB = (lerp from (prev. RGB) to (255, 255, 255) using (tex #2 RGB)), then add (vertex RGB)
+         A = (vertex A)
+
+
+
+FxSeaMatBuckFace
+================
+  Textures:
+    - FarOpacitySea
+        Offset: 0.33399999141693115, 0.33399999141693115
+        Rotation: 0.499984740745262
+    - TransparencyMM
+
+  Ambient Colors:
+    - 100, 100, 100, 120
+
+  Constant Colors:
+    - 0, 0, 0, 255
+    - 0, 0, 0, 255
+
+  Material Colors:
+    - 204, 204, 204, 120
+    - 204, 204, 204, 120
+
+  Color Registers:
+    - 40, 220, 236, 322
+    - 4, -308, -862, 255
+
+  Steps:
+    1: RGB = (lerp from (40, 220, 236) to (0, 0, 0) using (tex #1 RGB))
+         A = 0
+    2: RGB = (prev. RGB)
+         A = (tex #2 A)
+
+
+
+GxCupMat
+========
+  Textures:
+    - GlaSphereRefLight2
+        Scale: 0.7080078125, 0.7080078125
+    - FarOpacitySea
+        Offset: 0, -0.6679999828338623
+        Scale: 2, 0.25
+
+  Ambient Colors:
+    - 100, 100, 100, 120
+
+  Constant Colors:
+    - 24, 90, 104, 255
+    - 0, 0, 0, 255
+
+  Material Colors:
+    - 252, 252, 252, 206
+    - 252, 252, 252, 206
+
+  Color Registers:
+    - 130, 130, 130, 260
+    - 4, -308, -862, 255
+
+  Steps:
+    1: RGB = ((vertex RGB) * (tex #1 RGB)), then add (24, 90, 104)
+         A = (vertex A)
+
+
+
+HxCupFallMat_v_x
+================
+  Textures:
+    - FallMask
+        Offset: 0, -0.6679999828338623
+        Scale: 1, 0.10000000149011612
+    - FallMask
+        Offset: 0.5, -1.3359999656677246
+        Scale: 0.75, 0.302734375
+    - IndBendWater
+        Scale: 5, 1
+
+  Ambient Colors:
+    - 100, 100, 100, 120
+
+  Constant Colors:
+    - 50, 86, 89, 255
+    - 0, 0, 0, 255
+
+  Material Colors:
+    - 252, 252, 252, 206
+    - 252, 252, 252, 206
+
+  Color Registers:
+    - 150, 171, 191, 260
+    - 4, -308, -862, 255
+
+  Steps:
+    1: RGB = (lerp from (50, 86, 89) to (150, 171, 191) using (tex #1 RGB)), then add (vertex RGB)
+         A = ((tex #1 A) * (vertex A))
+    2: RGB = (lerp from (50, 86, 89) to (150, 171, 191) using (tex #2 RGB)), then add (prev. RGB)
+         A = ((tex #2 A) * (vertex A)), then add (prev. A)

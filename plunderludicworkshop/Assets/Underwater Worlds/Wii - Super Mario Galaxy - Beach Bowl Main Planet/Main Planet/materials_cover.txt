@@ -1,0 +1,21 @@
+Stone06_v
+=========
+  Textures:
+    - Wall02
+
+  Ambient Colors:
+    - 50, 50, 50, 128
+
+  Material Colors:
+    - 204, 204, 204, 255
+    - 204, 204, 204, 255
+
+  Color Registers:
+    - 161, 161, 161, -110
+    - 16, 22, 8, 255
+
+  Steps:
+    1: RGB = (lerp from (16, 22, 8) to (161, 161, 161) using (vertex RGB)), multiply by 2
+         A = (lerp from (tex #1 A) to 32 using (vertex A)), then add -110
+    2: RGB = ((prev. RGB) * (tex #1 RGB)), then add (prev. A), multiply by 2
+         A = (64 * (vertex A)), then add -110, multiply by 2

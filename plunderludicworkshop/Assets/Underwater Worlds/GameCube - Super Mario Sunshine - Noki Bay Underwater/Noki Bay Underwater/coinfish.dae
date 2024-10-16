@@ -1,0 +1,323 @@
+<?xml version="1.0"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+    <asset>
+        <contributor>
+            <authoring_tool>J3D Ripoff Exporter</authoring_tool>
+        </contributor>
+        <created>2023-03-11T04:22:57.727Z</created>
+        <modified>2023-03-11T04:22:57.727Z</modified>
+		<unit meter="0.01" name="centimeter" ></unit>
+        <up_axis>Y_UP</up_axis>
+    </asset>
+    <library_images>
+    </library_images>
+    <library_effects>
+        <effect id="effect0">
+            <profile_COMMON>
+                <technique sid="COMMON">
+                    <blinn>
+                        <diffuse>
+                            <color>1 1 1 1</color>
+                        </diffuse>
+                    </blinn>
+                </technique>
+            </profile_COMMON>
+        </effect>
+    </library_effects>
+    <library_materials>
+        <material id="mat0" name="temp_white_mat">
+            <instance_effect url="#effect0"></instance_effect>
+        </material>
+    </library_materials>
+    <library_geometries>
+        <geometry id="mesh0">
+            <mesh>
+                <source id="points0">
+                    <float_array id="pointarray0" count="9">109.26310868435783 -224.34566497802734 112.4777531057822 169.31670985204784 -252.76168060302734 134.33692540160075 175.98810865540204 -198.29878997802734 136.76527695856112</float_array>
+                    <technique_common>
+                        <accessor count="3" source="#pointarray0" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <source id="uvs0">
+                    <float_array id="uvarray0" count="2">0 1</float_array>
+                    <technique_common>
+                        <accessor count="1" source="#uvarray0" stride="2">
+                            <param name="S" type="float"/>
+                            <param name="T" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <vertices id="vertices0">
+                    <input semantic="POSITION" source="#points0"/>
+                </vertices>
+                <polylist count="1" material="Material1">
+                    <input offset="0" semantic="VERTEX" source="#vertices0"/>
+                    <input offset="1" semantic="TEXCOORD" source="#uvs0" set="0"/>
+                    <vcount>3</vcount>
+                    <p>2 0 1 0 0 0</p>
+                </polylist>
+            </mesh>
+        </geometry>
+    </library_geometries>
+    <library_controllers>
+        <controller id="controller0">
+            <skin source="#mesh0">
+                <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+                <source id="joints0">
+                    <Name_array id="JointArr0" count="66">jointnode-1 jointnode0 jointnode1 jointnode2 jointnode3 jointnode4 jointnode5 jointnode6 jointnode7 jointnode8 jointnode9 jointnode10 jointnode11 jointnode12 jointnode13 jointnode14 jointnode15 jointnode16 jointnode17 jointnode18 jointnode19 jointnode20 jointnode21 jointnode22 jointnode23 jointnode24 jointnode25 jointnode26 jointnode27 jointnode28 jointnode29 jointnode30 jointnode31 jointnode32 jointnode33 jointnode34 jointnode35 jointnode36 jointnode37 jointnode38 jointnode39 jointnode40 jointnode41 jointnode42 jointnode43 jointnode44 jointnode45 jointnode46 jointnode47 jointnode48 jointnode49 jointnode50 jointnode51 jointnode52 jointnode53 jointnode54 jointnode55 jointnode56 jointnode57 jointnode58 jointnode59 jointnode60 jointnode61 jointnode62 jointnode63 jointnode64</Name_array>
+                    <technique_common>
+                        <accessor source="#JointArr0" count="66">
+                            <param name="JOINT" type="Name" />
+                        </accessor>
+                    </technique_common>
+                </source>
+                <source id="matrices0">
+                    <float_array id="MatArr0" count="1056">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 -0.9396853335123401 0 -0.3420401642816261 12.192534590806137 0 1 0 0 0.3420401642816261 0 -0.9396853335123401 33.496492896924586 0 0 0 1 -0.9396853335123401 0 -0.3420401642816261 12.19253359080614 0 1 0 0 0.3420401642816261 0 -0.9396853335123401 33.49649789692446 0 0 0 1 -0.9396853335123401 0 -0.3420401642816261 12.19253359080614 0 1 0 0 0.3420401642816261 0 -0.9396853335123401 33.49649789692446 0 0 0 1 -0.9396853335123401 0 -0.3420401642816261 -197.80745115040483 0 1 0 -20 0.3420401642816261 0 -0.9396853335123401 33.496512896924074 0 0 0 1 -0.9396853335123401 0 -0.3420401642816261 -67.80742063282669 0 1 0 80 0.3420401642816261 0 -0.9396853335123401 33.496512896924074 0 0 0 1 -0.9396853335123401 0 -0.3420401642816261 -167.8074511504048 0 1 0 130.00000000000003 0.3420401642816261 0 -0.9396853335123401 33.49652089692498 0 0 0 1 -0.9396853335123401 0 -0.3420401642816261 189.29719362498585 0 1 0 195.56636810302737 0.3420401642816261 0 -0.9396853335123401 68.32132329560659 0 0 0 1 -0.9396853335123401 0 -0.3420401642816261 12.192544590806225 0 1 0 0 0.3420401642816261 0 -0.9396853335123401 33.49651089692431 0 0 0 1 -0.9396853335123401 0 -0.3420401642816261 -67.80742063282669 0 1 0 -70.00000000000001 0.3420401642816261 0 -0.9396853335123401 33.496512896924074 0 0 0 1 -0.9396853335123401 0 -0.3420401642816261 -167.8074511504048 0 1 0 -120 0.3420401642816261 0 -0.9396853335123401 33.49652089692498 0 0 0 1 -0.9459155071537471 0 -0.3244130905590423 -248.3903712365793 0 1 0 0 0.3244130905590423 0 -0.9459155071537471 28.857914970710333 0 0 0 1 -0.9459155071537471 0 -0.3244130905590423 -248.3903712365793 0 1 0 0 0.3244130905590423 0 -0.9459155071537471 28.857914970710333 0 0 0 1 -0.9459155071537471 0 -0.3244130905590423 -368.39037123657937 0 1 0 -210 0.3244130905590423 0 -0.9459155071537471 28.857912970710338 0 0 0 1 -0.9459155071537471 0 -0.3244130905590423 -318.39036360718484 0 1 0 150.00000000000003 0.3244130905590423 0 -0.9459155071537471 28.857911970710227 0 0 0 1 -0.9459155071537471 0 -0.3244130905590423 -318.39036360718484 0 1 0 -110.00000000000001 0.3244130905590423 0 -0.9459155071537471 28.857911970710227 0 0 0 1 -0.9459155071537471 0 -0.3244130905590423 -368.39037123657937 0 1 0 250.00000000000006 0.3244130905590423 0 -0.9459155071537471 28.857912970710338 0 0 0 1 -0.9459155071537471 0 -0.3244130905590423 -318.39036360718484 0 1 0 20.000000000000007 0.3244130905590423 0 -0.9459155071537471 28.857911970710227 0 0 0 1 -0.9577687379781671 0 -0.2875396399658812 -369.23155942141375 0 1 0 0 0.2875396399658812 0 -0.9577687379781671 14.570532025717334 0 0 0 1 -0.9577687379781671 0 -0.2875396399658812 -369.23155942141375 0 1 0 0 0.2875396399658812 0 -0.9577687379781671 14.570532025717334 0 0 0 1 -0.9577687379781671 0 -0.2875396399658812 -469.23155942141375 0 1 0 300 0.2875396399658812 0 -0.9577687379781671 14.570524025717368 0 0 0 1 -0.9577687379781671 0 -0.2875396399658812 -449.23155179201916 0 1 0 -290 0.2875396399658812 0 -0.9577687379781671 14.570533025717317 0 0 0 1 -0.9577687379781671 0 -0.2875396399658812 -419.23157849490013 0 1 0 150 0.2875396399658812 0 -0.9577687379781671 14.570534025717329 0 0 0 1 -0.9577687379781671 0 -0.2875396399658812 -419.23157849490013 0 1 0 -110 0.2875396399658812 0 -0.9577687379781671 14.570534025717329 0 0 0 1 -0.9577687379781671 0 -0.2875396399658812 -419.23157849490013 0 1 0 20 0.2875396399658812 0 -0.9577687379781671 14.570534025717329 0 0 0 1 -0.9729383080059267 0 -0.23106503157025712 -469.28096038184395 0 1 0 0 0.23106503157025712 0 -0.9729383080059267 -12.881652986257828 0 0 0 1 -0.9729383080059267 0 -0.23106503157025712 -469.28096038184395 0 1 0 0 0.23106503157025712 0 -0.9729383080059267 -12.881652986257828 0 0 0 1 -0.9729383080059267 0 -0.23106503157025712 -549.280945123055 0 1 0 -350 0.23106503157025712 0 -0.9729383080059267 -12.88164798625794 0 0 0 1 -0.9729383080059267 0 -0.23106503157025712 -519.280945123055 0 1 0 -99.99999999999999 0.23106503157025712 0 -0.9729383080059267 -12.88165198625786 0 0 0 1 -0.9729383080059267 0 -0.23106503157025712 -519.280945123055 0 1 0 19.999999999999996 0.23106503157025712 0 -0.9729383080059267 -12.88165198625786 0 0 0 1 -0.9729383080059267 0 -0.23106503157025712 -519.280945123055 0 1 0 140.00000000000003 0.23106503157025712 0 -0.9729383080059267 -12.88165198625786 0 0 0 1 -0.9903255092918952 0 -0.13876377641786722 -565.5613390318438 0 1 0 0 0.13876377641786722 0 -0.9903255092918952 -66.23534275174174 0 0 0 1 -0.9903255092918952 0 -0.13876377641786722 -565.5613390318438 0 1 0 0 0.13876377641786722 0 -0.9903255092918952 -66.23534275174174 0 0 0 1 -0.9903255092918952 0 -0.13876377641786722 -615.5613008848711 0 1 0 20 0.13876377641786722 0 -0.9903255092918952 -66.23535475174218 0 0 0 1 -0.9903255092918952 0 -0.13876377641786722 -615.5613008848711 0 1 0 130 0.13876377641786722 0 -0.9903255092918952 -66.23535475174218 0 0 0 1 -0.9903255092918952 0 -0.13876377641786722 -615.5613008848711 0 1 0 -89.99999999999999 0.13876377641786722 0 -0.9903255092918952 -66.23535475174218 0 0 0 1 -0.9983125945032726 0 -0.05806861162576546 -658.0065658762925 0 1 0 0 0.05806861162576546 0 -0.9983125945032726 -119.94321951235924 0 0 0 1 -0.9983125945032726 0 -0.05806861162576546 -658.0065658762925 0 1 0 0 0.05806861162576546 0 -0.9983125945032726 -119.94321951235924 0 0 0 1 -0.9983125945032726 0 -0.05806861162576546 -758.0065582468981 0 1 0 220 0.05806861162576546 0 -0.9983125945032726 -119.94319951235973 0 0 0 1 -0.9983125945032726 0 -0.05806861162576546 -708.0065620615952 0 1 0 -79.99999999999999 0.05806861162576546 0 -0.9983125945032726 -119.94320551235904 0 0 0 1 -0.9983125945032726 0 -0.05806861162576546 -708.0065620615952 0 1 0 119.99999999999999 0.05806861162576546 0 -0.9983125945032726 -119.94320551235904 0 0 0 1 -0.9983125945032726 0 -0.05806861162576546 -708.0065620615952 0 1 0 19.999999999999996 0.05806861162576546 0 -0.9983125945032726 -119.94320551235904 0 0 0 1 -0.999006357044698 0 0.04456790980381582 -741.7192520961388 0 1 0 0 -0.04456790980381582 0 -0.999006357044698 -197.00984972458792 0 0 0 1 -0.999006357044698 0 0.04456790980381582 -741.7192520961388 0 1 0 0 -0.04456790980381582 0 -0.999006357044698 -197.00984972458792 0 0 0 1 -0.999006357044698 0 0.04456790980381582 -791.7193093165979 0 1 0 70 -0.04456790980381582 0 -0.999006357044698 -197.00981372458665 0 0 0 1 -0.999006357044698 0 0.04456790980381582 -791.7193093165979 0 1 0 -30 -0.04456790980381582 0 -0.999006357044698 -197.00981372458665 0 0 0 1 -0.9815617751366106 0 0.191145184586652 -803.5474106887959 0 1 0 0 -0.191145184586652 0 -0.9815617751366106 -318.7722368919841 0 0 0 1 -0.9815617751366106 0 0.191145184586652 -803.5474106887959 0 1 0 0 -0.191145184586652 0 -0.9815617751366106 -318.7722368919841 0 0 0 1 -0.9815617751366106 0 0.191145184586652 -853.5473191360617 0 1 0 20 -0.191145184586652 0 -0.9815617751366106 -318.77221489198394 0 0 0 1 -0.9235076066095089 0 0.38358010966990397 -821.5458804210624 0 1 0 0 -0.38358010966990397 0 -0.9235076066095089 -493.02741175184974 0 0 0 1 -0.9235076066095089 0 0.38358010966990397 -821.5458804210624 0 1 0 0 -0.38358010966990397 0 -0.9235076066095089 -493.02741175184974 0 0 0 1 -0.9235076066095089 0 0.38358010966990397 -871.5458956798515 0 1 0 70 -0.38358010966990397 0 -0.9235076066095089 -493.02738875184923 0 0 0 1 -0.9235076066095089 0 0.38358010966990397 -871.5458956798515 0 1 0 -29.999999999999993 -0.38358010966990397 0 -0.9235076066095089 -493.02738875184923 0 0 0 1 -0.7778403707308137 0 0.628461898337003 -745.0913743193353 0 1 0 0 -0.628461898337003 0 -0.7778403707308137 -732.9131479068196 0 0 0 1 -0.7778403707308137 0 0.628461898337003 -745.0913743193353 0 1 0 0 -0.628461898337003 0 -0.7778403707308137 -732.9131479068196 0 0 0 1 -0.7778403707308137 0 0.628461898337003 -795.0913933928215 0 1 0 120 -0.628461898337003 0 -0.7778403707308137 -732.9131619068198 0 0 0 1 -0.7778403707308137 0 0.628461898337003 -795.0913933928215 0 1 0 -80 -0.628461898337003 0 -0.7778403707308137 -732.9131619068198 0 0 0 1 -0.7778403707308137 0 0.628461898337003 -795.0913933928215 0 1 0 20 -0.628461898337003 0 -0.7778403707308137 -732.9131619068198 0 0 0 1 -0.5055803419501061 0 0.8627795302588102 -540.9378858891421 0 1 0 0 -0.8627795302588102 0 -0.5055803419501061 -987.7900305327031 0 0 0 1 -0.5055803419501061 0 0.8627795302588102 -540.9378858891421 0 1 0 0 -0.8627795302588102 0 -0.5055803419501061 -987.7900305327031 0 0 0 1 -0.5055803419501061 0 0.8627795302588102 -580.9378248539858 0 1 0 150 -0.8627795302588102 0 -0.5055803419501061 -987.7900445327032 0 0 0 1 -0.5055803419501061 0 0.8627795302588102 -700.9379621830874 0 1 0 -180 -0.8627795302588102 0 -0.5055803419501061 -987.7900685327014 0 0 0 1 -0.5055803419501061 0 0.8627795302588102 -580.9378248539858 0 1 0 -130.00000000000003 -0.8627795302588102 0 -0.5055803419501061 -987.7900445327032 0 0 0 1 -0.4305550858986095 0 0.9025643013142277 -544.8541419786851 0 1 0 0 -0.9025643013142277 0 -0.4305550858986095 -1037.7599550178882 0 0 0 1 -0.4305550858986095 0 0.9025643013142277 -544.854095978684 0 1 0 0 -0.9025643013142277 0 -0.4305550858986095 -1037.7599940178866 0 0 0 1</float_array>
+                    <technique_common>
+                        <accessor source="#MatArr0" count="66" stride="16">
+                            <param type="float4x4" />
+                        </accessor>
+                    </technique_common>
+                </source>
+                <source id="weights0">
+                    <float_array id="WeightArr0" count="1">1</float_array>
+                    <technique_common>
+                        <accessor source="#WeightArr0" count="1">
+                            <param type="float" />
+                        </accessor>
+                    </technique_common>
+                </source>
+                <joints>
+                    <input semantic="JOINT" source="#joints0" />
+                    <input semantic="INV_BIND_MATRIX" source="#matrices0" />
+                </joints>
+                <vertex_weights count="3">
+                    <input semantic="JOINT" offset="0" source="#joints0" />
+                    <input semantic="WEIGHT" offset="1" source="#weights0" />
+                    <vcount>1 1 1</vcount>
+                    <v>8 0 8 0 8 0</v>
+                </vertex_weights>
+            </skin>
+        </controller>
+    </library_controllers>
+    <library_visual_scenes>
+        <visual_scene id="VisualSceneNode">
+            <node id="node0" name="m0" type="NODE">
+                <instance_controller url="#controller0">
+                    <skeleton>#jointnode-1</skeleton>
+                    <bind_material>
+                        <technique_common>
+                            <instance_material symbol="Material1" target="#mat0">
+                                <bind_vertex_input semantic="UVSET0" input_semantic="TEXCOORD" input_set="0"></bind_vertex_input>
+                            </instance_material>
+                        </technique_common>
+                    </bind_material>
+                </instance_controller>
+            </node>
+            <node id="jointnode-1" name="root" sid="jointnode-1" type="JOINT">
+                <node id="jointnode0" name="none_topjoin_1" sid="jointnode0" type="JOINT">
+                    <node id="jointnode1" name="none_chn1" sid="jointnode1" type="JOINT">
+                        <translate>0 0 35.64649963378906</translate>
+                        <rotate>0 1 0 159.99877925962096</rotate>
+                        <node id="jointnode2" name="none_jnt1_1" sid="jointnode2" type="JOINT">
+                            <translate>9.999999974752427e-7 0 -0.000004999999873689376</translate>
+                            <node id="jointnode3" name="none_null40" sid="jointnode3" type="JOINT">
+                                <node id="jointnode4" name="redcoin_null13" sid="jointnode4" type="JOINT">
+                                    <translate>209.99998474121094 20 -0.000014999999621068127</translate>
+                                </node>
+                                <node id="jointnode5" name="coin_null5" sid="jointnode5" type="JOINT">
+                                    <translate>79.99995422363281 -80 -0.000014999999621068127</translate>
+                                </node>
+                                <node id="jointnode6" name="coin_null39" sid="jointnode6" type="JOINT">
+                                    <translate>179.99998474121094 -130 -0.00002300000051036477</translate>
+                                    <node id="jointnode7" name="none_Dammypoly" sid="jointnode7" type="JOINT">
+                                        <translate>-357.1046447753906 -65.56636810302734 -34.82480239868164</translate>
+                                    </node>
+                                </node>
+                                <node id="jointnode8" name="coin_null27" sid="jointnode8" type="JOINT">
+                                    <translate>-0.000011000000085914508 0 -0.000012999999853491317</translate>
+                                </node>
+                                <node id="jointnode9" name="coin_null2" sid="jointnode9" type="JOINT">
+                                    <translate>79.99995422363281 70 -0.000014999999621068127</translate>
+                                </node>
+                                <node id="jointnode10" name="coin_null1" sid="jointnode10" type="JOINT">
+                                    <translate>179.99998474121094 120 -0.00002300000051036477</translate>
+                                </node>
+                            </node>
+                            <node id="jointnode11" name="none_jnt1_2" sid="jointnode11" type="JOINT">
+                                <translate>260 0 0</translate>
+                                <rotate>0 1 0 1.0711996826075014</rotate>
+                                <node id="jointnode12" name="none_null41" sid="jointnode12" type="JOINT">
+                                    <node id="jointnode13" name="coin_null8" sid="jointnode13" type="JOINT">
+                                        <translate>120 210 0.0000019999999949504854</translate>
+                                    </node>
+                                    <node id="jointnode14" name="coin_null4" sid="jointnode14" type="JOINT">
+                                        <translate>69.99999237060547 -150 0.000003000000106112566</translate>
+                                    </node>
+                                    <node id="jointnode15" name="coin_null3" sid="jointnode15" type="JOINT">
+                                        <translate>69.99999237060547 110 0.000003000000106112566</translate>
+                                    </node>
+                                    <node id="jointnode16" name="coin_null14" sid="jointnode16" type="JOINT">
+                                        <translate>120 -250 0.0000019999999949504854</translate>
+                                    </node>
+                                    <node id="jointnode17" name="coin_null12" sid="jointnode17" type="JOINT">
+                                        <translate>69.99999237060547 -20 0.000003000000106112566</translate>
+                                    </node>
+                                </node>
+                                <node id="jointnode18" name="none_jnt1_3" sid="jointnode18" type="JOINT">
+                                    <translate>120 0 0</translate>
+                                    <rotate>0 1 0 2.219306009094516</rotate>
+                                    <node id="jointnode19" name="none_null42" sid="jointnode19" type="JOINT">
+                                        <node id="jointnode20" name="redcoin_null20" sid="jointnode20" type="JOINT">
+                                            <translate>100 -300 0.000007999999979801942</translate>
+                                        </node>
+                                        <node id="jointnode21" name="coin_null9" sid="jointnode21" type="JOINT">
+                                            <translate>79.99999237060547 290 -9.999999974752427e-7</translate>
+                                        </node>
+                                        <node id="jointnode22" name="coin_null16" sid="jointnode22" type="JOINT">
+                                            <translate>50.00001907348633 -150 -0.0000019999999949504854</translate>
+                                        </node>
+                                        <node id="jointnode23" name="coin_null11" sid="jointnode23" type="JOINT">
+                                            <translate>50.00001907348633 110 -0.0000019999999949504854</translate>
+                                        </node>
+                                        <node id="jointnode24" name="coin_null10" sid="jointnode24" type="JOINT">
+                                            <translate>50.00001907348633 -20 -0.0000019999999949504854</translate>
+                                        </node>
+                                    </node>
+                                    <node id="jointnode25" name="none_jnt1_4" sid="jointnode25" type="JOINT">
+                                        <translate>100 0 0</translate>
+                                        <rotate>0 1 0 3.350932340464492</rotate>
+                                        <node id="jointnode26" name="none_null43" sid="jointnode26" type="JOINT">
+                                            <node id="jointnode27" name="redcoin_null7" sid="jointnode27" type="JOINT">
+                                                <translate>79.99998474121094 350 -0.000004999999873689376</translate>
+                                            </node>
+                                            <node id="jointnode28" name="coin_null30" sid="jointnode28" type="JOINT">
+                                                <translate>49.99998474121094 100 -9.999999974752427e-7</translate>
+                                            </node>
+                                            <node id="jointnode29" name="coin_null19" sid="jointnode29" type="JOINT">
+                                                <translate>49.99998474121094 -20 -9.999999974752427e-7</translate>
+                                            </node>
+                                            <node id="jointnode30" name="coin_null15" sid="jointnode30" type="JOINT">
+                                                <translate>49.99998474121094 -140 -9.999999974752427e-7</translate>
+                                            </node>
+                                        </node>
+                                        <node id="jointnode31" name="none_jnt1_5" sid="jointnode31" type="JOINT">
+                                            <translate>100 0 0</translate>
+                                            <rotate>0 1 0 5.3834650715659045</rotate>
+                                            <node id="jointnode32" name="none_null44" sid="jointnode32" type="JOINT">
+                                                <node id="jointnode33" name="redcoin_null22" sid="jointnode33" type="JOINT">
+                                                    <translate>49.999961853027344 -20 0.000012000000424450263</translate>
+                                                </node>
+                                                <node id="jointnode34" name="coin_null23" sid="jointnode34" type="JOINT">
+                                                    <translate>49.999961853027344 -130 0.000012000000424450263</translate>
+                                                </node>
+                                                <node id="jointnode35" name="coin_null21" sid="jointnode35" type="JOINT">
+                                                    <translate>49.999961853027344 90 0.000012000000424450263</translate>
+                                                </node>
+                                            </node>
+                                            <node id="jointnode36" name="nona_jnt1_6" sid="jointnode36" type="JOINT">
+                                                <translate>100 0 0</translate>
+                                                <rotate>0 1 0 4.647358623004853</rotate>
+                                                <node id="jointnode37" name="none_null45" sid="jointnode37" type="JOINT">
+                                                    <node id="jointnode38" name="redcoin_null17" sid="jointnode38" type="JOINT">
+                                                        <translate>99.99999237060547 -220 -0.000019999999494757503</translate>
+                                                    </node>
+                                                    <node id="jointnode39" name="coin_null38" sid="jointnode39" type="JOINT">
+                                                        <translate>49.999996185302734 80 -0.000014000000192027073</translate>
+                                                    </node>
+                                                    <node id="jointnode40" name="coin_null36" sid="jointnode40" type="JOINT">
+                                                        <translate>49.999996185302734 -120 -0.000014000000192027073</translate>
+                                                    </node>
+                                                    <node id="jointnode41" name="coin_null25" sid="jointnode41" type="JOINT">
+                                                        <translate>49.999996185302734 -20 -0.000014000000192027073</translate>
+                                                    </node>
+                                                </node>
+                                                <node id="jointnode42" name="none_jnt1_7" sid="jointnode42" type="JOINT">
+                                                    <translate>100 0 0</translate>
+                                                    <rotate>0 1 0 5.8833582567827385</rotate>
+                                                    <node id="jointnode43" name="none_null46" sid="jointnode43" type="JOINT">
+                                                        <node id="jointnode44" name="coin_null29" sid="jointnode44" type="JOINT">
+                                                            <translate>50.000057220458984 -70 -0.00003600000127335079</translate>
+                                                        </node>
+                                                        <node id="jointnode45" name="coin_null28" sid="jointnode45" type="JOINT">
+                                                            <translate>50.000057220458984 30 -0.00003600000127335079</translate>
+                                                        </node>
+                                                    </node>
+                                                    <node id="jointnode46" name="none_jnt1_8" sid="jointnode46" type="JOINT">
+                                                        <translate>100 0 0</translate>
+                                                        <rotate>0 1 0 8.465224158452102</rotate>
+                                                        <node id="jointnode47" name="none_null47" sid="jointnode47" type="JOINT">
+                                                            <node id="jointnode48" name="redcoin_null18" sid="jointnode48" type="JOINT">
+                                                                <translate>49.999908447265625 -20 -0.000022000000171829015</translate>
+                                                            </node>
+                                                        </node>
+                                                        <node id="jointnode49" name="none_jnt1_9" sid="jointnode49" type="JOINT">
+                                                            <translate>100 0 0</translate>
+                                                            <rotate>0 1 0 11.535996581926938</rotate>
+                                                            <node id="jointnode50" name="none_null48" sid="jointnode50" type="JOINT">
+                                                                <node id="jointnode51" name="coin_null32" sid="jointnode51" type="JOINT">
+                                                                    <translate>50.00001525878906 -70 -0.00002300000051036477</translate>
+                                                                </node>
+                                                                <node id="jointnode52" name="coin_null31" sid="jointnode52" type="JOINT">
+                                                                    <translate>50.00001525878906 30 -0.00002300000051036477</translate>
+                                                                </node>
+                                                            </node>
+                                                            <node id="jointnode53" name="none_jnt1_10" sid="jointnode53" type="JOINT">
+                                                                <translate>100 0 0</translate>
+                                                                <rotate>0 1 0 16.381115146336253</rotate>
+                                                                <node id="jointnode54" name="none_null49" sid="jointnode54" type="JOINT">
+                                                                    <node id="jointnode55" name="coin_null35" sid="jointnode55" type="JOINT">
+                                                                        <translate>50.00001907348633 -120 0.000014000000192027073</translate>
+                                                                    </node>
+                                                                    <node id="jointnode56" name="coin_null34" sid="jointnode56" type="JOINT">
+                                                                        <translate>50.00001907348633 80 0.000014000000192027073</translate>
+                                                                    </node>
+                                                                    <node id="jointnode57" name="coin_null33" sid="jointnode57" type="JOINT">
+                                                                        <translate>50.00001907348633 -20 0.000014000000192027073</translate>
+                                                                    </node>
+                                                                </node>
+                                                                <node id="jointnode58" name="none_jnt1_11" sid="jointnode58" type="JOINT">
+                                                                    <translate>110 0 0</translate>
+                                                                    <rotate>0 1 0 20.693380535294654</rotate>
+                                                                    <node id="jointnode59" name="none_null50" sid="jointnode59" type="JOINT">
+                                                                        <node id="jointnode60" name="redcoin_null26" sid="jointnode60" type="JOINT">
+                                                                            <translate>39.99993896484375 -150 0.000014000000192027073</translate>
+                                                                        </node>
+                                                                        <node id="jointnode61" name="redcoin_null24" sid="jointnode61" type="JOINT">
+                                                                            <translate>160.0000762939453 180 0.000037999998312443495</translate>
+                                                                        </node>
+                                                                        <node id="jointnode62" name="coin_null37" sid="jointnode62" type="JOINT">
+                                                                            <translate>39.99993896484375 130 0.000014000000192027073</translate>
+                                                                        </node>
+                                                                    </node>
+                                                                    <node id="jointnode63" name="none_eff1" sid="jointnode63" type="JOINT">
+                                                                        <translate>90 0 0</translate>
+                                                                        <rotate>0 1 0 4.8670918912320325</rotate>
+                                                                        <node id="jointnode64" name="none_null51" sid="jointnode64" type="JOINT">
+                                                                            <translate>-0.00004600000102072954 0 0.00003899999865097925</translate>
+                                                                        </node>
+                                                                    </node>
+                                                                </node>
+                                                            </node>
+                                                        </node>
+                                                    </node>
+                                                </node>
+                                            </node>
+                                        </node>
+                                    </node>
+                                </node>
+                            </node>
+                        </node>
+                    </node>
+                </node>
+            </node>
+        </visual_scene>
+    </library_visual_scenes>
+    <scene>
+        <instance_visual_scene url="#VisualSceneNode"></instance_visual_scene>
+    </scene>
+</COLLADA>
