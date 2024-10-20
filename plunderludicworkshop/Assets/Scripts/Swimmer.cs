@@ -142,9 +142,15 @@ public class Swimmer : MonoBehaviour
             }
         }
 
+        float targetRotationZ=0f;
         if(look!=Vector2.zero){//Setting rotation speed
             rotationVelocity+=new Vector3(look.y,look.x,0f)*rotationAcceleration*Time.fixedDeltaTime;
             rotationVelocity=Vector3.ClampMagnitude(rotationVelocity,rotationMaxVelocity);
+            if(look.x>0){
+                targetRotationZ=-maxTiltAngle;
+            }else if(look.x<0){
+                targetRotationZ=maxTiltAngle;
+            }
         }
 
         //Finding rotation to do
@@ -166,7 +172,7 @@ public class Swimmer : MonoBehaviour
         bool movingDown=false;
 
         //Tilt player if moving laterally
-        float targetRotationZ=0f;
+        
         if(movingLeft && !movingRight){
             targetRotationZ=maxTiltAngle;
         }else if(movingRight && !movingLeft){
