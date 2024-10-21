@@ -31,8 +31,11 @@ public class Swimmer : MonoBehaviour
     //private SwimmerCamera swimmerCamera;
 
     [Header("Rotation")]
-    public float rotationAcceleration=180f;
-    public float rotationMaxVelocity=180f;
+    public float rotationXAcceleration=180f;
+    public float rotationXMaxVelocity=180f;
+    public float rotationYAcceleration=180f;
+    public float rotationYMaxVelocity=180f;
+
     private Vector3 rotationVelocity=Vector3.zero;
     public float rotationDeceleration=180f;
     public float maxRotationXAngle=60f;
@@ -100,6 +103,8 @@ public class Swimmer : MonoBehaviour
         Move();
     }
 
+    private bool prevMovingForward;
+
     void Move(){
         Vector3 currentVelocity=new Vector3(body.velocity.x,body.velocity.y,body.velocity.z);
         Vector3 playerVelocity=currentVelocity;
@@ -143,8 +148,10 @@ public class Swimmer : MonoBehaviour
 
         float targetRotationZ=0f;
         if(look!=Vector2.zero){//Setting rotation speed
-            rotationVelocity+=new Vector3(look.y,look.x,0f)*rotationAcceleration*Time.fixedDeltaTime;
-            rotationVelocity=Vector3.ClampMagnitude(rotationVelocity,rotationMaxVelocity);
+            rotationVelocity+=new Vector3(look.y,0f,0f)*rotationXAcceleration*Time.fixedDeltaTime;
+            rotationVelocity+=new Vector3(0f,look.x,0f)*rotationYAcceleration*Time.fixedDeltaTime;
+            rotationVelocity=new Vector3(Mathf.Clamp(rotationVelocity.x,-rotationXMaxVelocity,rotationXMaxVelocity),
+            Mathf.Clamp(rotationVelocity.y,-rotationYMaxVelocity,rotationYMaxVelocity),0f);
             if(look.x>0){
                 targetRotationZ=-maxTiltAngle;
             }else if(look.x<0){
@@ -170,12 +177,18 @@ public class Swimmer : MonoBehaviour
         bool movingUp=false;
         bool movingDown=false;
 
+        if(movingForward && !prevMovingForward){
+            boostTimer=0f;
+        }
+
         //Tilt player if moving laterally
         
         if(movingLeft && !movingRight){
-            targetRotationZ=maxTiltAngle;
+            //targetRotationZ=maxTiltAngle;
+            playerVelocity-=lateralAcceleration*transform.right*Time.fixedDeltaTime;
         }else if(movingRight && !movingLeft){
-            targetRotationZ=-maxTiltAngle;
+            //targetRotationZ=-maxTiltAngle;
+            playerVelocity+=lateralAcceleration*transform.right*Time.fixedDeltaTime;
         }
         if(newRotation.z>=180f){
             targetRotationZ=360f+targetRotationZ;
@@ -228,9 +241,9 @@ public class Swimmer : MonoBehaviour
             if(playerVelocity.magnitude<coastingSpeed || Vector3.Angle(playerVelocity,-transform.forward)>=90f){
                 playerVelocity+=-transform.forward*backwardAcceleration*Time.fixedDeltaTime;
             }
-            boostTimer=boostTime+1f;
+            //boostTimer=boostTime+1f;
         }else{
-            boostTimer=boostTime+1f;
+            //boostTimer=boostTime+1f;
         }
 
         //Lateral movement
@@ -256,6 +269,7 @@ public class Swimmer : MonoBehaviour
 
         allHits.Clear();
 
+        prevMovingForward=movingForward;
     }
 
     // Boost can be from external effect for e.g. ring
