@@ -52,6 +52,14 @@ public class FirstPersonDrifter: MonoBehaviour
     private Vector3 contactPoint;
     private bool playerControl = false;
     private int jumpTimer;
+
+    private Animator animator;
+    private Transform model;
+
+    private float attackTimer;
+    public float attackTime=0f;
+
+    public bool canMove=true;
  
     void Start()
     {
@@ -61,6 +69,10 @@ public class FirstPersonDrifter: MonoBehaviour
         rayDistance = controller.height * .5f + controller.radius;
         slideLimit = controller.slopeLimit - .1f;
         jumpTimer = antiBunnyHopFactor;
+
+        animator=GetComponentInChildren<Animator>();
+        model=animator.transform;
+        attackTimer=attackTime;
     }
  
     void FixedUpdate() {
@@ -97,25 +109,27 @@ public class FirstPersonDrifter: MonoBehaviour
             	speed = Input.GetButton("Run")? runSpeed : walkSpeed;
             }
  
-            // If sliding (and it's allowed), or if we're on an object tagged "Slide", get a vector pointing down the slope we're on
-            if ( (sliding && slideWhenOverSlopeLimit) || (slideOnTaggedObjects && hit.collider.tag == "Slide") ) {
-                Vector3 hitNormal = hit.normal;
-                moveDirection = new Vector3(hitNormal.x, -hitNormal.y, hitNormal.z);
-                Vector3.OrthoNormalize (ref hitNormal, ref moveDirection);
-                moveDirection *= slideSpeed;
-                playerControl = false;
-            }
-            // Otherwise recalculate moveDirection directly from axes, adding a bit of -y to avoid bumping down inclines
-            else {
-                moveDirection = new Vector3(inputX * inputModifyFactor, -antiBumpFactor, inputY * inputModifyFactor);
-                moveDirection = myTransform.TransformDirection(moveDirection) * speed;
-                playerControl = true;
+            if(canMove){
+                // If sliding (and it's allowed), or if we're on an object tagged "Slide", get a vector pointing down the slope we're on
+                if ( (sliding && slideWhenOverSlopeLimit) || (slideOnTaggedObjects && hit.collider.tag == "Slide") ) {
+                    Vector3 hitNormal = hit.normal;
+                    moveDirection = new Vector3(hitNormal.x, -hitNormal.y, hitNormal.z);
+                    Vector3.OrthoNormalize (ref hitNormal, ref moveDirection);
+                    moveDirection *= slideSpeed;
+                    playerControl = false;
+                }
+                // Otherwise recalculate moveDirection directly from axes, adding a bit of -y to avoid bumping down inclines
+                else {
+                    moveDirection = new Vector3(inputX * inputModifyFactor, -antiBumpFactor, inputY * inputModifyFactor);
+                    moveDirection = myTransform.TransformDirection(moveDirection) * speed;
+                    playerControl = true;
+                }
             }
  
             // Jump! But only if the jump button has been released and player has been grounded for a given number of frames
             if (!Input.GetButton("Jump"))
                 jumpTimer++;
-            else if (jumpTimer >= antiBunnyHopFactor) {
+            else if (jumpTimer >= antiBunnyHopFactor && canMove) {
                 moveDirection.y = jumpSpeed;
                 jumpTimer = 0;
             }
@@ -128,7 +142,7 @@ public class FirstPersonDrifter: MonoBehaviour
             }
  
             // If air control is allowed, check movement but don't touch the y component
-            if (airControl && playerControl) {
+            if (airControl && playerControl && canMove) {
                 moveDirection.x = inputX * speed * inputModifyFactor;
                 moveDirection.z = inputY * speed * inputModifyFactor;
                 moveDirection = myTransform.TransformDirection(moveDirection);
@@ -140,6 +154,32 @@ public class FirstPersonDrifter: MonoBehaviour
  
         // Move the controller, and set grounded true or false depending on whether we're standing on something
         grounded = (controller.Move(moveDirection * Time.deltaTime) & CollisionFlags.Below) != 0;
+
+        if(inputX!=0 || inputY!=0){
+            animator.SetBool("running",true);
+        }else{
+            animator.SetBool("running",false);
+        }
+
+        if(Input.GetKeyDown(KeyCode.E)){
+            animator.SetTrigger("attack");
+            attackTimer=0f;
+            moveDirection.x=0f;
+            moveDirection.z=0f;
+        }
+
+        Vector3 dir=new Vector3(moveDirection.x,0f,moveDirection.z);
+        if(dir!=Vector3.zero && canMove){
+            model.rotation=Quaternion.LookRotation(dir,Vector3.up);
+        }
+
+        attackTimer+=Time.deltaTime;
+
+        if(attackTimer<=attackTime){
+            canMove=false;
+        }else{
+            canMove=true;
+        }
     }
  
     // Store point that we're in contact with for use in FixedUpdate if needed
