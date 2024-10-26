@@ -60,6 +60,8 @@ public class FirstPersonDrifter: MonoBehaviour
     public float attackTime=0f;
 
     public bool canMove=true;
+
+    public GameObject swordCube;
  
     void Start()
     {
@@ -166,6 +168,7 @@ public class FirstPersonDrifter: MonoBehaviour
             attackTimer=0f;
             moveDirection.x=0f;
             moveDirection.z=0f;
+
         }
 
         Vector3 dir=new Vector3(moveDirection.x,0f,moveDirection.z);
@@ -177,9 +180,13 @@ public class FirstPersonDrifter: MonoBehaviour
 
         if(attackTimer<=attackTime){
             canMove=false;
+            swordCube.SetActive(true);
         }else{
             canMove=true;
+            swordCube.SetActive(false);
         }
+
+
     }
  
     // Store point that we're in contact with for use in FixedUpdate if needed
