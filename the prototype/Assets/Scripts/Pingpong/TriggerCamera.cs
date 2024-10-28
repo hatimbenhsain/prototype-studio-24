@@ -17,13 +17,16 @@ public class TriggerCamera : MonoBehaviour
     public float airplaneWindowTime=10f;
 
     private float zoomoutSpeed=0f;
-    private float zoomoutAcceleration=5f;
+    public float zoomoutAcceleration=5f;
 
     public AudioMixer mixer;
+
+    public GameObject endScreen;
 
     void Start()
     {
         airplaneWindow=GameObject.Find("Window").GetComponent<Image>();
+        
     }
 
     void Update()
@@ -39,6 +42,9 @@ public class TriggerCamera : MonoBehaviour
             float v;
             mixer.GetFloat("volume",out v);
             mixer.SetFloat("volume",v-Time.deltaTime);
+            if(airplaneWindowTimer>=60f){
+                endScreen.SetActive(true);
+            }
         }
     }
 
@@ -49,8 +55,10 @@ public class TriggerCamera : MonoBehaviour
             }
             if(killedPingpong){
                 foreach(TriggerCamera tc in FindObjectsOfType<TriggerCamera>()){
+                    tc.camera.SetActive(false);
                     tc.stopChanging=true;
                 }
+                camera.SetActive(true);
             }
         }
         

@@ -212,6 +212,12 @@ public class FirstPersonDrifter: MonoBehaviour
         if(transform.position.y<-10f){
             transform.position=respawnLocation.position;
         }
+
+        if(grounded && Input.GetKeyDown(KeyCode.Return)){
+            Vector3 p=transform.position;
+            p.y=respawnLocation.position.y;
+            respawnLocation.position=p;
+        }
     }
  
     // Store point that we're in contact with for use in FixedUpdate if needed
