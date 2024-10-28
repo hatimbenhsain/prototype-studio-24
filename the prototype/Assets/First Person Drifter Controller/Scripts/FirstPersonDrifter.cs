@@ -4,6 +4,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UIElements;
 
 [RequireComponent (typeof (CharacterController))]
 public class FirstPersonDrifter: MonoBehaviour
@@ -69,6 +70,8 @@ public class FirstPersonDrifter: MonoBehaviour
     public float footstepTime=0.4f;
     private float ogPitch;
  
+    public Transform respawnLocation;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -206,6 +209,9 @@ public class FirstPersonDrifter: MonoBehaviour
         }
 
 
+        if(transform.position.y<-10f){
+            transform.position=respawnLocation.position;
+        }
     }
  
     // Store point that we're in contact with for use in FixedUpdate if needed

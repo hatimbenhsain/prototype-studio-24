@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class Johnny : MonoBehaviour
@@ -10,9 +11,15 @@ public class Johnny : MonoBehaviour
     public GameObject ball;
     public bool turnOffBall=false;
     public bool dead=false;
+    public bool talking=false;
+
+
+
     void Start()
     {
         Debug.Log("Start");
+        animator.SetBool("talking",talking);
+        if(talking) StartCoroutine(SetPlaybackTime());
     }
 
     void Update()
@@ -29,6 +36,9 @@ public class Johnny : MonoBehaviour
                 GetComponent<SkinnedMeshRenderer>().enabled=false;
             }
             animator.SetTrigger("death");
+            if(talking){
+                GetComponent<AudioSource>().Stop();
+            }
             dead=true;
             if(turnOffBall){
                 bool killball=true;
@@ -39,9 +49,18 @@ public class Johnny : MonoBehaviour
                 }
                 if(killball){
                     ball.SetActive(false);
+                    foreach(TriggerCamera tc in FindObjectsOfType<TriggerCamera>()){
+                        tc.killedPingpong=true;
+                    }
+                    GameObject.Find("Airplane Sound").GetComponent<AudioSource>().Play();
                 }
             }
         }
+    }
+
+    IEnumerator SetPlaybackTime(){
+        yield return new WaitForSeconds(1f);
+        animator.playbackTime=Random.Range(0f,2f);
     }
 
     void OnCollisionEnter(Collision collision){

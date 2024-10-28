@@ -23,6 +23,10 @@ public class DoorLock : MonoBehaviour
     public float speakUpTime=3f;
     public bool playerHere=false;
 
+    private FirstPersonDrifter player;
+
+    private GameObject camera;
+
     void Start()
     {
         audioSources=transform.parent.GetComponentsInChildren<AudioSource>();
@@ -32,6 +36,10 @@ public class DoorLock : MonoBehaviour
             maxVolumes[i]=audioSources[i].volume;
             targetVolumes[i]=audioSources[i].volume;
         }
+
+        player=FindObjectOfType<FirstPersonDrifter>();
+        camera=transform.parent.GetComponentInChildren<Camera>().gameObject;
+        camera.SetActive(false);
     }
 
     void Update()
@@ -60,6 +68,12 @@ public class DoorLock : MonoBehaviour
 
         for(int i=0;i<audioSources.Length;i++){
             audioSources[i].volume=Mathf.Lerp(audioSources[i].volume,targetVolumes[i],Time.deltaTime*audioLerpSpeed);
+        }
+
+        if(Vector3.Distance(player.transform.position,transform.position)<=5f){
+            camera.SetActive(true);
+        }else{
+            camera.SetActive(false);
         }
     }
 
