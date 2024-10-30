@@ -1,0 +1,7 @@
+<BizHawk-XMLGame System="PSX" Name="D Full">
+  <LoadAssets>
+    <Asset FileName=".\D (USA) (Disc 1) (Track 1).bin" />
+    <Asset FileName=".\D (USA) (Disc 1) (Track 2).bin" />
+    <Asset FileName=".\D (USA) (Disc 1) (Track 3).bin" />
+  </LoadAssets>
+</BizHawk-XMLGame>
