@@ -2,13 +2,13 @@ MsgBox: This EmuHawk is privileged: EmuHawk detected it has Administrator privil
 This is a bad idea.
 MainForm()
 Using DirectInput+XInput for host input (keyboard + gamepads)
-Init method call rpc buffer unityhawk-callmethod-2091984904
-Init api call buffer unityhawk-apicall-2091984904
-Init input buffer unityhawk-key-input-2091984904
+Init method call rpc buffer unityhawk-callmethod-1340857288
+Init api call buffer unityhawk-apicall-1340857288
+Init input buffer unityhawk-key-input-1340857288
 ROM was not a multiple of 1024 bytes, and not a recognized header size: 992. Assume it's purely ROM data.
 Game was not in DB. CRC: 6AFFF1C2 MD5: EE1561E2CE3A7AC9BF16CC598103FBAC
 DB: hash CEB3E772 not in game database.
-MemoryBlock created for address 36f00000000:36f0d7e7000 with mirror 23267ae0000:232752c7000
+MemoryBlock created for address 36f00000000:36f0d7e7000 with mirror 255e7ad0000:255f52b7000
 Mouting `shock.wbx` @36f00000000
   Sections:
     @0:0     `` 0 bytes
@@ -117,12 +117,12 @@ Allocated 135168 bytes on sbrk heap, usage 1159168/16777216
 Multitap on PSX Port 1: Disabled
 Multitap on PSX Port 2: Disabled
 DB: hash CEB3E772 not in game database.
-Init texture buffer unityhawk-texture-2091984904-0
-Init audio rpc buffer unityhawk-audio-2091984904
+Init texture buffer unityhawk-texture-1340857288-0
+Init audio rpc buffer unityhawk-audio-1340857288
 Active Firmwares:
   PSX+U : 8D5DE56A79954F29E9006929BA3FED9B6A418C1D
   PSX+U : 8D5DE56A79954F29E9006929BA3FED9B6A418C1D
 Read a zipstate of version 1.0.2
-Elapsed time for Load Core: 61 ms
-Elapsed time for Blit: 8 ms
-Elapsed time for Load Framebuffer: 25 ms
+Elapsed time for Load Core: 39 ms
+Elapsed time for Blit: 4 ms
+Elapsed time for Load Framebuffer: 12 ms
