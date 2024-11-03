@@ -17,6 +17,14 @@ public class DGame : MonoBehaviour
     public int saveStateIndex=0;
 
     public bool hasLoaded=false;
+
+    public GameObject camera;
+
+    public bool cameraInField=false;
+
+    public float minAngle=20f;
+    public float maxAngle=30f;
+
     void Start()
     {
         Shuffle(saveStates);
@@ -26,7 +34,7 @@ public class DGame : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return)){
+        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Return)){
             SwitchSaveState(dEmulator);
         }
         if(Input.GetKeyDown(KeyCode.Backspace)){
@@ -40,7 +48,19 @@ public class DGame : MonoBehaviour
             if(!hasLoaded){
                 hasLoaded=true;
             }
-            dEmulator.LoadState(saveStates[saveStateIndex]);
+        }
+
+        float angle=Mathf.Min(Vector3.Angle(camera.transform.forward,Vector3.forward),Vector3.Angle(camera.transform.forward,-Vector3.forward));
+        if(!cameraInField){
+            Debug.Log(angle);
+            if(angle>=maxAngle){
+                cameraInField=true;
+                SwitchSaveState(dEmulator);
+            }
+        }else{
+            if(angle<=minAngle){
+                cameraInField=false;
+            }
         }
     }
 

@@ -1,0 +1,81 @@
+MainForm()
+Using DirectInput+XInput for host input (keyboard + gamepads)
+Init method call rpc buffer unityhawk-callmethod-1562095832
+Init api call buffer unityhawk-apicall-1562095832
+Init input buffer unityhawk-key-input-1562095832
+MemoryBlock created for address 36f00000000:36f03158000 with mirror 229ba4b0000:229bd608000
+Mouting `gpgx.wbx` @36f00000000
+  Sections:
+    @0:0     `` 0 bytes
+    @36f00000270:36f000002b3 R   `.interp` 67 bytes
+    @36f000002b4:36f000002cc R   `.note.gnu.build-id` 24 bytes
+    @36f00001000:36f00001003 R X `.init` 3 bytes
+    @36f00001010:36f00192231 R X `.text` 1643041 bytes
+    @36f00192231:36f00192234 R X `.fini` 3 bytes
+    @36f00193000:36f002c4eb0 R   `.rodata` 1253040 bytes
+    @36f002c4eb0:36f002ced24 R   `.eh_frame_hdr` 40564 bytes
+    @36f002ced28:36f0031af4c R   `.eh_frame` 311844 bytes
+    @36f0031b000:36f0031b000 R   `.init_array` 0 bytes
+    @36f0031b000:36f00327000 RW  `.sealed` 49152 bytes
+    @36f00327000:36f00327080 RW  `.invis` 128 bytes
+    @36f00328000:36f00328d58 RW  `.data` 3416 bytes
+    @36f00328d60:36f003d6990 RW  `.bss` 711728 bytes
+    @36f003d7990:36f003d7990 RW  `.ldata` 0 bytes
+    @0:6f     `.comment` 111 bytes
+    @0:214f8     `.symtab` 136440 bytes
+    @0:9e     `.shstrtab` 158 bytes
+    @0:16fe9     `.strtab` 94185 bytes
+  Segments:
+    %36f00000040:36f00000270 R   560 bytes
+    %36f00000270:36f000002b3 R   67 bytes
+    %36f00000000:36f000002cc R   716 bytes
+    %36f00001000:36f00192234 R X 1643060 bytes
+    %36f00193000:36f0031b000 R   1605632 bytes
+    %36f0031b000:36f003d7990 RW  772496 bytes
+    %36f0031b000:36f0031b000 R   0 bytes
+    %36f002c4eb0:36f002ced24 R   40564 bytes
+    %36f000002b4:36f000002cc R   24 bytes
+Calling _start()
+Initializing heap invisible at 0x36f00a58000:0x36f00e58000
+Allocated 2097152 bytes on invisible heap, usage 2097152/4194304
+Allocated 2097152 bytes on 
+Allocated 24576 bytes on invisible heap, usage 2121728/4194304
+Allocated 524288 bytes on invisible heap, usage 2646016/4194304
+Initializing heap plain at 0x36f00e58000:0x36f03058000
+Allocated 33554432 bytes on plain heap, usage 33554432/35651584
+Initializing heap sealed at 0x36f00658000:0x36f00a58000
+Allocated 131072 bytes on sealed heap, usage 131072/4194304
+Allocated 131072 bytes on sealed heap, usage 262144/4194304
+Allocated 131072 bytes on sealed heap, usage 393216/4194304
+Allocated 262144 bytes on sealed heap, usage 655360/4194304
+Allocated 48 bytes on sealed heap, usage 655408/4194304
+Allocated 65536 bytes on sealed heap, usage 720944/4194304
+Allocated 65536 bytes on sealed heap, usage 786480/4194304
+Allocated 65536 bytes on sealed heap, usage 852016/4194304
+Allocated 65536 bytes on sealed heap, usage 917552/4194304
+Allocated 65536 bytes on sealed heap, usage 983088/4194304
+Allocated 65536 bytes on sealed heap, usage 1048624/4194304
+Declined to satisfy firmware request PRIMARY_CD because PRIMARY_ROM was provided.
+Firmware request PRIMARY_ROM satisfied at size 1048576
+Initializing heap sbrk at 36f005d8000:36f00658000
+Allocated 20480 bytes on sbrk heap, usage 20480/524288
+Allocated 20480 bytes on sbrk heap, usage 40960/524288
+Calling ecl_seal()
+WaterboxHost Sealed!
+Genesis Controller report:
+  S:SYSTEM_MD_GAMEPAD
+  S:SYSTEM_MD_GAMEPAD
+  D:DEVICE_PAD3B
+  D:DEVICE_NONE
+  D:DEVICE_NONE
+  D:DEVICE_NONE
+  D:DEVICE_PAD3B
+  D:DEVICE_NONE
+  D:DEVICE_NONE
+  D:DEVICE_NONE
+Init texture buffer unityhawk-texture-1562095832-0
+Init audio rpc buffer unityhawk-audio-1562095832
+Read a zipstate of version 1.0.2
+Elapsed time for Load Core: 9 ms
+Elapsed time for Blit: 1 ms
+Elapsed time for Load Framebuffer: 5 ms

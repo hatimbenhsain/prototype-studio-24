@@ -1,9 +1,9 @@
 MainForm()
 Using DirectInput+XInput for host input (keyboard + gamepads)
-Init method call rpc buffer unityhawk-callmethod-1541311907
-Init api call buffer unityhawk-apicall-1541311907
-Init input buffer unityhawk-key-input-1541311907
-MemoryBlock created for address 36f00000000:36f03158000 with mirror 208e7380000:208ea4d8000
+Init method call rpc buffer unityhawk-callmethod-444481451
+Init api call buffer unityhawk-apicall-444481451
+Init input buffer unityhawk-key-input-444481451
+MemoryBlock created for address 36f00000000:36f03158000 with mirror 1fb36320000:1fb39478000
 Mouting `gpgx.wbx` @36f00000000
   Sections:
     @0:0     `` 0 bytes
@@ -38,8 +38,8 @@ Mouting `gpgx.wbx` @36f00000000
 Calling _start()
 Initializing heap invisible at 0x36f00a58000:0x36f00e58000
 Allocated 2097152 bytes on invisible heap, usage 2097152/4194304
-Allocated 24576 bytes on invisible heap, usage 2121728/4194304
 Initializing GPGX native...
+Allocated 24576 bytes on invisible heap, usage 2121728/4194304
 Allocated 524288 bytes on invisible heap, usage 2646016/4194304
 Initializing heap plain at 0x36f00e58000:0x36f03058000
 Allocated 33554432 bytes on plain heap, usage 33554432/35651584
@@ -73,9 +73,25 @@ Genesis Controller report:
   D:DEVICE_NONE
   D:DEVICE_NONE
   D:DEVICE_NONE
-Init texture buffer unityhawk-texture-1541311907-0
-Init audio rpc buffer unityhawk-audio-1541311907
+Init texture buffer unityhawk-texture-444481451-0
+Init audio rpc buffer unityhawk-audio-444481451
 Read a zipstate of version 1.0.2
-Elapsed time for Load Core: 9 ms
+Elapsed time for Load Core: 11 ms
 Elapsed time for Blit: 1 ms
-Elapsed time for Load Framebuffer: 6 ms
+Elapsed time for Load Framebuffer: 4 ms
+Read a zipstate of version 1.0.2
+Elapsed time for Load Core: 3 ms
+Elapsed time for Blit: 0 ms
+Elapsed time for Load Framebuffer: 0 ms
+Read a zipstate of version 1.0.2
+Elapsed time for Load Core: 2 ms
+Elapsed time for Blit: 0 ms
+Elapsed time for Load Framebuffer: 0 ms
+Read a zipstate of version 1.0.2
+Elapsed time for Load Core: 2 ms
+Elapsed time for Blit: 0 ms
+Elapsed time for Load Framebuffer: 0 ms
+Read a zipstate of version 1.0.2
+Elapsed time for Load Core: 3 ms
+Elapsed time for Blit: 0 ms
+Elapsed time for Load Framebuffer: 0 ms
