@@ -1,9 +1,9 @@
 MainForm()
 Using DirectInput+XInput for host input (keyboard + gamepads)
-Init method call rpc buffer unityhawk-callmethod-1562095832
-Init api call buffer unityhawk-apicall-1562095832
-Init input buffer unityhawk-key-input-1562095832
-MemoryBlock created for address 36f00000000:36f03158000 with mirror 229ba4b0000:229bd608000
+Init method call rpc buffer unityhawk-callmethod-85570705
+Init api call buffer unityhawk-apicall-85570705
+Init input buffer unityhawk-key-input-85570705
+MemoryBlock created for address 36f00000000:36f03158000 with mirror 27148e00000:2714bf58000
 Mouting `gpgx.wbx` @36f00000000
   Sections:
     @0:0     `` 0 bytes
@@ -36,9 +36,9 @@ Mouting `gpgx.wbx` @36f00000000
     %36f002c4eb0:36f002ced24 R   40564 bytes
     %36f000002b4:36f000002cc R   24 bytes
 Calling _start()
+Initializing GPGX native...
 Initializing heap invisible at 0x36f00a58000:0x36f00e58000
 Allocated 2097152 bytes on invisible heap, usage 2097152/4194304
-Allocated 2097152 bytes on 
 Allocated 24576 bytes on invisible heap, usage 2121728/4194304
 Allocated 524288 bytes on invisible heap, usage 2646016/4194304
 Initializing heap plain at 0x36f00e58000:0x36f03058000
@@ -73,9 +73,9 @@ Genesis Controller report:
   D:DEVICE_NONE
   D:DEVICE_NONE
   D:DEVICE_NONE
-Init texture buffer unityhawk-texture-1562095832-0
-Init audio rpc buffer unityhawk-audio-1562095832
+Init texture buffer unityhawk-texture-85570705-0
+Init audio rpc buffer unityhawk-audio-85570705
 Read a zipstate of version 1.0.2
-Elapsed time for Load Core: 9 ms
+Elapsed time for Load Core: 10 ms
 Elapsed time for Blit: 1 ms
 Elapsed time for Load Framebuffer: 5 ms
