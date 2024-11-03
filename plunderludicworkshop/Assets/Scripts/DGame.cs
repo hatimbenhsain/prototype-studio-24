@@ -25,6 +25,9 @@ public class DGame : MonoBehaviour
     public float minAngle=20f;
     public float maxAngle=30f;
 
+    public bool verticalZone=true;
+    public bool switchZone=false;
+
     void Start()
     {
         Shuffle(saveStates);
@@ -50,16 +53,23 @@ public class DGame : MonoBehaviour
             }
         }
 
-        float angle=Mathf.Min(Vector3.Angle(camera.transform.forward,Vector3.forward),Vector3.Angle(camera.transform.forward,-Vector3.forward));
-        if(!cameraInField){
-            Debug.Log(angle);
-            if(angle>=maxAngle){
-                cameraInField=true;
-                SwitchSaveState(dEmulator);
-            }
-        }else{
-            if(angle<=minAngle){
-                cameraInField=false;
+        Vector3 forward=Vector3.forward;
+
+        if(!verticalZone){
+            forward=Vector3.right;
+        }
+
+        if(!switchZone){
+            float angle=Mathf.Min(Vector3.Angle(camera.transform.forward,forward),Vector3.Angle(camera.transform.forward,-forward));
+            if(!cameraInField){
+                if(angle>=maxAngle){
+                    cameraInField=true;
+                    SwitchSaveState(dEmulator);
+                }
+            }else{
+                if(angle<=minAngle){
+                    cameraInField=false;
+                }
             }
         }
     }

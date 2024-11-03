@@ -153,4 +153,32 @@ public class FirstPersonDrifter: MonoBehaviour
     {
         //print ("Ouch! Fell " + fallDistance + " units!");   
     }
+
+    private void OnTriggerEnter(Collider other) {
+        DGame game=FindObjectOfType<DGame>();
+        switch(other.gameObject.tag){
+            case "Vertical Zone":  
+                game.verticalZone=true;
+                game.cameraInField=false;
+                break;
+            case "Horizontal Zone":  
+                game.verticalZone=false;
+                game.cameraInField=false;
+                break;
+            case "SwitchZone":  
+                game.switchZone=true;
+                game.cameraInField=true;
+                break;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        DGame game=FindObjectOfType<DGame>();
+        switch(other.gameObject.tag){
+            case "SwitchZone":  
+                game.switchZone=false;
+                game.cameraInField=false;
+                break;
+        }
+    }
 }
