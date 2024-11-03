@@ -1,0 +1,24 @@
+Thanks for visiting The Vault at Vimm's Lair.
+
+	vimm.net
+
+This PlayStation media is verified by Redump.
+
+D (USA) (Disc 1) (Track 1).bin
+CRC:   6afff1c2
+MD5:   ee1561e2ce3a7ac9bf16cc598103fbac
+SHA-1: cd3a0bed796ebed8206aa430f61b42baf56b76ca
+D (USA) (Disc 1) (Track 2).bin
+CRC:   98bdb862
+MD5:   7902e4c790ab0bea94387895f968272a
+SHA-1: 3d50be42eb7e2dc2d169500b4d66d850cfd2451c
+D (USA) (Disc 1) (Track 3).bin
+CRC:   9eb22530
+MD5:   88aa16698a904e9841f2279a4e9beb23
+SHA-1: bea344b803475b463195df6fd60834069afe246e
+D (USA) (Disc 1).cue
+CRC:   e6e61d93
+MD5:   0cbe0eda518fddf89d22b303d3d77f68
+SHA-1: bddb4cf435105517c6473167ab5bbbd8e239c931
+
+Date:  2024-10-15 11:09:11
