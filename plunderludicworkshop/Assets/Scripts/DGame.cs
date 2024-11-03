@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityHawk;
 
 public class DGame : MonoBehaviour
@@ -28,6 +29,14 @@ public class DGame : MonoBehaviour
     public bool verticalZone=true;
     public bool switchZone=false;
 
+    public float switchWaitTime=1f;
+
+    public Light light;
+    public float lightMin=2.5f;
+    public float lightMax=5f;
+    public float lightPeriod=10f;
+    public float lightTimer=0f;
+
     void Start()
     {
         Shuffle(saveStates);
@@ -37,12 +46,16 @@ public class DGame : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Return)){
-            SwitchSaveState(dEmulator);
-        }
-        if(Input.GetKeyDown(KeyCode.Backspace)){
-            sonicEmulator.LoadState(sonicSaveState);
-        }
+        lightTimer+=Time.deltaTime;
+        lightTimer=lightTimer%(2*lightPeriod);
+        light.intensity=Mathf.Sin(Mathf.PI*lightTimer/lightPeriod)*(lightMax-lightMin)+lightMin;
+
+        // if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Return)){
+        //     SwitchSaveState(dEmulator);
+        // }
+        // if(Input.GetKeyDown(KeyCode.Backspace)){
+        //     sonicEmulator.LoadState(sonicSaveState);
+        // }
 
         if(dEmulator.Status==Emulator.EmulatorStatus.Started && sonicEmulator.Status==Emulator.EmulatorStatus.Started){
             loadingScreen.SetActive(true);
@@ -72,12 +85,17 @@ public class DGame : MonoBehaviour
                 }
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.R)){
+            SceneManager.LoadScene("DScene");
+        }
     }
 
     public void SwitchSaveState(Emulator emulator){
         saveStateIndex+=1;
         saveStateIndex=saveStateIndex%saveStates.Length;
         emulator.LoadState(saveStates[saveStateIndex]);
+        sonicEmulator.LoadState(sonicSaveState);
     }
     void Shuffle(Savestate[] array)
     {
@@ -89,5 +107,10 @@ public class DGame : MonoBehaviour
             array[r] = array[n];
             array[n] = t;
         }
+    }
+
+    public IEnumerator SwitchSaveStateCoroutine(){
+        yield return new WaitForSeconds(switchWaitTime);
+        SwitchSaveState(dEmulator);
     }
 }

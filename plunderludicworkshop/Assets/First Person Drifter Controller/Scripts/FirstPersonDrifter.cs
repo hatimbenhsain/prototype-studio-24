@@ -52,6 +52,13 @@ public class FirstPersonDrifter: MonoBehaviour
     private Vector3 contactPoint;
     private bool playerControl = false;
     private int jumpTimer;
+
+    public Transform[] spawnPoints;
+    public bool spawnRandom=true;
+
+    public MouseLook mouseLook;
+    
+    
  
     void Start()
     {
@@ -61,11 +68,26 @@ public class FirstPersonDrifter: MonoBehaviour
         rayDistance = controller.height * .5f + controller.radius;
         slideLimit = controller.slopeLimit - .1f;
         jumpTimer = antiBunnyHopFactor;
+
+        controller.enabled=false;
+
+        Transform t=spawnPoints[Random.Range(0,spawnPoints.Length)];
+        transform.position=t.position;
+        transform.rotation=t.rotation;
+
+        controller.enabled=true;
+        mouseLook.enabled=true;
+
     }
  
     void FixedUpdate() {
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
+
+        if(Input.GetKey(KeyCode.LeftShift)){
+            inputX=0;
+            inputY=0;
+        }
         // If both horizontal and vertical are used simultaneously, limit speed (if allowed), so the total doesn't exceed normal move speed
         float inputModifyFactor = (inputX != 0.0f && inputY != 0.0f && limitDiagonalSpeed)? .7071f : 1.0f;
  
@@ -167,7 +189,7 @@ public class FirstPersonDrifter: MonoBehaviour
                 break;
             case "SwitchZone":  
                 game.switchZone=true;
-                game.cameraInField=true;
+                game.StartCoroutine(game.SwitchSaveStateCoroutine());
                 break;
         }
     }

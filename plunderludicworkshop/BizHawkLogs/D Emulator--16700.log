@@ -1,12 +1,12 @@
 MainForm()
 Using DirectInput+XInput for host input (keyboard + gamepads)
-Init method call rpc buffer unityhawk-callmethod-875733549
-Init api call buffer unityhawk-apicall-875733549
-Init input buffer unityhawk-key-input-875733549
+Init method call rpc buffer unityhawk-callmethod-97690001
+Init api call buffer unityhawk-apicall-97690001
+Init input buffer unityhawk-key-input-97690001
 ROM was not a multiple of 1024 bytes, and not a recognized header size: 992. Assume it's purely ROM data.
 Game was not in DB. CRC: 6AFFF1C2 MD5: EE1561E2CE3A7AC9BF16CC598103FBAC
 DB: hash CEB3E772 not in game database.
-MemoryBlock created for address 36f00000000:36f0d7e7000 with mirror 18f40000000:18f4d7e7000
+MemoryBlock created for address 36f00000000:36f0d7e7000 with mirror 1f480000000:1f48d7e7000
 Mouting `shock.wbx` @36f00000000
   Sections:
     @0:0     `` 0 bytes
@@ -115,60 +115,36 @@ Allocated 135168 bytes on sbrk heap, usage 1159168/16777216
 Multitap on PSX Port 1: Disabled
 Multitap on PSX Port 2: Disabled
 DB: hash CEB3E772 not in game database.
-Init texture buffer unityhawk-texture-875733549-0
-Init audio rpc buffer unityhawk-audio-875733549
+Init texture buffer unityhawk-texture-97690001-0
+Init audio rpc buffer unityhawk-audio-97690001
 Active Firmwares:
   PSX+U : 8D5DE56A79954F29E9006929BA3FED9B6A418C1D
   PSX+U : 8D5DE56A79954F29E9006929BA3FED9B6A418C1D
 Read a zipstate of version 1.0.2
-Elapsed time for Load Core: 15 ms
-Elapsed time for Blit: 2 ms
-Elapsed time for Load Framebuffer: 5 ms
+Elapsed time for Load Core: 24 ms
+Elapsed time for Blit: 5 ms
+Elapsed time for Load Framebuffer: 9 ms
 Read a zipstate of version 1.0.2
-Elapsed time for Load Core: 16 ms
-Elapsed time for Blit: 1 ms
-Elapsed time for Load Framebuffer: 3 ms
-Read a zipstate of version 1.0.2
-Elapsed time for Load Core: 10 ms
+Elapsed time for Load Core: 21 ms
 Elapsed time for Blit: 1 ms
 Elapsed time for Load Framebuffer: 2 ms
 Read a zipstate of version 1.0.2
-Elapsed time for Load Core: 11 ms
+Elapsed time for Load Core: 124 ms
+Elapsed time for Blit: 1 ms
+Elapsed time for Load Framebuffer: 4 ms
+Read a zipstate of version 1.0.2
+Elapsed time for Load Core: 64 ms
 Elapsed time for Blit: 1 ms
 Elapsed time for Load Framebuffer: 2 ms
-Read a zipstate of version 1.0.2
-Elapsed time for Load Core: 15 ms
-Elapsed time for Blit: 1 ms
-Elapsed time for Load Framebuffer: 2 ms
-Read a zipstate of version 1.0.2
-Elapsed time for Load Core: 18 ms
-Elapsed time for Blit: 1 ms
-Elapsed time for Load Framebuffer: 3 ms
-Read a zipstate of version 1.0.2
-Elapsed time for Load Core: 16 ms
-Elapsed time for Blit: 1 ms
-Elapsed time for Load Framebuffer: 3 ms
-Read a zipstate of version 1.0.2
-Elapsed time for Load Core: 16 ms
-Elapsed time for Blit: 1 ms
-Elapsed time for Load Framebuffer: 2 ms
-Read a zipstate of version 1.0.2
-Elapsed time for Load Core: 18 ms
-Elapsed time for Blit: 1 ms
-Elapsed time for Load Framebuffer: 2 ms
-Read a zipstate of version 1.0.2
-Elapsed time for Load Core: 11 ms
-Elapsed time for Blit: 1 ms
-Elapsed time for Load Framebuffer: 2 ms
-Read a zipstate of version 1.0.2
-Elapsed time for Load Core: 13 ms
-Elapsed time for Blit: 1 ms
-Elapsed time for Load Framebuffer: 3 ms
 Read a zipstate of version 1.0.2
 Elapsed time for Load Core: 19 ms
 Elapsed time for Blit: 1 ms
-Elapsed time for Load Framebuffer: 3 ms
+Elapsed time for Load Framebuffer: 2 ms
+Read a zipstate of version 1.0.2
+Elapsed time for Load Core: 99 ms
+Elapsed time for Blit: 1 ms
+Elapsed time for Load Framebuffer: 27 ms
 Read a zipstate of version 1.0.2
 Elapsed time for Load Core: 20 ms
-Elapsed time for Blit: 2 ms
-Elapsed time for Load Framebuffer: 4 ms
+Elapsed time for Blit: 1 ms
+Elapsed time for Load Framebuffer: 3 ms
