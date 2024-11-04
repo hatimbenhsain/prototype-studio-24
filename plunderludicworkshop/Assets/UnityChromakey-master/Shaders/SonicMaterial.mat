@@ -144,8 +144,8 @@ Material:
     - _Background: 0.55
     - _BlendMode: 0
     - _CoatMask: 0
-    - _ColorCutoff: 0.15
-    - _ColorFeathering: 0.15
+    - _ColorCutoff: 0.1284
+    - _ColorFeathering: 0.1284
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.1
@@ -214,7 +214,7 @@ Material:
     - _ReceivesSSR: 1
     - _RefractionModel: 0
     - _SSRefractionProjectionModel: 0
-    - _Sharpening: 0.56
+    - _Sharpening: 0
     - _SmoothStrength: 0
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
@@ -271,7 +271,7 @@ Material:
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _KeyColor: {r: 0.25882354, g: 0.46274513, b: 0.59607846, a: 1}
+    - _KeyColor: {r: 0.106532566, g: 0.22504371, b: 0.3962264, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _TiltColor: {r: 1, g: 1, b: 1, a: 1}
