@@ -4,7 +4,7 @@ walking=false;
 
 
 
-walkSpeed=20;
+walkSpeed=32;
 
 tileWidth=16;
 
@@ -13,14 +13,17 @@ button_right=vk_right;
 button_up=vk_down;
 button_down=vk_up;
 
-enum directions{
+enum DIRECTIONS{
 	LEFT,
 	RIGHT,
 	UP,
 	DOWN
 }
 
-dir=directions.DOWN;
+dir=DIRECTIONS.DOWN;
+
+x=floor(x/16)*16+8
+y=floor(y/16)*16+12
 
 tx=x;
 ty=y;

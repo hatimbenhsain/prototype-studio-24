@@ -2,22 +2,22 @@
 // You can write your code in this editor
 if(!walking){
 	if(keyboard_check(button_left)){
-		dir=directions.LEFT;
+		dir=DIRECTIONS.LEFT;
 		walking=true;
 		tx=x-tileWidth;
 		ty=y;
 	}else if(keyboard_check(button_down)){
-		dir=directions.DOWN;
+		dir=DIRECTIONS.DOWN;
 		walking=true;
 		tx=x;
 		ty=y-tileWidth;
 	}else if(keyboard_check(button_right)){
-		dir=directions.RIGHT;
+		dir=DIRECTIONS.RIGHT;
 		walking=true;
 		tx=x+tileWidth;
 		ty=y;
 	}else if(keyboard_check(button_up)){
-		dir=directions.UP;
+		dir=DIRECTIONS.UP;
 		walking=true;
 		tx=x;
 		ty=y+tileWidth;
@@ -26,17 +26,29 @@ if(!walking){
 
 if(walking){
 	switch(dir){
-		case directions.LEFT:
+		case DIRECTIONS.LEFT:
 			x=x-walkSpeed*delta_time/1000000;
+			if(x<=tx){
+				x=tx;	
+			}
 			break;
-		case directions.RIGHT:
+		case DIRECTIONS.RIGHT:
 			x=x+walkSpeed*delta_time/1000000;
+			if(x>=tx){
+				x=tx;	
+			}
 			break;
-		case directions.DOWN:
+		case DIRECTIONS.DOWN:
 			y=y-walkSpeed*delta_time/1000000;
+			if(y<=ty){
+				y=ty;	
+			}
 			break;
-		case directions.UP:
+		case DIRECTIONS.UP:
 			y=y+walkSpeed*delta_time/1000000;
+			if(y>=ty){
+				y=ty;	
+			}
 			break;
 	}
 	if(abs(x-tx)<=1 && abs(y-ty)<=1){
