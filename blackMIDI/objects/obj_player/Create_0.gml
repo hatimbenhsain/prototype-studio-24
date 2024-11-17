@@ -12,6 +12,7 @@ button_left=vk_left;
 button_right=vk_right;
 button_up=vk_down;
 button_down=vk_up;
+button_interact=ord("X");
 
 enum DIRECTIONS{
 	LEFT,
@@ -27,3 +28,18 @@ y=floor(y/16)*16+12
 
 tx=x;
 ty=y;
+
+game=-1;
+
+encounterRate=0.5;
+
+hp=999;
+maxHP=hp;
+atk=4;
+
+attacking=false;
+attackTimer=0;
+preAttackTime=0.25;
+postAttackTime=0.75;
+
+activated=false;

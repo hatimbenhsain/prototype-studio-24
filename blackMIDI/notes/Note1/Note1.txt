@@ -1,0 +1,10 @@
+
++ change color
+
+
++ add music
++ add sounds
++ battle animations?
++ level up?
++ more screens
++ make art
