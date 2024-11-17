@@ -7,5 +7,7 @@
 + battle animations?
 + level up?
 + more screens
-+ make art
 + synch music
++ more screens
++ toy with blend mode
++ replace colors/hue?

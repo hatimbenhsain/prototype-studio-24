@@ -8,3 +8,7 @@ h=180;
 timer=0;
 
 createGameTrigger=true;
+
+playerNumber=instance_number(obj_player);
+
+d=0;

@@ -12,7 +12,8 @@ surface_copy(surf, -player.x+w/2, -player.y+h/2, application_surface);
 if(combatMode && monster!=-1){
 	surface_set_target(surf);
 	draw_clear_alpha(c_black,0);
-	draw_sprite(monster.sprite_index,monster.image_index,0,0);
+	draw_sprite(monster.sprite_index,monster.image_index,monster.offsetx,monster.offsety);
+	draw_sprite(battlePlayer.sprite_index,battlePlayer.image_index,0,0);
 	draw_set_color(c_white);
 	var hpBarLength=100;
 	var hpBarHeight=6;

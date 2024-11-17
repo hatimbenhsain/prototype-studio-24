@@ -74,16 +74,37 @@ if(activated){
 
 	if(game!=-1 && game.combatMode){
 		if(attacking){
+			if(attackTimer==0 && game.battlePlayer!=-1){
+				game.battlePlayer.sprite_index=spr_player_battle_attack;
+				game.battlePlayer.image_index=0;
+			}
 			var prevAttackTimer=attackTimer;
 			attackTimer+=delta_time/1000000;
+			
+			if(keyboard_check_pressed(button_interact) &&
+			game.battlePlayer!=-1 && game.battlePlayer.sprite_index==spr_player_battle_attack 
+			&& game.battlePlayer.image_index>=4 
+			&& game.battlePlayer.image_index<=6){
+				doubleAttack=true;
+			}
 			if(attackTimer>=preAttackTime && prevAttackTimer<preAttackTime){
 				game.monster.hp-=atk;
+				if(doubleAttack){
+					game.monster.hp-=atk;
+				}
+				game.monster.hp=clamp(game.monster.hp,0,game.monster.maxHP);
+				game.battlePlayer.sprite_index=spr_player_battle_unattack;
+				game.battlePlayer.image_index=0;
 			}
 			if(attackTimer>=preAttackTime+postAttackTime){
 				attacking=false;
 				attackTimer=0;
-				game.monster.attacking=true;
+				if(game.monster!=-1 && game.monster.hp>0) game.monster.attacking=true;
 			}
+		}
+		if(game.battlePlayer!=-1 && game.battlePlayer.sprite_index==spr_player_battle_unattack && game.battlePlayer.image_index>=4){
+			game.battlePlayer.sprite_index=spr_player_battle;
+			game.battlePlayer.image_index=0;	
 		}
 	}
 }else if(game!=-1){

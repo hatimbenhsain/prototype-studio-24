@@ -1,7 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 if(combatMode && !prevCombatMode){
-	monster=instance_create_depth(0,0,depth,obj_monster);	
+	monster=instance_create_depth(0,0,depth,obj_monster);
+	battlePlayer=instance_create_depth(0,0,depth,obj_battlePlayer);
 	monster.game=self;
 	
 	obj_everything.createGameTrigger=true;
@@ -33,6 +34,19 @@ if(combatMode){
 			inMenu=false;
 		}else if(optionSelected==2){
 			combatMode=false;	
+		}
+	}
+	
+	if(monster.hp<=0){
+		timer+=delta_time/1000000;
+		inMenu=false;
+		if(timer>=1){
+			combatMode=false;
+			instance_destroy(monster);
+			instance_destroy(battlePlayer);
+			monster=-1;
+			battlePlayer=-1;
+			timer=0;
 		}
 	}
 }else{

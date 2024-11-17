@@ -39,7 +39,9 @@ atk=4;
 
 attacking=false;
 attackTimer=0;
-preAttackTime=0.25;
-postAttackTime=0.75;
+preAttackTime=1;
+postAttackTime=1;
 
 activated=false;
+
+doubleAttack=false;
