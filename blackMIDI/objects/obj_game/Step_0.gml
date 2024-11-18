@@ -4,6 +4,7 @@ if(combatMode && !prevCombatMode){
 	monster=instance_create_depth(0,0,depth,obj_monster);
 	battlePlayer=instance_create_depth(0,0,depth,obj_battlePlayer);
 	monster.game=self;
+	inMenu=true;
 	
 	obj_everything.createGameTrigger=true;
 	
@@ -23,19 +24,21 @@ if(combatMode){
 			optionSelected--;
 		}
 		optionSelected=(optionSelected+3)%3;
-	}
-	
-	if(keyboard_check_pressed(player.button_interact)){
-		if(optionSelected==0){
-			player.attacking=true;	
-			inMenu=false;
-		}else if(optionSelected==1){
-			monster.attacking=true;	
-			inMenu=false;
-		}else if(optionSelected==2){
-			combatMode=false;	
+		if(keyboard_check_pressed(player.button_interact)){
+			audio_play_sound(snd_blip1,1,false,0.1);
+			if(optionSelected==0){
+				player.attacking=true;	
+				inMenu=false;
+			}else if(optionSelected==1){
+				monster.attacking=true;	
+				inMenu=false;
+			}else if(optionSelected==2){
+				combatMode=false;	
+			}
 		}
 	}
+	
+	
 	
 	if(monster.hp<=0){
 		timer+=delta_time/1000000;

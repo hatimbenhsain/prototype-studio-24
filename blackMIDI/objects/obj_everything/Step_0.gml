@@ -16,10 +16,7 @@ if(timer>1 && timer-delta_time/1000000<=1){
 		var yy=floor(i/n)*h;
 		array_push(gamesPlacement,[xx,yy]);
 	}
-	
-	show_debug_message(1080/(h*resolutionMultiplier));
-	show_debug_message("games number");
-	show_debug_message(gamesNumber);
+
 
 	gamesPlacement=array_shuffle(gamesPlacement);
 
@@ -31,7 +28,8 @@ if(timer>1 && timer-delta_time/1000000<=1){
 	//	game.player.game=game;
 	//}
 	
-	show_debug_message(display_get_gui_height());
+	show_debug_message(resolution);
+	show_debug_message(display_get_gui_width());
 	
 }
 
@@ -47,14 +45,13 @@ if(timer>1 && createGameTrigger){
 		var p=instance_find(obj_player,(num%playerNumber));
 		player=instance_create_depth(p.depth,p.x,p.y,obj_player);
 	}else{
-		player=instance_find(obj_player,num);
+		player=players[num];
 	}
 	var xx, yy;
 	if(instance_number(obj_game)<array_length(gamesPlacement)){
 		xx=gamesPlacement[num][0];
 		yy=gamesPlacement[num][1];
 	}else{
-		show_debug_message("random placement");
 		var k=random(array_length(gamesPlacement));
 		xx=gamesPlacement[k][0];
 		yy=gamesPlacement[k][1];
@@ -79,7 +76,5 @@ if(timer>1 && createGameTrigger){
 
 	createGameTrigger=false;
 	num+=1;
-	
-	show_debug_message(game.x);
-	show_debug_message(game.y);
+
 }

@@ -1,13 +1,6 @@
-
-+ change color
-
-
-+ add music
 + add sounds
-+ battle animations?
-+ level up?
-+ more screens
+
+// level up?
+
 + synch music
-+ more screens
-+ toy with blend mode
-+ replace colors/hue?
++ fix whatever is going on with the screen

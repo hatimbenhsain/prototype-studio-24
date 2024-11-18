@@ -31,9 +31,9 @@ ty=y;
 
 game=-1;
 
-encounterRate=0.5;
+encounterRate=0.1;
 
-hp=999;
+hp=500;
 maxHP=hp;
 atk=4;
 

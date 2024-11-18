@@ -1,3 +1,5 @@
+
+
 surf=-1;
 
 player=-1;
@@ -39,3 +41,4 @@ color2G=random(1);
 
 add=false;
 subtract=false;
+

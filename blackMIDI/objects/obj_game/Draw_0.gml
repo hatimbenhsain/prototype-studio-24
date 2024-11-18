@@ -5,6 +5,7 @@
 if !surface_exists(surf)
 {
     surf = surface_create(w,h);
+
 }
 
 surface_copy(surf, -player.x+w/2, -player.y+h/2, application_surface);
@@ -21,7 +22,7 @@ if(combatMode && monster!=-1){
 	var hpBarY=8;
 	draw_rectangle(hpBarX-hpBarLength/2,hpBarY-hpBarHeight/2,hpBarX+hpBarLength/2,hpBarY+hpBarHeight/2,true);
 	draw_rectangle(hpBarX-hpBarLength/2+2,hpBarY-hpBarHeight/2+2,
-	hpBarX-hpBarLength/2+2+(hpBarLength-4)*monster.hp/monster.maxHP,hpBarY+hpBarHeight/2-2,false);
+	hpBarX-hpBarLength/2+2+(hpBarLength-4)*monster.screenHP/monster.maxHP,hpBarY+hpBarHeight/2-2,false);
 	
 	hpBarX=w/2;
 	hpBarY=h-8;

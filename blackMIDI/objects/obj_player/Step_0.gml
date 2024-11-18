@@ -1,5 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
+
+var prevWalking=walking;
+
 if(activated){
 	if(game!=-1 && !game.combatMode){
 		if(!walking){
@@ -27,6 +30,21 @@ if(activated){
 				tx=x;
 				ty=y+tileWidth;
 				sprite_index=spr_player_walking_down;
+			}
+			
+			if(walking && !prevWalking){
+				var xx=tx;
+				var yy=ty;
+				var canWalk=true;
+				with(obj_player){
+					if(abs(xx-x)<=5 && abs(yy-y)<=5){
+						canWalk=false;	
+						break;
+					}
+				}
+				if(!canWalk){
+					walking=false;	
+				}
 			}
 		}
 
@@ -92,6 +110,7 @@ if(activated){
 				if(doubleAttack){
 					game.monster.hp-=atk;
 				}
+				audio_play_sound(snd_hurt2,1,false,0.1);
 				game.monster.hp=clamp(game.monster.hp,0,game.monster.maxHP);
 				game.battlePlayer.sprite_index=spr_player_battle_unattack;
 				game.battlePlayer.image_index=0;
@@ -112,4 +131,10 @@ if(activated){
 	keyboard_check_pressed(button_up) || keyboard_check_pressed(button_right)){
 		activated=true;
 	}
+}
+
+if(hp<=0){
+	instance_destroy(game.monster);
+	instance_destroy(game);
+	instance_destroy(self);
 }

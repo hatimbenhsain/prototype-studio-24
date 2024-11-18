@@ -17,3 +17,7 @@ base=floor(random(11));
 
 offsetx=0;
 offsety=0;
+
+screenHP=hp;
+
+halvedAttack=false;
