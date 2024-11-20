@@ -55,7 +55,6 @@ public class FirstPersonDrifter: MonoBehaviour
     private int jumpTimer;
 
     private Animator animator;
-    private Transform model;
 
     private float attackTimer;
     public float attackTime=0f;
@@ -79,8 +78,7 @@ public class FirstPersonDrifter: MonoBehaviour
         slideLimit = controller.slopeLimit - .1f;
         jumpTimer = antiBunnyHopFactor;
 
-        animator=GetComponentInChildren<Animator>();
-        model=animator.transform;
+        //animator=GetComponentInChildren<Animator>();
         attackTimer=attackTime;
 
         ogPitch=footstepSource.pitch;
@@ -167,7 +165,7 @@ public class FirstPersonDrifter: MonoBehaviour
         grounded = (controller.Move(moveDirection * Time.deltaTime) & CollisionFlags.Below) != 0;
 
         if(inputX!=0 || inputY!=0){
-            animator.SetBool("running",true);
+            //animator.SetBool("running",true);
             footstepTimer+=Time.deltaTime;
             if(footstepTimer>=footstepTime && footsteps.Length>0){
                 footstepSource.clip=footsteps[Random.Range(0,footsteps.Length)];
@@ -177,24 +175,13 @@ public class FirstPersonDrifter: MonoBehaviour
             }
             footstepTimer=footstepTimer%footstepTime;
         }else{
-            animator.SetBool("running",false);
+            //animator.SetBool("running",false);
             footstepTimer=footstepTime;
         }
 
-        
-
-        if(Input.GetKeyDown(KeyCode.E)){
-            animator.SetTrigger("attack");
-            attackTimer=0f;
-            moveDirection.x=0f;
-            moveDirection.z=0f;
-
-        }
 
         Vector3 dir=new Vector3(moveDirection.x,0f,moveDirection.z);
-        if(dir!=Vector3.zero && canMove){
-            model.rotation=Quaternion.LookRotation(dir,Vector3.up);
-        }
+
 
         attackTimer+=Time.deltaTime;
 
