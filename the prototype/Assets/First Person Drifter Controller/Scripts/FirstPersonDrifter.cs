@@ -62,8 +62,6 @@ public class FirstPersonDrifter: MonoBehaviour
 
     public bool canMove=true;
 
-    public GameObject swordCube;
-
     public AudioClip[] footsteps;
     public AudioSource footstepSource;
     public float footstepTimer=0f;
@@ -171,7 +169,7 @@ public class FirstPersonDrifter: MonoBehaviour
         if(inputX!=0 || inputY!=0){
             animator.SetBool("running",true);
             footstepTimer+=Time.deltaTime;
-            if(footstepTimer>=footstepTime){
+            if(footstepTimer>=footstepTime && footsteps.Length>0){
                 footstepSource.clip=footsteps[Random.Range(0,footsteps.Length)];
                 footstepSource.Stop();
                 footstepSource.Play();
@@ -199,14 +197,6 @@ public class FirstPersonDrifter: MonoBehaviour
         }
 
         attackTimer+=Time.deltaTime;
-
-        if(attackTimer<=attackTime){
-            canMove=false;
-            swordCube.SetActive(true);
-        }else{
-            canMove=true;
-            swordCube.SetActive(false);
-        }
 
 
         if(transform.position.y<-10f){
