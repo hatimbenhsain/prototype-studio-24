@@ -25,6 +25,12 @@ public class Triptych : MonoBehaviour
             LoadScene(nextSceneName);
         }
 
+        BeachClothParent[] bcps=FindObjectsOfType<BeachClothParent>();
+
+        if(!loadingScene && bcps.Length>=1000){
+            LoadScene(nextSceneName);
+        }
+
         if(loadingScene){
             loadTimer+=Time.deltaTime;
             if(loadTimer>=loadTime){

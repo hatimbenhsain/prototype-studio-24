@@ -17,12 +17,15 @@ public class RandomizeSprite : MonoBehaviour
         spriteRenderer=GetComponent<SpriteRenderer>();
         offset=Random.Range(0f,time);
         timer+=offset;
+        
+        spriteRenderer.sprite=sprites[Random.Range(0,sprites.Length)];
+
     }
 
     void Update()
     {
         timer+=Time.deltaTime;
-        if(timer>=time){
+        if(time>0f && timer>=time){
             spriteRenderer.sprite=sprites[Random.Range(0,sprites.Length)];
         }   
         timer=timer%time;
