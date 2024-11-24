@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 8838709774212345020}
   - component: {fileID: 3960234322727681278}
   - component: {fileID: 8964892633740393804}
-  m_Layer: 0
+  - component: {fileID: 1928522649961823609}
+  m_Layer: 12
   m_Name: Generating Overworld Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,3 +187,24 @@ MonoBehaviour:
   maxTries: 100
   prefab: {fileID: 9160212447593453799}
   maxDistance: 5
+--- !u!65 &1928522649961823609
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9160212447593453799}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12, y: 12, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}

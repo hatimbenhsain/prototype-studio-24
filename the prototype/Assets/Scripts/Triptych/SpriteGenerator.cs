@@ -35,11 +35,9 @@ public class SpriteGenerator : MonoBehaviour
                     GameObject g=Instantiate(prefab);
                     g.transform.position=pos;
                     spritesGenerated++;
-                    Debug.Log("generate");
                     g.GetComponent<SpriteGenerator>().enabled=false;
                 }
                 tries++;
-                Debug.Log("try");
             }
         }
     }
