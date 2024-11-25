@@ -12,12 +12,17 @@ public class RandomizeSprite : MonoBehaviour
     public float time=5f;
     private float offset=0f;
 
+    private Sprite initialSprite;
+
     void Start()
     {
-        spriteRenderer=GetComponent<SpriteRenderer>();
+        if(!TryGetComponent<SpriteRenderer>(out spriteRenderer)){
+            spriteRenderer=GetComponentInChildren<SpriteRenderer>();
+        }
         offset=Random.Range(0f,time);
         timer+=offset;
         
+        initialSprite=spriteRenderer.sprite;
         spriteRenderer.sprite=sprites[Random.Range(0,sprites.Length)];
 
     }
@@ -29,5 +34,13 @@ public class RandomizeSprite : MonoBehaviour
             spriteRenderer.sprite=sprites[Random.Range(0,sprites.Length)];
         }   
         timer=timer%time;
+    }
+
+    public void Change(){
+        timer=time;
+    }
+
+    public void Reset(){
+        spriteRenderer.sprite=initialSprite;
     }
 }

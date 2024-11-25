@@ -13,17 +13,20 @@ public class Triptych : MonoBehaviour
     private float loadTimer=0f;
     private string sceneToLoad="";
 
+
+
     public Image image;
+
+    private int checkpointCounter=0;
+    private int checkpointNumber=0;
     void Start()
     {
         image.gameObject.SetActive(false);
+        checkpointNumber=FindObjectsOfType<Checkpoint>().Length;
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return)){
-            LoadScene(nextSceneName);
-        }
 
         BeachClothParent[] bcps=FindObjectsOfType<BeachClothParent>();
 
@@ -46,4 +49,17 @@ public class Triptych : MonoBehaviour
         sceneToLoad=sceneName;
         image.gameObject.SetActive(true);
     }
+
+    public void Checkpoint(){
+        checkpointCounter++;
+        if(checkpointCounter>=checkpointNumber){
+            StartCoroutine("GoNext",10f);
+        }
+    }
+
+    IEnumerator GoNext(float seconds){
+        yield return new WaitForSeconds(seconds);
+        LoadScene(nextSceneName);
+    }
+
 }
