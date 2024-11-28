@@ -14,16 +14,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TarotScene.unity
     guid: 1455b90509297474990bac565ca1da38
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/triptych1.unity
     guid: caeac008d4514844186c0fc7744118e4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/triptych2.unity
     guid: ebac2a7d3f731994c82fd41b583e9564
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/triptych3.unity
     guid: a5dd10e47d53e694d8cf7586f6dcbe43
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/triptych4.unity
     guid: 949e0d20cf635fc4786bba44fe5c5661
   m_configObjects: {}
