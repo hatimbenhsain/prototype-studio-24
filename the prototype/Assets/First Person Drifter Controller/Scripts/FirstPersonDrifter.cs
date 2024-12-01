@@ -118,7 +118,7 @@ public class FirstPersonDrifter: MonoBehaviour
     
                 if( enableRunning )
                 {
-                    speed = Input.GetButton("Run")? runSpeed : walkSpeed;
+                    speed = Input.GetKey(KeyCode.LeftShift)? runSpeed : walkSpeed;
                 }
     
                 if(canMove){

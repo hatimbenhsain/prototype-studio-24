@@ -11,10 +11,19 @@ public class Drawing : MonoBehaviour
 
     public float minDistance=0.01f;
     private Vector3 prevDrawnPosition;
+
+    public MouseLook[] mouseLooks;
+
+    public List<SpriteRenderer> strokes;
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.visible=false;
+
+        mouseLooks=FindObjectsOfType<MouseLook>();
+
+        strokes=new List<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -42,7 +51,7 @@ public class Drawing : MonoBehaviour
                 Vector3 difference=brush.transform.localPosition-prevDrawnPosition;
                 for(var i=0;i<Mathf.Floor(brushDistance/minDistance);i++){
                     GameObject stroke=Instantiate(brush,brush.transform.parent);
-                    //stroke.transform.parent=brush.transform.parent;
+                    strokes.Add(stroke.GetComponent<SpriteRenderer>());
                     stroke.transform.localPosition=brush.transform.localPosition+difference*i/Mathf.Floor(brushDistance/minDistance);
                     stroke.transform.localRotation=Quaternion.Euler(new Vector3(stroke.transform.localRotation.eulerAngles.x,stroke.transform.localRotation.eulerAngles.y,Random.Range(0f,360f)));
                 }                
@@ -50,7 +59,41 @@ public class Drawing : MonoBehaviour
             }
             
         }
-
         
+        if(Input.GetMouseButton(0) || Input.GetMouseButton(1)){
+            foreach(MouseLook mouseLook in mouseLooks){
+                mouseLook.enabled=false;
+            }
+            Cursor.lockState=CursorLockMode.None;
+        }else{
+            foreach(MouseLook mouseLook in mouseLooks){
+                mouseLook.enabled=true;
+            }
+            Cursor.lockState=CursorLockMode.Locked;
+        }
+
+        if(Input.GetKeyDown(KeyCode.R)){
+            StartCoroutine(Erase());
+            strokes.Clear();
+        }
+        
+    }
+
+    IEnumerator Erase(){
+        SpriteRenderer[] myStrokes=new SpriteRenderer[strokes.Count];
+        strokes.CopyTo(myStrokes);
+        Color c=myStrokes[0].color;
+        int tries=0;
+        while(c.a>=0 && tries<500){
+            c.a=c.a-0.01f;
+            foreach(SpriteRenderer s in myStrokes){
+                s.color=c;
+            }
+            yield return new WaitForSeconds(0.05f);
+            tries++;
+        }
+        foreach(SpriteRenderer s in myStrokes){
+            Destroy(s.gameObject);
+        }
     }
 }
