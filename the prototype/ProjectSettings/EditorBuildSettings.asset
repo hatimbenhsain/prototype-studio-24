@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/IceSkating.unity
     guid: d1f4d27f3e677e3459ba21b97328beb7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TarotScene.unity
     guid: 1455b90509297474990bac565ca1da38
   - enabled: 0
@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/triptych4.unity
     guid: 949e0d20cf635fc4786bba44fe5c5661
+  - enabled: 1
+    path: Assets/Scenes/Portrait.unity
+    guid: 8a43f7046d95d3445bc6b8f7e242130f
   m_configObjects: {}

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class Harpy : MonoBehaviour
 {
@@ -29,10 +31,22 @@ public class Harpy : MonoBehaviour
     public float movingSpeed=10f;
     public float turningSpeed=10f;
 
+    public Volume volume;
+
+    private ShadowsMidtonesHighlights shadowsMidtonesHighlights;
+    private ColorAdjustments colorAdjustments;
+
+    public AudioSource wingsSource;
+
     void Start()
     {
         player=GameObject.FindWithTag("Player").transform;
 
+        volume.profile.TryGet<ShadowsMidtonesHighlights>(out shadowsMidtonesHighlights);
+        volume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
+
+        shadowsMidtonesHighlights.active=false;
+        colorAdjustments.active=false;
     }
 
     void Update()
@@ -57,6 +71,8 @@ public class Harpy : MonoBehaviour
             GetComponent<Animator>().SetTrigger("attack");
             annoyedTimer=0;
             StartCoroutine(StartMoving());
+            GetComponent<AudioSource>().pitch=Random.Range(0.95f,1.05f);
+            GetComponent<AudioSource>().Play();
         }
 
         if(moving){
@@ -68,6 +84,8 @@ public class Harpy : MonoBehaviour
                 moving=false;
                 transform.position=currentRoostingPlace.position;
                 GetComponent<Animator>().SetBool("flying",false);
+                annoyedTimer=maxDrawingTime-0.5f;
+                wingsSource.Stop();
             }
         }else{
             Quaternion rotation=Quaternion.Lerp(transform.rotation,currentRoostingPlace.rotation,turningSpeed*Time.deltaTime);
@@ -91,5 +109,11 @@ public class Harpy : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         moving=true;
         GetComponent<Animator>().SetBool("flying",true);
+        if(shadowsMidtonesHighlights.active || Random.Range(0f,1f)<=0.2f){
+            shadowsMidtonesHighlights.active=!shadowsMidtonesHighlights.active;
+            colorAdjustments.active=shadowsMidtonesHighlights.active;
+            colorAdjustments.contrast.value=Random.Range(-100f,100f);
+        }
+        wingsSource.Play();
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Drawing : MonoBehaviour
@@ -16,6 +17,11 @@ public class Drawing : MonoBehaviour
 
     public List<SpriteRenderer> strokes;
 
+    private float targetVolume=0f;
+
+    public float volumeChangeSpeed=10f;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +30,8 @@ public class Drawing : MonoBehaviour
         mouseLooks=FindObjectsOfType<MouseLook>();
 
         strokes=new List<SpriteRenderer>();
+
+        audioSource=GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -46,8 +54,11 @@ public class Drawing : MonoBehaviour
 
         float brushDistance=Vector3.Distance(prevDrawnPosition, brush.transform.localPosition);
 
+        targetVolume=Mathf.Lerp(targetVolume,0f,Time.deltaTime*volumeChangeSpeed);
+
         if(Input.GetMouseButton(0)){
             if(brushDistance>=minDistance){
+                targetVolume=1f;
                 Vector3 difference=brush.transform.localPosition-prevDrawnPosition;
                 for(var i=0;i<Mathf.Floor(brushDistance/minDistance);i++){
                     GameObject stroke=Instantiate(brush,brush.transform.parent);
@@ -59,6 +70,8 @@ public class Drawing : MonoBehaviour
             }
             
         }
+
+        audioSource.volume=targetVolume;
         
         if(Input.GetMouseButton(0) || Input.GetMouseButton(1)){
             foreach(MouseLook mouseLook in mouseLooks){
