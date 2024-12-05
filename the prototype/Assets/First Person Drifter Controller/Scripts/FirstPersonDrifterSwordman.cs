@@ -57,7 +57,7 @@ public class FirstPersonDrifterSwordman: MonoBehaviour
     private Animator animator;
     private Transform model;
 
-    private float attackTimer;
+    public float attackTimer;
     public float attackTime=0f;
 
     public bool canMove=true;
