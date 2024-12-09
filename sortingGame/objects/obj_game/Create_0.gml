@@ -17,8 +17,29 @@ rh=1080	//reference height
 
 resolution=min(dw/rw,dh/rh)
 
+var k=ceil(rw/w)
+var ww=rw/k
+var ys=[0,(rh-h)/3,(rh-h)*2/3,(rh-h),(rh-h)*2/3,(rh-h)/3]
+
 window_set_size(w*resolution,h*resolution);
-if(current_time<5000) window_set_position(random(rw-w)*resolution,random(rh-h)*resolution);
+if(current_time<5000){
+	ini_open("settings.ini")
+	var xIndex=ini_read_real("game","xIndex",0)
+	var yIndex=ini_read_real("game","yIndex",0)
+	//xx=(xx+w)%(rw-w)
+	//if(xx<w) xx=0
+	//else if(xx>rw-w) xx=rw-w-1
+	xIndex+=1
+	xIndex=xIndex%k
+	yIndex+=1
+	yIndex=yIndex%array_length(ys)
+	var xx=clamp(ww*xIndex,0,rw-w)
+	var yy=ys[yIndex]
+	ini_write_real("game","xIndex",xIndex)
+	ini_write_real("game","yIndex",yIndex)
+	ini_close()
+	window_set_position(xx*resolution,yy*resolution);
+}
 
 arrayA=[]
 arrayB=[]
@@ -82,7 +103,9 @@ function swap(index1,index2){
 	swapped=true
 }
 
-stepLength=0.2
+var sls=[0,0.1,0.2]
+
+stepLength=sls[floor(random(array_length(sls)))]
 timer=0
 stepNumber=1
 

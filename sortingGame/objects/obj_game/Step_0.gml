@@ -56,3 +56,12 @@ if(sorted){
 		room_goto(room);	
 	}
 }
+
+if(keyboard_check_pressed(vk_left)){
+	stepLength-=0.1	
+}
+if(keyboard_check_pressed(vk_right)){
+	stepLength+=0.1	
+}
+
+stepLength=clamp(stepLength,0,10)
